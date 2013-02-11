@@ -1,33 +1,81 @@
 package com.example.ogpc2013android;
 
 import java.net.URI;
+import java.util.ArrayList;
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class LevelSelectActivity extends Activity {
 	
 	AnimationDrawable frameAnimation;
+	AnimationDrawable frameAnimation2;
+	
+	private ArrayList<AnimationDrawable> frameAnimations;
+	private ArrayList<ImageView> images;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		int height = displaymetrics.heightPixels;
+		int width = displaymetrics.widthPixels;
+		frameAnimations = new ArrayList<AnimationDrawable>();
+		images = new ArrayList<ImageView>();
+		
 		setContentView(R.layout.activity_level_select);
-		 ImageView img = (ImageView)findViewById(R.id.imageView2);
-		 img.setBackgroundResource(R.drawable.level_animation);
-		 frameAnimation = (AnimationDrawable) img.getBackground();
+//		ImageView img = (ImageView)findViewById(R.id.imageView2);
+//		img.setBackgroundResource(R.drawable.level_animation);
+//		frameAnimation = (AnimationDrawable) img.getBackground();
+//		
+//		ImageView img2 = (ImageView)findViewById(R.id.imageView3);
+//		img2.setBackgroundResource(R.drawable.level_animation);
+//		frameAnimation2 = (AnimationDrawable) img2.getBackground();
+		
+		images.add((ImageView)findViewById(R.id.imageView2));
+		images.add((ImageView)findViewById(R.id.imageView3));
+		images.add((ImageView)findViewById(R.id.imageView4));
+		images.add((ImageView)findViewById(R.id.imageView5));
+		
+		//images.get(3).setVisibility(View.INVISIBLE);
+		
+		for (int i = 0; i < images.size(); i++) {
+			frameAnimations.add((AnimationDrawable) getResources().getDrawable(R.drawable.level_animation));
+		}
+		
+		for (int i = 0; i < images.size(); i++) {
+			images.get(i).setBackgroundDrawable(frameAnimations.get(i));
+		}
+		
+		for (int i = 0; i < images.size(); i++) {
+			images.get(i).setX((width / 10.f) * i);
+			images.get(i).setY((height / 10.f) * i);
+		}
+ 
+		
+//		img2.setX(width / 10.f);
+//		img2.setY(height / 10.f);
 	}
 	
 	@Override
 	public void onWindowFocusChanged (boolean hasFocus) {
 	   super.onWindowFocusChanged(hasFocus);
 	   if (hasFocus){
-	      frameAnimation.start();
+	      for (int i = 0; i < frameAnimations.size(); i++) {
+	    	  frameAnimations.get(i).start();
+	      }
+//	      frameAnimation2.start();
 	   }
 	}
 
