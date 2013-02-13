@@ -11,13 +11,11 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class LevelSelectActivity extends Activity {
-	
-	AnimationDrawable frameAnimation;
-	AnimationDrawable frameAnimation2;
 	
 	private ArrayList<AnimationDrawable> frameAnimations;
 	private ArrayList<ImageView> images;
@@ -62,10 +60,38 @@ public class LevelSelectActivity extends Activity {
 			images.get(i).setX((width / 10.f) * i);
 			images.get(i).setY((height / 10.f) * i);
 		}
- 
+		
+		images.get(0).setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				setLevel(getLevelNum(0));
+			}
+		});
+		images.get(1).setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				setLevel(getLevelNum(1));
+			}
+		});
+		images.get(2).setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				setLevel(getLevelNum(2));
+			}
+		});
+		images.get(3).setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				setLevel(getLevelNum(3));
+			}
+		});
 		
 //		img2.setX(width / 10.f);
 //		img2.setY(height / 10.f);
+	}
+	
+	public int getLevelNum(int buttonPressed) {
+		return DataSingleton.currentLevel + buttonPressed;
+	}
+	
+	public void setLevel(int level) {
+		Log.e("" + level, "l");
 	}
 	
 	@Override
@@ -74,6 +100,9 @@ public class LevelSelectActivity extends Activity {
 	   if (hasFocus){
 	      for (int i = 0; i < frameAnimations.size(); i++) {
 	    	  frameAnimations.get(i).start();
+	      }
+	      for (int i = DataSingleton.currentLevel + 1; i <= 3; i++) {
+	    	  images.get(i).setVisibility(View.INVISIBLE);
 	      }
 //	      frameAnimation2.start();
 	   }
