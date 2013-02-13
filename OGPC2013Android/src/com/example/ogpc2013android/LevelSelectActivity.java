@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -64,6 +65,7 @@ public class LevelSelectActivity extends Activity {
 		images.get(0).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				setLevel(getLevelNum(0));
+				enterLevel(DataSingleton.currentLevel);
 			}
 		});
 		images.get(1).setOnClickListener(new Button.OnClickListener() {
@@ -79,6 +81,9 @@ public class LevelSelectActivity extends Activity {
 		images.get(3).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				setLevel(getLevelNum(3));
+//				if (v.getContext() instanceof LevelSelectActivity) {
+//					((LevelSelectActivity) v.getContext()).frameAnimations;
+//				}
 			}
 		});
 		
@@ -92,6 +97,12 @@ public class LevelSelectActivity extends Activity {
 	
 	public void setLevel(int level) {
 		Log.e("" + level, "l");
+	}
+	
+	public void enterLevel(int level) {
+		Intent intent = new Intent(this, FlowChartActivity.class);
+		intent.putExtra("level", level);
+		startActivity(intent);
 	}
 	
 	@Override
