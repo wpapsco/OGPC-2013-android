@@ -2,6 +2,7 @@ package com.example.ogpc2013android;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,13 +10,19 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.shapes.Shape;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
 
 public abstract class Block {
+
 	protected Point loc;
 	protected Bitmap image;
 	protected boolean isEnd = true;
-//	protected Button selectButton;
+	protected ImageView selectButton;
 	protected int blockType;
 	protected int deltaSum;
 	protected boolean hasNextBlock;
@@ -25,6 +32,10 @@ public abstract class Block {
 	protected ArrayList<Shape> arrowLines;
 	public static final int COMMAND_BLOCK = 0;
 	public static final int CONDITIONAL_BLOCK = 1;
+	
+	public void setOnClickLisener(OnClickListener l) {
+		selectButton.setOnClickListener(l);
+	}
 	
 	public Bitmap getBitmap() {
 		return image;
@@ -36,12 +47,13 @@ public abstract class Block {
 	
 	public void setImage(Bitmap image) {
 		this.image = image;
-		//selectButton.setImage(image);
+		BitmapDrawable b = new BitmapDrawable(image);
+		selectButton.setBackgroundDrawable(b);
 	}
 	
 	public void setImage(int resId, Resources res){
 		this.image = BitmapFactory.decodeResource(res, resId);
-		//selectButton.setImage(image);
+		selectButton.setBackgroundResource(resId);
 	}
 	
 	public int getBlockType() {
@@ -107,6 +119,10 @@ public abstract class Block {
 				connectingLines.get(i).draw(c, p);
 			}
 		}
+	}
+	
+	public void draw(Canvas c) {
+		c.drawBitmap(image, loc.x, loc.y, null);
 	}
 	
 //	public void update(int delta, GameContainer c, RunState s) {
