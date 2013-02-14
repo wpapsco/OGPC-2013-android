@@ -11,30 +11,36 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int light_grey=0x7f040002;
         public static final int transparent=0x7f040001;
         public static final int white=0x7f040000;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int level_animation=0x7f020001;
-        public static final int location0=0x7f020002;
-        public static final int location1=0x7f020003;
-        public static final int location2=0x7f020004;
-        public static final int println_block=0x7f020005;
-        public static final int start=0x7f020006;
-        public static final int title_background=0x7f020007;
-        public static final int tutorial_level_select=0x7f020008;
+        public static final int delete_all=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int level_animation=0x7f020002;
+        public static final int location0=0x7f020003;
+        public static final int location1=0x7f020004;
+        public static final int location2=0x7f020005;
+        public static final int println_block=0x7f020006;
+        public static final int run_button=0x7f020007;
+        public static final int start=0x7f020008;
+        public static final int title_background=0x7f020009;
+        public static final int tutorial_level_select=0x7f02000a;
     }
     public static final class id {
         public static final int bg_view=0x7f080000;
-        public static final int imageButton1=0x7f080007;
-        public static final int imageView1=0x7f080002;
-        public static final int imageView2=0x7f080003;
-        public static final int imageView3=0x7f080004;
-        public static final int imageView4=0x7f080005;
-        public static final int imageView5=0x7f080006;
-        public static final int menu_settings=0x7f080008;
-        public static final int println_imageview=0x7f080001;
+        public static final int delete_all=0x7f080003;
+        public static final int imageButton1=0x7f08000a;
+        public static final int imageView1=0x7f080005;
+        public static final int imageView2=0x7f080006;
+        public static final int imageView3=0x7f080007;
+        public static final int imageView4=0x7f080008;
+        public static final int imageView5=0x7f080009;
+        public static final int menu_settings=0x7f08000b;
+        public static final int println=0x7f080001;
+        public static final int run=0x7f080002;
+        public static final int selected_image=0x7f080004;
     }
     public static final class layout {
         public static final int activity_flowchart=0x7f030000;

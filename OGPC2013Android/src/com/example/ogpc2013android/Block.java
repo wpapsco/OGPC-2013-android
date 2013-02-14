@@ -19,7 +19,7 @@ import android.widget.ImageView;
 
 public abstract class Block {
 
-	protected Point loc;
+	protected PointF loc;
 	protected Bitmap image;
 	protected boolean isEnd = true;
 	protected ImageView selectButton;
@@ -32,6 +32,18 @@ public abstract class Block {
 	protected ArrayList<Shape> arrowLines;
 	public static final int COMMAND_BLOCK = 0;
 	public static final int CONDITIONAL_BLOCK = 1;
+	
+	public Block(PointF loc, Context context, Resources res, int resId) {
+		this.loc = loc;
+		setImage(resId, res);
+		selectButton = new ImageView(context);
+		deltaSum = 0;
+		hasNextBlock = false;
+		connectingLines = new ArrayList<Shape>();
+		hasPreviousBlock = false;
+		arrowLines = new ArrayList<Shape>();
+		previousBlocks = new ArrayList<Block>();
+	}
 	
 	public void setOnClickLisener(OnClickListener l) {
 		selectButton.setOnClickListener(l);
@@ -124,7 +136,6 @@ public abstract class Block {
 	public void draw(Canvas c) {
 		c.drawBitmap(image, loc.x, loc.y, null);
 	}
-	
 //	public void update(int delta, GameContainer c, RunState s) {
 //		deltaSum+=delta;
 //	}

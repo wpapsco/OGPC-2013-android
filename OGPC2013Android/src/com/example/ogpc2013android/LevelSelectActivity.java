@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -117,6 +118,13 @@ public class LevelSelectActivity extends Activity {
 	      }
 //	      frameAnimation2.start();
 	   }
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		// TODO Auto-generated method stub
+		images.get(0).setX(event.getX());
+		return super.onTouchEvent(event);
 	}
 
 }

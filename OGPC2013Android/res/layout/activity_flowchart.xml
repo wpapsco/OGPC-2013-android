@@ -2,18 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/light_grey" >
     
-    <com.example.ocpc2103android.FlowChartBackgroundView
+    <com.example.ogpc2013android.FlowChartBackgroundView
         android:id="@+id/bg_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     
-    
-    <ImageView 
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/println_block"
-        android:id="@+id/println_imageview"/>
+        android:id="@+id/println"/>
+
+    <ImageView
+        android:id="@+id/run"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/run_button" />
+
+    <ImageView
+        android:id="@+id/delete_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/delete_all" />
+
+    <ImageView
+        android:id="@+id/selected_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/run"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/println_block" />
 
 </RelativeLayout>
