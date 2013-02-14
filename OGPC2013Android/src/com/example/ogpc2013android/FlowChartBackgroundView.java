@@ -28,7 +28,7 @@ public class FlowChartBackgroundView extends View {
 	private Bitmap invisibitmap;
 	private boolean drawInvisibitmap;
 	boolean b = false;
-	private Arrow selectedBlockTypeArrow;
+	private int selectedBlockType;
 	Paint p;
 	
 	public FlowChartBackgroundView(Context context) {
@@ -42,9 +42,9 @@ public class FlowChartBackgroundView extends View {
 		// TODO Auto-generated constructor stub
 		init();
 	}
-
-	public void setPointerLocation(int loc) {
-		selectedBlockTypeArrow = new Arrow(new PointF(115, (50 * loc) + 25), new PointF(165, (50 * loc) + 25));
+	
+	public void setSelectedBlockType(int selectedBlockType) {
+		this.selectedBlockType = selectedBlockType;
 	}
 	
 	public FlowChartBackgroundView(Context context, AttributeSet attrs, int defStyle) {
@@ -72,7 +72,7 @@ public class FlowChartBackgroundView extends View {
 		width = d.getWidth();
 		invisibitmapLoc = new PointF(100.f, 100.f);
 		p = new Paint();
-		selectedBlockTypeArrow = new Arrow(new PointF(-100, -100), new PointF(0, 0));
+		selectedBlockType = -1;
 	}
 	
 	@Override
@@ -86,13 +86,12 @@ public class FlowChartBackgroundView extends View {
 		p.setColor(Color.BLUE);
 		canvas.drawLine(100, 0, 100, height, p);
 		p.setColor(Color.RED);
-		selectedBlockTypeArrow.draw(canvas, p);
 	}
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
-		
+		getContext().
 		return super.onTouchEvent(event);
 			
 	}

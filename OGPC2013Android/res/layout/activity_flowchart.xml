@@ -36,8 +36,8 @@
         android:id="@+id/selected_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/run"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/run"
         android:src="@drawable/println_block" />
 
 </RelativeLayout>
