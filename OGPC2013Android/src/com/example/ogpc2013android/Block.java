@@ -30,23 +30,36 @@ public abstract class Block {
 	protected ArrayList<Block> previousBlocks;
 	protected ArrayList<Shape> connectingLines;
 	protected ArrayList<Shape> arrowLines;
+	protected int ID;
 	public static final int COMMAND_BLOCK = 0;
 	public static final int CONDITIONAL_BLOCK = 1;
 	
-	public Block(PointF loc, Context context, Resources res, int resId) {
+	public Block(PointF loc, Context context, Resources res, int resId, int id) {
 		this.loc = loc;
-		setImage(resId, res);
 		selectButton = new ImageView(context);
+		setImage(resId, res);
 		deltaSum = 0;
 		hasNextBlock = false;
 		connectingLines = new ArrayList<Shape>();
 		hasPreviousBlock = false;
 		arrowLines = new ArrayList<Shape>();
 		previousBlocks = new ArrayList<Block>();
+		this.ID = id;
+		setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
-	public void setOnClickLisener(OnClickListener l) {
-		selectButton.setOnClickListener(l);
+	public int getID() {
+		return ID;
+	}
+	
+	public void setOnClickListener(OnClickListener onCLickListener) {
+		selectButton.setOnClickListener(onCLickListener);
 	}
 	
 	public Bitmap getBitmap() {

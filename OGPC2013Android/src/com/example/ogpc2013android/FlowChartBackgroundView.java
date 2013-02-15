@@ -1,5 +1,7 @@
 package com.example.ogpc2013android;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -29,6 +31,8 @@ public class FlowChartBackgroundView extends View {
 	private boolean drawInvisibitmap;
 	boolean b = false;
 	private int selectedBlockType;
+	private int selectedBlockSubType;
+	private int selectedBlockId;
 	Paint p;
 	
 	public FlowChartBackgroundView(Context context) {
@@ -43,8 +47,9 @@ public class FlowChartBackgroundView extends View {
 		init();
 	}
 	
-	public void setSelectedBlockType(int selectedBlockType) {
+	public void setSelectedBlockType(int selectedBlockType, int selectedBlockSubType) {
 		this.selectedBlockType = selectedBlockType;
+		this.selectedBlockSubType = selectedBlockSubType;
 	}
 	
 	public FlowChartBackgroundView(Context context, AttributeSet attrs, int defStyle) {
@@ -73,16 +78,17 @@ public class FlowChartBackgroundView extends View {
 		invisibitmapLoc = new PointF(100.f, 100.f);
 		p = new Paint();
 		selectedBlockType = -1;
+		selectedBlockSubType = -1;
 	}
 	
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
-//		if (invisibitmap != null && drawInvisibitmap) {
-//			p.setAlpha(191);
-//			canvas.drawBitmap(invisibitmap, invisibitmapLoc.x, invisibitmapLoc.y, p);
-//		}
+		ArrayList<Block> blocks = ((FlowChartActivity) getContext()).getBlocks();
+		for(int i = 0; i < blocks.size(); i++) {
+			blocks.get(i).draw(canvas);
+		}
 		p.setColor(Color.BLUE);
 		canvas.drawLine(100, 0, 100, height, p);
 		p.setColor(Color.RED);
@@ -91,8 +97,24 @@ public class FlowChartBackgroundView extends View {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
-		getContext().
+		switch(selectedBlockType) {
+		case Block.COMMAND_BLOCK:
+			switch(selectedBlockSubType) {
+			case CommandBlock.PRINTLN_BLOCK:
+				addBlock(R.drawable.println_block, event.getX(), event.getY());
+				invalidate();
+			}
+		case Block.CONDITIONAL_BLOCK:
+			switch(selectedBlockSubType) {
+			
+			}
+		}
+		((FlowChartActivity) getContext()).setSelectedBlockType(-1, -1);
 		return super.onTouchEvent(event);
 			
+	}
+
+	private void addBlock(int printlnBlock, float x, float y) {
+		((FlowChartActivity) getContext()).addBlock(printlnBlock, x, y);
 	}
 }

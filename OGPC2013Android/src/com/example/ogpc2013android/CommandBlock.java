@@ -6,8 +6,8 @@ import android.graphics.PointF;
 
 public abstract class CommandBlock extends Block {
 	
-	public CommandBlock(PointF loc, Context context, Resources res, int resId) {
-		super(loc, context, res, resId);
+	public CommandBlock(PointF loc, Context context, Resources res, int resId, int id) {
+		super(loc, context, res, resId, id);
 		// TODO Auto-generated constructor stub
 		blockType = COMMAND_BLOCK;
 	}

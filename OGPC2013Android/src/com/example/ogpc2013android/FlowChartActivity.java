@@ -21,8 +21,10 @@ public class FlowChartActivity extends Activity {
 	private ArrayList<Block> blocks;
 	private ImageView printlnBlockButton;
 	private int selectedBlockType;
+	private int selectedBlockSubType;
 	FlowChartBackgroundView BgView;
 	private ImageView selectedBlockView;
+	private int selectedBlockId;
 	
 	public FlowChartActivity() {
 
@@ -32,6 +34,7 @@ public class FlowChartActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		blocks = new ArrayList<Block>();
 		Intent i = getIntent();
 		level = i.getIntExtra("level", -1);
 		if (level < 0) {
@@ -51,7 +54,6 @@ public class FlowChartActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				selectedBlockType = 0;
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.PRINTLN_BLOCK);
 			}
 		});
@@ -59,7 +61,7 @@ public class FlowChartActivity extends Activity {
 	
 	protected void setSelectedBlockType(int blockType, int secondaryBlockType) {
 		// TODO Auto-generated method stub
-		BgView.setSelectedBlockType(blockType);
+		BgView.setSelectedBlockType(blockType, secondaryBlockType);
 		if (blockType == -1 || secondaryBlockType == -1) {
 			selectedBlockView.setVisibility(View.INVISIBLE);
 		}
@@ -70,6 +72,18 @@ public class FlowChartActivity extends Activity {
 				selectedBlockView.setBackgroundResource(R.drawable.println_block);
 			}
 		}
+	}
+	
+	protected void setSelectedBlockID(int id) {
+		selectedBlockId = id;
+	}
+	
+	protected void addBlock(int resID, float x, float y) {
+		blocks.add(new PrintlnBlock(new PointF(x, y), this, this.getResources(), blocks.size()));
+	}
+	
+	protected ArrayList<Block> getBlocks() {
+		return blocks;
 	}
 
 	@Override

@@ -7,8 +7,8 @@ import android.util.Log;
 
 public class PrintlnBlock extends CommandBlock {
 
-	public PrintlnBlock(PointF loc, Context context, Resources res) {
-		super(loc, context, res, R.drawable.println_block);
+	public PrintlnBlock(PointF loc, Context context, Resources res, int id) {
+		super(loc, context, res, R.drawable.println_block, id);
 		// TODO Auto-generated constructor stub
 	}
 
