@@ -25,6 +25,7 @@ public class FlowChartActivity extends Activity {
 	FlowChartBackgroundView BgView;
 	private ImageView selectedBlockView;
 	private int selectedBlockId;
+	private RelativeLayout layout;
 	
 	public FlowChartActivity() {
 
@@ -40,14 +41,14 @@ public class FlowChartActivity extends Activity {
 		if (level < 0) {
 			Log.e("FlowChartActivity", "Level returning default value, or has been calculated wrong");
 		}
-		
-		this.setContentView(R.layout.activity_flowchart);
-		
+		layout = (RelativeLayout) getLayoutInflater().inflate(R.layout.activity_flowchart, null);
+		this.setContentView(layout);
 		BgView = (FlowChartBackgroundView) findViewById(R.id.bg_view);
 		BgView.setInvisibitmap(R.drawable.println_block, this.getResources());
 		BgView.setDrawTransparentBitmap(true);
 		
 		ImageView printlnButton = (ImageView) findViewById(R.id.println);
+		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
 		selectedBlockView = (ImageView) findViewById(R.id.selected_image);
 		
 		printlnButton.setOnClickListener(new OnClickListener() {
@@ -57,8 +58,23 @@ public class FlowChartActivity extends Activity {
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.PRINTLN_BLOCK);
 			}
 		});
+		
+		deleteAllButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).deleteAllBlocks();
+				Log.e("deleted", "ff");
+			}
+		});
+		
 	}
 	
+	protected void setBlocks(ArrayList<Block> arrayList) {
+		blocks = arrayList;
+		BgView.invalidate();
+	}
+
 	protected void setSelectedBlockType(int blockType, int secondaryBlockType) {
 		// TODO Auto-generated method stub
 		BgView.setSelectedBlockType(blockType, secondaryBlockType);
@@ -76,10 +92,19 @@ public class FlowChartActivity extends Activity {
 	
 	protected void setSelectedBlockID(int id) {
 		selectedBlockId = id;
+		Log.e("" + selectedBlockId, "SetSelected");
+	}
+	
+	protected void deleteAllBlocks() {
+		
+		layout.removeView(view)
+		blocks = new ArrayList<Block>();
+		BgView.invalidate();
 	}
 	
 	protected void addBlock(int resID, float x, float y) {
 		blocks.add(new PrintlnBlock(new PointF(x, y), this, this.getResources(), blocks.size()));
+		layout.addView(blocks.get(blocks.size() - 1).selectButton);
 	}
 	
 	protected ArrayList<Block> getBlocks() {
@@ -91,5 +116,10 @@ public class FlowChartActivity extends Activity {
 		// TODO Auto-generated method stub
 		BgView.setInvisibitmapLoc(new PointF(event.getX(), event.getY()));
 		return super.onTouchEvent(event);
+	}
+
+	public int getSelectedBlockID() {
+		// TODO Auto-generated method stub
+		return selectedBlockId;
 	}
 }

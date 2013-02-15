@@ -12,6 +12,7 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.shapes.Shape;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -38,6 +39,8 @@ public abstract class Block {
 		this.loc = loc;
 		selectButton = new ImageView(context);
 		setImage(resId, res);
+		selectButton.setX(loc.x);
+		selectButton.setY(loc.y);
 		deltaSum = 0;
 		hasNextBlock = false;
 		connectingLines = new ArrayList<Shape>();
@@ -49,13 +52,22 @@ public abstract class Block {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				
+				if (((FlowChartActivity) arg0.getContext()).getSelectedBlockID() != -1 && ((FlowChartActivity) arg0.getContext()).getSelectedBlockID() != ID && ((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()).loc != getLoc()) {
+					Log.e(((FlowChartActivity) arg0.getContext()).getSelectedBlockID() + "", ID + "");
+					addLine(new Line(((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()).getCenterLoc(), getCenterLoc()));
+					((FlowChartActivity) arg0.getContext()).BgView.invalidate();
+				}
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockID(ID);
 			}
 		});
 	}
 	
 	public int getID() {
 		return ID;
+	}
+	
+	public PointF getCenterLoc() {
+		return new PointF(loc.x + 50, loc.y + 25);
 	}
 	
 	public void setOnClickListener(OnClickListener onCLickListener) {
@@ -79,6 +91,10 @@ public abstract class Block {
 	public void setImage(int resId, Resources res){
 		this.image = BitmapFactory.decodeResource(res, resId);
 		selectButton.setBackgroundResource(resId);
+	}
+	
+	public PointF getLoc() {
+		return loc;
 	}
 	
 	public int getBlockType() {
@@ -135,13 +151,13 @@ public abstract class Block {
 		for (int i = 0; i < arrowLines.size(); i++) {
 			if (this.blockType == CONDITIONAL_BLOCK && i == 0 || this.blockType == CONDITIONAL_BLOCK && i == 1) {
 				p.setARGB(255, 0, 255, 0);
-				connectingLines.get(i).draw(c, p);
+				arrowLines.get(i).draw(c, p);
 			} else if (this.blockType == CONDITIONAL_BLOCK && i == 2 || this.blockType == CONDITIONAL_BLOCK && i == 3) {
 				p.setARGB(255, 255, 0, 0);
-				connectingLines.get(i).draw(c, p);
+				arrowLines.get(i).draw(c, p);
 			} else {
 				p.setARGB(255, 0, 0, 0);
-				connectingLines.get(i).draw(c, p);
+				arrowLines.get(i).draw(c, p);
 			}
 		}
 	}

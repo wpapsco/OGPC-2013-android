@@ -97,7 +97,7 @@ public class LevelSelectActivity extends Activity {
 	}
 	
 	public void setLevel(int level) {
-		Log.e("" + level, "l");
+		
 	}
 	
 	public void enterLevel(int level) {

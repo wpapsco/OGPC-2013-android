@@ -86,10 +86,11 @@ public class FlowChartBackgroundView extends View {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
 		ArrayList<Block> blocks = ((FlowChartActivity) getContext()).getBlocks();
-		for(int i = 0; i < blocks.size(); i++) {
-			blocks.get(i).draw(canvas);
-		}
 		p.setColor(Color.BLUE);
+		for (int i = 0; i < blocks.size(); i++) {
+			blocks.get(i).draw(canvas);
+			blocks.get(i).drawLines(canvas);
+		}
 		canvas.drawLine(100, 0, 100, height, p);
 		p.setColor(Color.RED);
 	}
@@ -109,6 +110,7 @@ public class FlowChartBackgroundView extends View {
 			
 			}
 		}
+		((FlowChartActivity) getContext()).setSelectedBlockID(-1);
 		((FlowChartActivity) getContext()).setSelectedBlockType(-1, -1);
 		return super.onTouchEvent(event);
 			
