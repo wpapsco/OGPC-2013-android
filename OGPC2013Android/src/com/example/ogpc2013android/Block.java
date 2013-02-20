@@ -2,6 +2,7 @@ package com.example.ogpc2013android;
 
 import java.util.ArrayList;
 
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -36,11 +37,11 @@ public abstract class Block {
 	public static final int CONDITIONAL_BLOCK = 1;
 	
 	public Block(PointF loc, Context context, Resources res, int resId, int id) {
-		this.loc = loc;
+		this.loc = new PointF(loc.x - 50, loc.y - 25);
 		selectButton = new ImageView(context);
 		setImage(resId, res);
-		selectButton.setX(loc.x);
-		selectButton.setY(loc.y);
+		selectButton.setX(this.loc.x);
+		selectButton.setY(this.loc.y);
 		deltaSum = 0;
 		hasNextBlock = false;
 		connectingLines = new ArrayList<Shape>();
@@ -54,9 +55,24 @@ public abstract class Block {
 				// TODO Auto-generated method stub
 				if (((FlowChartActivity) arg0.getContext()).getSelectedBlockID() != -1 && ((FlowChartActivity) arg0.getContext()).getSelectedBlockID() != ID && ((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()).loc != getLoc()) {
 					Log.e(((FlowChartActivity) arg0.getContext()).getSelectedBlockID() + "", ID + "");
-					addLine(new Line(((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()).getCenterLoc(), getCenterLoc()));
-					((FlowChartActivity) arg0.getContext()).BgView.invalidate();
+					previousBlocks.add(((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()));
+					if (previousBlocks.size() > 0) {
+						if (getThis() instanceof CommandBlock) {
+							((CommandBlock) previousBlocks.get(previousBlocks.size() - 1)).setNextBlock(getThis());
+						}
+						if (getThis() instanceof ConditionalBlock) {
+							boolean b = false;
+							if (!((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).trueBlockSet) {
+								((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).setTrueBlock(getThis());
+								b = true;
+							}
+							if (((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).falseBlockSet && !b) {
+								((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).setFalseBlock(getThis());
+							}
+						}
+					}
 				}
+				((FlowChartActivity) arg0.getContext()).BgView.invalidate();
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockID(ID);
 			}
 		});
@@ -80,6 +96,10 @@ public abstract class Block {
 	
 	public boolean hasNextBlock() {
 		return hasNextBlock;
+	}
+	
+	Block getThis() {
+		return this;
 	}
 	
 	public void setImage(Bitmap image) {
@@ -168,4 +188,6 @@ public abstract class Block {
 //	public void update(int delta, GameContainer c, RunState s) {
 //		deltaSum+=delta;
 //	}
+
+	public abstract Block incite();
 }

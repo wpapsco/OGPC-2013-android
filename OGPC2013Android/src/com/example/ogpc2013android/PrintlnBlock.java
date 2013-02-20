@@ -15,7 +15,7 @@ public class PrintlnBlock extends CommandBlock {
 	@Override
 	public void command() {
 		// TODO Auto-generated method stub
-		Log.e("A line has been printed", "ta-da!");
+		System.out.println(ID);
 	}
 
 }

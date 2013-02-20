@@ -49,6 +49,8 @@ public class FlowChartActivity extends Activity {
 		
 		ImageView printlnButton = (ImageView) findViewById(R.id.println);
 		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
+		ImageView runButton = (ImageView) findViewById(R.id.run);
+		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
 		selectedBlockView = (ImageView) findViewById(R.id.selected_image);
 		
 		printlnButton.setOnClickListener(new OnClickListener() {
@@ -59,12 +61,35 @@ public class FlowChartActivity extends Activity {
 			}
 		});
 		
+		runButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Block currentBlock = blocks.get(0);
+				while (currentBlock.hasNextBlock()) {
+					boolean runCurBlock = true;
+					if (runCurBlock) {
+//						currentBlock.init(c, s);
+//						currentBlock.update(0, c, s);
+						currentBlock = currentBlock.incite();
+					} else {
+						currentBlock = ((CommandBlock) currentBlock).getNextBlock();
+					}
+				}
+				if (!currentBlock.hasNextBlock()) {
+//					currentBlock.init(c, s);
+					currentBlock.incite();
+					System.err.println("Finished run");
+				}
+				
+			}
+		});
+		
 		deleteAllButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				((FlowChartActivity) arg0.getContext()).deleteAllBlocks();
-				Log.e("deleted", "ff");
 			}
 		});
 		
@@ -92,12 +117,14 @@ public class FlowChartActivity extends Activity {
 	
 	protected void setSelectedBlockID(int id) {
 		selectedBlockId = id;
+		BgView.setSelectionRect(blocks.get(id).loc);
 		Log.e("" + selectedBlockId, "SetSelected");
 	}
 	
 	protected void deleteAllBlocks() {
-		
-		layout.removeView(view)
+		for (int i = 0; i < blocks.size(); i++) {
+			layout.removeView(blocks.get(i).selectButton);
+		}
 		blocks = new ArrayList<Block>();
 		BgView.invalidate();
 	}

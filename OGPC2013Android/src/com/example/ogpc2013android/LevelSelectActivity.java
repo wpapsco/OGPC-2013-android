@@ -58,10 +58,12 @@ public class LevelSelectActivity extends Activity {
 			images.get(i).setBackgroundDrawable(frameAnimations.get(i));
 		}
 		
-		for (int i = 0; i < images.size(); i++) {
-			images.get(i).setX((width / 10.f) * i);
-			images.get(i).setY((height / 10.f) * i);
-		}
+//		for (int i = 0; i < images.size(); i++) {
+//			images.get(i).setX((width / 10.f) * i);
+//			images.get(i).setY((height / 10.f) * i);
+//		}
+		images.get(0).setX((108f/800f) * width);
+		images.get(0).setY((368f/600f) * height);
 		
 		images.get(0).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -123,7 +125,6 @@ public class LevelSelectActivity extends Activity {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
-		images.get(0).setX(event.getX());
 		return super.onTouchEvent(event);
 	}
 

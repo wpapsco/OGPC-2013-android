@@ -12,6 +12,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.shapes.Shape;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -33,6 +34,7 @@ public class FlowChartBackgroundView extends View {
 	private int selectedBlockType;
 	private int selectedBlockSubType;
 	private int selectedBlockId;
+	private RectF rectangle;
 	Paint p;
 	
 	public FlowChartBackgroundView(Context context) {
@@ -92,7 +94,7 @@ public class FlowChartBackgroundView extends View {
 			blocks.get(i).drawLines(canvas);
 		}
 		canvas.drawLine(100, 0, 100, height, p);
-		p.setColor(Color.RED);
+		p.setColor(Color.GREEN);
 	}
 	
 	@Override
@@ -118,5 +120,10 @@ public class FlowChartBackgroundView extends View {
 
 	private void addBlock(int printlnBlock, float x, float y) {
 		((FlowChartActivity) getContext()).addBlock(printlnBlock, x, y);
+	}
+
+	public void setSelectionRect(PointF loc) {
+		// TODO Auto-generated method stub
+		
 	}
 }

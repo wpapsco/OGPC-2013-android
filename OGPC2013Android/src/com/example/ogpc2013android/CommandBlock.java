@@ -49,7 +49,7 @@ public abstract class CommandBlock extends Block {
 		if (!hasNextBlock) {
 			nextBlock = block;
 			hasNextBlock = true;
-			addLine(new Line(loc, block.loc));
+			addLine(new Line(getCenterLoc(), block.getCenterLoc()));
 		}
 	}
 }
