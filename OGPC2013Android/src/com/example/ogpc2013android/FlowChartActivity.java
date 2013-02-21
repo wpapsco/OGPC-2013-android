@@ -65,23 +65,26 @@ public class FlowChartActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Block currentBlock = blocks.get(0);
-				while (currentBlock.hasNextBlock()) {
-					boolean runCurBlock = true;
-					if (runCurBlock) {
-//						currentBlock.init(c, s);
-//						currentBlock.update(0, c, s);
-						currentBlock = currentBlock.incite();
-					} else {
-						currentBlock = ((CommandBlock) currentBlock).getNextBlock();
-					}
-				}
-				if (!currentBlock.hasNextBlock()) {
-//					currentBlock.init(c, s);
-					currentBlock.incite();
-					System.err.println("Finished run");
-				}
-				
+//				Block currentBlock = blocks.get(0);
+//				while (currentBlock.hasNextBlock()) {
+//					boolean runCurBlock = true;
+//					if (runCurBlock) {
+////						currentBlock.init(c, s);
+////						currentBlock.update(0, c, s);
+//						currentBlock = currentBlock.incite();
+//					} else {
+//						currentBlock = ((CommandBlock) currentBlock).getNextBlock();
+//					}
+//				}
+//				if (!currentBlock.hasNextBlock()) {
+////					currentBlock.init(c, s);
+//					currentBlock.incite();
+//					System.err.println("Finished run");
+//				}
+//				setSelectedBlockID(-1);
+				Runnable runnable = new RunRunnable(blocks);
+				Thread t = new Thread(runnable);
+				t.start();
 			}
 		});
 		
@@ -117,7 +120,11 @@ public class FlowChartActivity extends Activity {
 	
 	protected void setSelectedBlockID(int id) {
 		selectedBlockId = id;
-		BgView.setSelectionRect(blocks.get(id).loc);
+		if (id != -1) {
+			BgView.setSelectionRect(blocks.get(id).loc);
+		} else {
+			BgView.setSelectionRect(new PointF(-1, -1));
+		}
 		Log.e("" + selectedBlockId, "SetSelected");
 	}
 	
@@ -126,6 +133,7 @@ public class FlowChartActivity extends Activity {
 			layout.removeView(blocks.get(i).selectButton);
 		}
 		blocks = new ArrayList<Block>();
+		setSelectedBlockID(-1);
 		BgView.invalidate();
 	}
 	

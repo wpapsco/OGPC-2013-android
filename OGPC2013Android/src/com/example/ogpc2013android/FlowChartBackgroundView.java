@@ -81,6 +81,7 @@ public class FlowChartBackgroundView extends View {
 		p = new Paint();
 		selectedBlockType = -1;
 		selectedBlockSubType = -1;
+		rectangle = new RectF(-100, -100, -50, -50);
 	}
 	
 	@Override
@@ -95,6 +96,7 @@ public class FlowChartBackgroundView extends View {
 		}
 		canvas.drawLine(100, 0, 100, height, p);
 		p.setColor(Color.GREEN);
+		canvas.drawRect(rectangle, p);
 	}
 	
 	@Override
@@ -124,6 +126,17 @@ public class FlowChartBackgroundView extends View {
 
 	public void setSelectionRect(PointF loc) {
 		// TODO Auto-generated method stub
-		
+		int borderWidth = 2;
+		if (loc.x == -1) {
+			rectangle.left = -100;
+			rectangle.top = -100;
+			rectangle.right = -50;
+			rectangle.bottom = -50;
+			return;
+		}
+		rectangle.left = loc.x - borderWidth;
+		rectangle.top = loc.y - borderWidth;
+		rectangle.right = loc.x + 100 + borderWidth;
+		rectangle.bottom = loc.y + 50 + borderWidth;
 	}
 }
