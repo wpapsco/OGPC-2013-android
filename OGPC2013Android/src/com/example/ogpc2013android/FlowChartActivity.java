@@ -65,26 +65,7 @@ public class FlowChartActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-//				Block currentBlock = blocks.get(0);
-//				while (currentBlock.hasNextBlock()) {
-//					boolean runCurBlock = true;
-//					if (runCurBlock) {
-////						currentBlock.init(c, s);
-////						currentBlock.update(0, c, s);
-//						currentBlock = currentBlock.incite();
-//					} else {
-//						currentBlock = ((CommandBlock) currentBlock).getNextBlock();
-//					}
-//				}
-//				if (!currentBlock.hasNextBlock()) {
-////					currentBlock.init(c, s);
-//					currentBlock.incite();
-//					System.err.println("Finished run");
-//				}
-//				setSelectedBlockID(-1);
-				Runnable runnable = new RunRunnable(blocks);
-				Thread t = new Thread(runnable);
-				t.start();
+				toRunState();
 			}
 		});
 		
@@ -103,6 +84,12 @@ public class FlowChartActivity extends Activity {
 		BgView.invalidate();
 	}
 
+	public void toRunState() {
+		Intent intent = new Intent(this, RunActivity.class);
+		DataSingleton.setBlocks(blocks);
+		startActivity(intent);
+	}
+	
 	protected void setSelectedBlockType(int blockType, int secondaryBlockType) {
 		// TODO Auto-generated method stub
 		BgView.setSelectedBlockType(blockType, secondaryBlockType);

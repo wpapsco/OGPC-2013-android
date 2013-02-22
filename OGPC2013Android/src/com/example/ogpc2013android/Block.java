@@ -13,6 +13,7 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.shapes.Shape;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -185,9 +186,8 @@ public abstract class Block {
 	public void draw(Canvas c) {
 		c.drawBitmap(image, loc.x, loc.y, null);
 	}
-//	public void update(int delta, GameContainer c, RunState s) {
-//		deltaSum+=delta;
-//	}
 
 	public abstract Block incite();
+	
+	public abstract void init(Context context);
 }

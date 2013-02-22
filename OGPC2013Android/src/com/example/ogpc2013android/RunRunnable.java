@@ -2,17 +2,21 @@ package com.example.ogpc2013android;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+
 public class RunRunnable implements Runnable {
 	
 	private Block currentBlock;
 	private Block startBlock;
 	ArrayList<Block> blocks;
+	Context context;
 	boolean running = true;
 	
-	public RunRunnable(ArrayList<Block> blocks) {
+	public RunRunnable(ArrayList<Block> blocks, Context context) {
 		this.blocks = blocks;
 		currentBlock = blocks.get(0);
 		startBlock = blocks.get(0);
+		this.context = context;
 	}
 	
 	public Block getCurrentBlock() {
@@ -40,7 +44,7 @@ public class RunRunnable implements Runnable {
 				Thread.sleep(500);
 			}
 			if (!currentBlock.hasNextBlock()) {
-//				currentBlock.init(c, s);
+				currentBlock.init(context);
 				currentBlock.incite();
 			}
 			if (!running) {
