@@ -18,4 +18,10 @@ public class PrintlnBlock extends CommandBlock {
 		System.out.println(ID);
 	}
 
+	@Override
+	public void init(Context context) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

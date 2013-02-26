@@ -1,21 +1,30 @@
 package com.example.ogpc2013android;
 
-
-
 import java.util.ArrayList;
 
-public enum Map {
-	private Image image;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+
+public class Map {
+	private Bitmap image;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Event> events;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Enemy> currentEnemies;
-	private Vector2f playerStartLoc;
+	private PointF playerStartLoc;
 	private String objectiveText;
 	private boolean isCompleted;
 	private boolean hasImage;
 	
-	public Map(Vector2f playerStartLoc) {
+	Map(PointF playerStartLoc) {
 		obstacles = new ArrayList<Obstacle>();
 		events = new ArrayList<Event>();
 		enemies = new ArrayList<Enemy>();
@@ -23,14 +32,10 @@ public enum Map {
 		this.playerStartLoc = playerStartLoc;
 		isCompleted = false;
 		objectiveText = "";
-		addObstacle(new Obstacle(new Line(new Vector2f(0, 0), new Vector2f(0, 600))));
-		addObstacle(new Obstacle(new Line(new Vector2f(800, 600), new Vector2f(0, 600))));
-		addObstacle(new Obstacle(new Line(new Vector2f(800, 600), new Vector2f(800, 0))));
-		addObstacle(new Obstacle(new Line(new Vector2f(0, 0), new Vector2f(800, 0))));
 		hasImage = false;
 	}
 	
-	public Map(Vector2f playerStartLoc, Image image) {
+	Map(PointF playerStartLoc, int resId, Resources r) {
 		obstacles = new ArrayList<Obstacle>();
 		events = new ArrayList<Event>();
 		enemies = new ArrayList<Enemy>();
@@ -38,7 +43,7 @@ public enum Map {
 		this.playerStartLoc = playerStartLoc;
 		isCompleted = false;
 		objectiveText = "";
-		this.image = image;
+		this.image = BitmapFactory.decodeResource(r, resId);
 		hasImage = true;
 	}
 	
@@ -50,49 +55,49 @@ public enum Map {
 		objectiveText = objectiveText + " Done!~";
 	}
 	
-	public boolean isColliding(Shape s) {
+	public boolean isColliding(RectF r) {
 		boolean retVal = false;
 		for (int i = 0; i < obstacles.size(); i++) {
-			if (obstacles.get(i).collides(s)) {
+			if (obstacles.get(i).collides(r)) {
 				retVal = true;
 			}
 		}
 		return retVal;
 	}
 	
-	public Vector2f getPlayerStartLoc() {
+	public PointF getPlayerStartLoc() {
 		return playerStartLoc;
 	}
 	
-	public void checkEnemyCollisions(ArrayList<Bullet> bullets) {
-		for (int i = 0; i < currentEnemies.size(); i++) {
-			for (int j = 0; j < bullets.size(); j++){
-				if (currentEnemies.get(i).getCollisionRect().intersects(bullets.get(j).getCollisionRect())) {
-					currentEnemies.get(i).takeDamage(100);
-					bullets.get(i).setExplosionLocation(bullets.get(i).getPath().currentPoint);
-					bullets.get(j).markDeleted();
-				}
-				if (currentEnemies.get(i).getCollisionRect().intersects(bullets.get(j).getExplosionCircle()) && bullets.get(i).isMarkedForDeletion() && !bullets.get(i).isFinishedExploding()) {
-					currentEnemies.get(i).takeDamage(100);
-				}
-			}
-		}
-		for (int i = 0; i < currentEnemies.size(); i+=0) {
-			boolean b = false;
-			if (currentEnemies.get(i).isMarkedForDeletion()) {
-				currentEnemies.remove(i) ;
-				b = true;
-			}
-			if (!b) {
-				i++;
-			}
-		}
-	}
+//	public void checkEnemyCollisions(ArrayList<Bullet> bullets) {
+//		for (int i = 0; i < currentEnemies.size(); i++) {
+//			for (int j = 0; j < bullets.size(); j++){
+//				if (currentEnemies.get(i).getCollisionRect().intersects(bullets.get(j).getCollisionRect())) {
+//					currentEnemies.get(i).takeDamage(100);
+//					bullets.get(i).setExplosionLocation(bullets.get(i).getPath().currentPoint);
+//					bullets.get(j).markDeleted();
+//				}
+//				if (currentEnemies.get(i).getCollisionRect().intersects(bullets.get(j).getExplosionCircle()) && bullets.get(i).isMarkedForDeletion() && !bullets.get(i).isFinishedExploding()) {
+//					currentEnemies.get(i).takeDamage(100);
+//				}
+//			}
+//		}
+//		for (int i = 0; i < currentEnemies.size(); i+=0) {
+//			boolean b = false;
+//			if (currentEnemies.get(i).isMarkedForDeletion()) {
+//				currentEnemies.remove(i) ;
+//				b = true;
+//			}
+//			if (!b) {
+//				i++;
+//			}
+//		}
+//	}
 	
-	public void update(GameContainer c, RunState s) {
+	public void update(Context c) {
 		boolean doComplete = true;
 		for (int i = 0; i < events.size(); i++) {
-			events.get(i).update(c, s);
+			events.get(i).update(c);
 			if (!events.get(i).isExecuted()) {
 				doComplete = false;
 			}
@@ -101,9 +106,9 @@ public enum Map {
 			Complete();
 		}
 		for (int i = 0; i < currentEnemies.size(); i++) {
-			currentEnemies.get(i).update(c, s);
+			currentEnemies.get(i).update(c);
 		}
-		checkEnemyCollisions(s.getPlayer().getBullets());
+//		checkEnemyCollisions(((RunActivity) c).getPlayer().getBullets());
 	}
 	
 	public void addObstacle(Obstacle obstacle) {
@@ -138,27 +143,27 @@ public enum Map {
 		}
 	}
 	
-	public void draw(Graphics g) {
-		g.setColor(Color.gray);
-		g.fill(new Rectangle(0, 0, 800, 600));
+	public void draw(Canvas c, Paint p) {
+		p.setColor(Color.GRAY);
+		c.drawRGB(0, 0, 0);
 		if (hasImage) {
-			image.draw();
+			c.drawBitmap(image, new Rect(0, 0, image.getWidth(), image.getHeight()), new Rect(0, 0, c.getWidth(), c.getHeight()), null);
 		}else {
-			drawObstacles(g);
+			drawObstacles(c, p);
 		}
 		for (int i = 0; i < currentEnemies.size(); i++) {
-			currentEnemies.get(i).draw(g);
+			currentEnemies.get(i).draw(c, p);
 		}
 		for (int i = 0; i < events.size(); i++) {
-			events.get(i).draw(g);
+			events.get(i).draw(c, p);
 		}
-		g.setColor(Color.green);
-		g.drawString(objectiveText, 0, 0);
+		p.setColor(Color.GREEN);
+		c.drawText(objectiveText, 0, 0, p);
 	}
 	
-	public void drawObstacles(Graphics g) {
+	public void drawObstacles(Canvas c, Paint p) {
 		for (int i = 0; i < obstacles.size(); i++) {
-			obstacles.get(i).draw(g);
+			obstacles.get(i).draw(c, p);
 		}
 	}
 
