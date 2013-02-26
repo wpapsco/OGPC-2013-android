@@ -20,7 +20,7 @@ public class Enemy {
 	private RectF collisionRect;
 	private boolean isDead;
 	
-	public Enemy(int Resid, PointF location, Resources res) {
+	public Enemy(Resources res, int Resid, PointF location) {
 		image = BitmapFactory.decodeResource(res, Resid);
 		loc = location;
 		collisionRect = new RectF(0, 0, image.getWidth(), image.getHeight());

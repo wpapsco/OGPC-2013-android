@@ -6,6 +6,18 @@ public class DataSingleton {
 
 	public static int currentLevel = 0;
 	public static ArrayList<Block> blocks;
+	public static boolean[] completedLevels = {
+		false,
+		false,
+		false,
+		false,
+		false,
+		false,
+		false,
+		false,
+		false,
+		false
+	};
 	
 	public DataSingleton() {
 		// TODO Auto-generated constructor stub

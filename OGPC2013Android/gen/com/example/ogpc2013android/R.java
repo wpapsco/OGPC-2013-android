@@ -20,14 +20,20 @@ public final class R {
         public static final int delete_all=0x7f020001;
         public static final int ic_launcher=0x7f020002;
         public static final int level_animation=0x7f020003;
-        public static final int location0=0x7f020004;
-        public static final int location1=0x7f020005;
-        public static final int location2=0x7f020006;
-        public static final int println_block=0x7f020007;
-        public static final int run_button=0x7f020008;
-        public static final int start=0x7f020009;
-        public static final int title_background=0x7f02000a;
-        public static final int tutorial_level_select=0x7f02000b;
+        public static final int level_brain1=0x7f020004;
+        public static final int level_spine1=0x7f020005;
+        public static final int level_spine2=0x7f020006;
+        public static final int level_spine3=0x7f020007;
+        public static final int location0=0x7f020008;
+        public static final int location1=0x7f020009;
+        public static final int location2=0x7f02000a;
+        public static final int player=0x7f02000b;
+        public static final int println_block=0x7f02000c;
+        public static final int run_button=0x7f02000d;
+        public static final int start=0x7f02000e;
+        public static final int title_background=0x7f02000f;
+        public static final int tutorial_level_select=0x7f020010;
+        public static final int virus=0x7f020011;
     }
     public static final class id {
         public static final int bg_view=0x7f080000;

@@ -69,30 +69,30 @@ public class Map {
 		return playerStartLoc;
 	}
 	
-//	public void checkEnemyCollisions(ArrayList<Bullet> bullets) {
-//		for (int i = 0; i < currentEnemies.size(); i++) {
-//			for (int j = 0; j < bullets.size(); j++){
-//				if (currentEnemies.get(i).getCollisionRect().intersects(bullets.get(j).getCollisionRect())) {
-//					currentEnemies.get(i).takeDamage(100);
-//					bullets.get(i).setExplosionLocation(bullets.get(i).getPath().currentPoint);
-//					bullets.get(j).markDeleted();
-//				}
-//				if (currentEnemies.get(i).getCollisionRect().intersects(bullets.get(j).getExplosionCircle()) && bullets.get(i).isMarkedForDeletion() && !bullets.get(i).isFinishedExploding()) {
-//					currentEnemies.get(i).takeDamage(100);
-//				}
-//			}
-//		}
-//		for (int i = 0; i < currentEnemies.size(); i+=0) {
-//			boolean b = false;
-//			if (currentEnemies.get(i).isMarkedForDeletion()) {
-//				currentEnemies.remove(i) ;
-//				b = true;
-//			}
-//			if (!b) {
-//				i++;
-//			}
-//		}
-//	}
+	public void checkEnemyCollisions(ArrayList<Bullet> bullets) {
+		for (int i = 0; i < currentEnemies.size(); i++) {
+			for (int j = 0; j < bullets.size(); j++){
+				if (RectF.intersects(currentEnemies.get(i).getCollisionRect(), bullets.get(j).getCollisionRect())) {
+					currentEnemies.get(i).takeDamage(100);
+					bullets.get(i).setExplosionLocation(bullets.get(i).getPath().currentPoint);
+					bullets.get(j).markDeleted();
+				}
+				if (bullets.get(j).getExplosionCircle().collide(currentEnemies.get(i).getCollisionRect()) && bullets.get(i).isMarkedForDeletion() && !bullets.get(i).isFinishedExploding()) {
+					currentEnemies.get(i).takeDamage(100);
+				}
+			}
+		}
+		for (int i = 0; i < currentEnemies.size(); i+=0) {
+			boolean b = false;
+			if (currentEnemies.get(i).isMarkedForDeletion()) {
+				currentEnemies.remove(i) ;
+				b = true;
+			}
+			if (!b) {
+				i++;
+			}
+		}
+	}
 	
 	public void update(Context c) {
 		boolean doComplete = true;
