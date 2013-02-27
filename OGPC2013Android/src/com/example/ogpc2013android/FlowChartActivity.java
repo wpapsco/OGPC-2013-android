@@ -87,6 +87,7 @@ public class FlowChartActivity extends Activity {
 	public void toRunState() {
 		Intent intent = new Intent(this, RunActivity.class);
 		DataSingleton.setBlocks(blocks);
+		intent.putExtra("level", level);
 		startActivity(intent);
 	}
 	

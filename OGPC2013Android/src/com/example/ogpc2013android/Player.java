@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PointF;
@@ -24,7 +25,7 @@ public class Player {
 	public Player(PointF loc, int resID, Resources res) {
 		this.loc = loc;
 		this.Bitmap = BitmapFactory.decodeResource(res, resID);
-		collisionRect = new RectF(0, 0, Bitmap.getHeight() - 2, Bitmap.getWidth() - 2);
+		collisionRect = new RectF(0, 0, 50f - 2f, 50f - 2f);
 		collisionRect.left = loc.x;
 		collisionRect.top = loc.y;
 		rotation = 0;
@@ -32,13 +33,13 @@ public class Player {
 		bullets = new ArrayList<Bullet>();
 	}
 
-	public Player(PointF playerStartLoc, Bitmap playerImage) {
+	public Player(PointF loc, Bitmap playerImage) {
 		// TODO Auto-generated constructor stub
 		this.loc = loc;
 		this.Bitmap = playerImage;
-		collisionRect = new RectF(0, 0, Bitmap.getHeight() - 2, Bitmap.getWidth() - 2);
-		collisionRect.left = loc.x;
-		collisionRect.top = loc.y;
+		collisionRect = new RectF(loc.x, loc.y, loc.x + 50f - 2f, loc.y + 50f - 2f);
+//		collisionRect.left = loc.x;
+//		collisionRect.top = loc.y;
 		rotation = 0;
 //		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
 		bullets = new ArrayList<Bullet>();
@@ -54,6 +55,8 @@ public class Player {
 		matrix.postTranslate(loc.x, loc.y);
 		c.drawBitmap(Bitmap, matrix, p);
 //		g.draw(collisionRect);
+		p.setColor(Color.GREEN);
+		c.drawRect(collisionRect, p);
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).draw(c, p);
 		}
@@ -74,9 +77,7 @@ public class Player {
 				TList.add(bullets.get(i));
 			}
 		}
-		collisionRect = new RectF(0, 0, Bitmap.getHeight() - 2, Bitmap.getWidth() - 2);
-		collisionRect.left = loc.x;
-		collisionRect.top = loc.y;
+		collisionRect = new RectF(loc.x, loc.y, loc.x + Bitmap.getHeight() - 2, loc.y + Bitmap.getWidth() - 2);
 		bullets = TList;
 	}
 	
@@ -90,9 +91,7 @@ public class Player {
 	
 	public void reset(PointF PointF) {
 		loc = PointF;
-		collisionRect = new RectF(0, 0, Bitmap.getHeight() - 2, Bitmap.getWidth() - 2);
-		collisionRect.left = loc.x;
-		collisionRect.top = loc.y;
+		collisionRect = new RectF(loc.x, loc.y, loc.x + Bitmap.getHeight() - 2, loc.y + Bitmap.getWidth() - 2);
 		rotation = 0;
 		bullets.clear();
 		fireRecharge = 0;

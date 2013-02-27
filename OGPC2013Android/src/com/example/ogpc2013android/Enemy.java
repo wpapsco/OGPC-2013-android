@@ -3,6 +3,7 @@ package com.example.ogpc2013android;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -23,9 +24,7 @@ public class Enemy {
 	public Enemy(Resources res, int Resid, PointF location) {
 		image = BitmapFactory.decodeResource(res, Resid);
 		loc = location;
-		collisionRect = new RectF(0, 0, image.getWidth(), image.getHeight());
-		collisionRect.left = loc.x;
-		collisionRect.top = loc.y;
+		collisionRect = new RectF(loc.x, loc.y, image.getWidth() + loc.x, image.getHeight() + loc.y);
 		this.isDead = false;
 	}
 
@@ -48,6 +47,8 @@ public class Enemy {
 	
 	public void draw(Canvas c, Paint p) {
 		c.drawBitmap(image, loc.x, loc.y, null);
+//		p.setColor(Color.GREEN);
+//		c.drawRect(collisionRect, p);
 	}
 
 	public boolean isMarkedForDeletion() {

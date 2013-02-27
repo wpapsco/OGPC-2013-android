@@ -1,6 +1,10 @@
 package com.example.ogpc2013android;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -21,4 +25,11 @@ public class RunView extends View {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		super.onDraw(canvas);
+		((RunActivity)getContext()).drawItems(canvas, new Paint());
+	}
+	
 }

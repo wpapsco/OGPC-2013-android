@@ -6,6 +6,7 @@ public class DataSingleton {
 
 	public static int currentLevel = 0;
 	public static ArrayList<Block> blocks;
+	public static ArrayList<Map> maps;
 	public static boolean[] completedLevels = {
 		false,
 		false,
@@ -27,6 +28,14 @@ public class DataSingleton {
 		return blocks;
 	}
 	
+	public static ArrayList<Map> getMaps() {
+		return maps;
+	}
+
+	public static void setMaps(ArrayList<Map> maps) {
+		DataSingleton.maps = maps;
+	}
+
 	public static void setBlocks(ArrayList<Block> mblocks) {
 		blocks = mblocks;
 	}
