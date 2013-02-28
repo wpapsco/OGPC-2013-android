@@ -48,6 +48,7 @@ public class FlowChartActivity extends Activity {
 		BgView.setDrawTransparentBitmap(true);
 		
 		ImageView printlnButton = (ImageView) findViewById(R.id.println);
+		ImageView rotateRightButton = (ImageView) findViewById(R.id.rotate_right);
 		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
 		ImageView runButton = (ImageView) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
@@ -58,6 +59,14 @@ public class FlowChartActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.PRINTLN_BLOCK);
+			}
+		});
+		
+		rotateRightButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.ROTATE_90_RIGHT_BLOCK);
 			}
 		});
 		
@@ -125,8 +134,24 @@ public class FlowChartActivity extends Activity {
 		BgView.invalidate();
 	}
 	
-	protected void addBlock(int resID, float x, float y) {
-		blocks.add(new PrintlnBlock(new PointF(x, y), this, this.getResources(), blocks.size()));
+	protected void addBlock(int selectedBlockType, int selectedBlockSubType, PointF loc) {
+//		blocks.add(new PrintlnBlock(new PointF(x, y), this, this.getResources(), blocks.size()));
+//		layout.addView(blocks.get(blocks.size() - 1).selectButton);
+		switch(selectedBlockType) {
+		case Block.COMMAND_BLOCK:
+			switch(selectedBlockSubType) {
+			case CommandBlock.PRINTLN_BLOCK:
+				blocks.add(new PrintlnBlock(loc, this, getResources(), blocks.size()));
+				BgView.invalidate();
+			case CommandBlock.ROTATE_90_RIGHT_BLOCK:
+				blocks.add(new Rotate90RightBlock(loc, this, getResources(), blocks.size()));
+				BgView.invalidate();
+			}
+		case Block.CONDITIONAL_BLOCK:
+			switch(selectedBlockSubType) {
+			
+			}
+		}
 		layout.addView(blocks.get(blocks.size() - 1).selectButton);
 	}
 	

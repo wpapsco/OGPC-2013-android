@@ -102,26 +102,30 @@ public class FlowChartBackgroundView extends View {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
-		switch(selectedBlockType) {
-		case Block.COMMAND_BLOCK:
-			switch(selectedBlockSubType) {
-			case CommandBlock.PRINTLN_BLOCK:
-				addBlock(R.drawable.println_block, event.getX(), event.getY());
-				invalidate();
-			}
-		case Block.CONDITIONAL_BLOCK:
-			switch(selectedBlockSubType) {
-			
-			}
-		}
+//		switch(selectedBlockType) {
+//		case Block.COMMAND_BLOCK:
+//			switch(selectedBlockSubType) {
+//			case CommandBlock.PRINTLN_BLOCK:
+//				addBlock(R.drawable.println_block, event.getX(), event.getY());
+//				invalidate();
+//			case CommandBlock.ROTATE_90_RIGHT_BLOCK:
+//				addBlock(new);
+//				invalidate();
+//			}
+//		case Block.CONDITIONAL_BLOCK:
+//			switch(selectedBlockSubType) {
+//			
+//			}
+//		}
+		addBlock(selectedBlockType, selectedBlockSubType, new PointF(event.getX(), event.getY()));
 		((FlowChartActivity) getContext()).setSelectedBlockID(-1);
 		((FlowChartActivity) getContext()).setSelectedBlockType(-1, -1);
 		return super.onTouchEvent(event);
 			
 	}
 
-	private void addBlock(int printlnBlock, float x, float y) {
-		((FlowChartActivity) getContext()).addBlock(printlnBlock, x, y);
+	private void addBlock(int selectedBlockType, int selectedBlockSubType, PointF loc) {
+		((FlowChartActivity) getContext()).addBlock(selectedBlockType, selectedBlockSubType, loc);
 	}
 
 	public void setSelectionRect(PointF loc) {
