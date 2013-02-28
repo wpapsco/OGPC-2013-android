@@ -29,11 +29,13 @@ public final class R {
         public static final int location2=0x7f02000a;
         public static final int player=0x7f02000b;
         public static final int println_block=0x7f02000c;
-        public static final int run_button=0x7f02000d;
-        public static final int start=0x7f02000e;
-        public static final int title_background=0x7f02000f;
-        public static final int tutorial_level_select=0x7f020010;
-        public static final int virus=0x7f020011;
+        public static final int rotate_90_left=0x7f02000d;
+        public static final int rotate_90_right=0x7f02000e;
+        public static final int run_button=0x7f02000f;
+        public static final int start=0x7f020010;
+        public static final int title_background=0x7f020011;
+        public static final int tutorial_level_select=0x7f020012;
+        public static final int virus=0x7f020013;
     }
     public static final class id {
         public static final int bg_view=0x7f080000;

@@ -24,6 +24,7 @@ public abstract class Block {
 
 	protected PointF loc;
 	protected Bitmap image;
+	protected Context context;
 	protected boolean isEnd = true;
 	protected ImageView selectButton;
 	protected int blockType;

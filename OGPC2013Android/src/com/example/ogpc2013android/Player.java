@@ -55,8 +55,8 @@ public class Player {
 		matrix.postTranslate(loc.x, loc.y);
 		c.drawBitmap(Bitmap, matrix, p);
 //		g.draw(collisionRect);
-		p.setColor(Color.GREEN);
-		c.drawRect(collisionRect, p);
+//		p.setColor(Color.GREEN);
+//		c.drawRect(collisionRect, p);
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).draw(c, p);
 		}

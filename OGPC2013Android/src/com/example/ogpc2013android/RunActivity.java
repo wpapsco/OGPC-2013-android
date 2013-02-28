@@ -51,6 +51,7 @@ public class RunActivity extends Activity {
 	private Player player;
 	private Bitmap playerImage;
 	private Map map;
+	private RunView v;
 //	private Sound gameMusic;
 	private ArrayList<Map> maps;
 	private int level;
@@ -59,7 +60,8 @@ public class RunActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(new RunView(this));
+		v = new RunView(this);
+		setContentView(v);
 		playerImage = BitmapFactory.decodeResource(getResources(), R.drawable.player);
 //		background = new Image("pics/testMap.png");
 //		gameMusic = new Sound("sounds/gameplay.ogg");
@@ -69,6 +71,7 @@ public class RunActivity extends Activity {
 		}
 		
 		maps = DataSingleton.getMaps();
+		
 		
 //		//tutorial levels
 //		map = new Map(new PointF(400, 350));
@@ -166,23 +169,23 @@ public class RunActivity extends Activity {
 		
 		player = new Player(maps.get(level).getPlayerStartLoc(), playerImage);
 		
-		ut = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				while(true) {
-					player.update(2, getMap());
-					try {
-						Thread.sleep(2);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						
-					}
-				}
-			}
-		});
-		ut.run();
+//		ut = new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				// TODO Auto-generated method stub
+//				while(true) {
+//					player.update(2, getMap());
+//					try {
+//						Thread.sleep(2);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//						
+//					}
+//				}
+//			}
+//		});
+//		ut.run();
 		
 	}
 	
@@ -248,12 +251,15 @@ public class RunActivity extends Activity {
 		player.reset(new PointF(maps.get(level).getPlayerStartLoc().x, maps.get(level).getPlayerStartLoc().y));
 		maps.get(level).reset();
 		runnable.stop();
-//		ut.interrupt();
 		for (int i = 0; i < maps.size(); i++) {
 			if (maps.get(i).isCompleted()) {
 				DataSingleton.completedLevels[i] = true;
 			}
 		}
+	}
+	
+	public void invalidateView() {
+		v.invalidate();
 	}
 	
 	public void drawItems(Canvas c, Paint p) {
@@ -268,7 +274,7 @@ public class RunActivity extends Activity {
 		if (hasFocus) {
 			ArrayList<Block> blocks = DataSingleton.getBlocks();
 			if (blocks.size() > 0) {
-				Runnable runnable = new RunRunnable(blocks, this);
+				runnable = new RunRunnable(blocks, this, v);
 				t = new Thread(runnable);
 //				t.start();
 			}
@@ -279,6 +285,7 @@ public class RunActivity extends Activity {
 		}
 		if (!hasFocus) {
 			Log.e("leaving", "leaving");
+			reset();
 		}
 	}
 }

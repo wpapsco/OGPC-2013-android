@@ -16,12 +16,13 @@ public class PrintlnBlock extends CommandBlock {
 	public void command() {
 		// TODO Auto-generated method stub
 		System.out.println(ID);
+		((RunActivity)this.context).getPlayer().moveForeward(20);
 	}
 
 	@Override
 	public void init(Context context) {
 		// TODO Auto-generated method stub
-		
+		this.context = context;
 	}
 
 }
