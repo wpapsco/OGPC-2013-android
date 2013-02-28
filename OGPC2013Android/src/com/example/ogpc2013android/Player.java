@@ -111,6 +111,16 @@ public class Player {
 		loc.x = (float) (loc.x + distance * Math.cos(Math.toRadians(tfloat)));
 		loc.y = (float) (loc.y + distance * Math.sin(Math.toRadians(tfloat)));
 	}
+	public RectF getForewardRect(float distance) {
+		RectF ret = new RectF(collisionRect);
+		float height = ret.height();
+		float width = ret.width();
+		ret.left = getForewardPosition(distance).x;
+		ret.top = getForewardPosition(distance).y;
+		ret.right = ret.left + width;
+		ret.bottom = ret.top + height;
+		return ret;
+	}
 	public PointF getForewardPosition(float distance) {
 		float tfloat = rotation - 90;
 		if (tfloat < 0) {
@@ -153,6 +163,7 @@ public class Player {
 	public void setLoc(PointF PointF) {
 		// TODO Auto-generated method stub
 		this.loc = PointF;
+		collisionRect = new RectF(loc.x, loc.y, loc.x + Bitmap.getHeight() - 2, loc.y + Bitmap.getWidth() - 2);
 	}
 	
 }

@@ -15,6 +15,13 @@
         android:layout_height="wrap_content"
         android:src="@drawable/println_block"
         android:id="@+id/println"/>
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rotate_90_right"
+        android:layout_below="@id/println"
+        android:id="@+id/rotate_right"/>
 
     <ImageView
         android:id="@+id/run"

@@ -1,15 +1,9 @@
 package com.example.ogpc2013android;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
-import org.newdawn.slick.geom.Vector2f;
-
-import com.papsco.FlowChartStateStuff.CommandBlock;
-import com.papsco.GamePlayStateStuff.Player;
-import com.papsco.GamePlayStateStuff.RunState;
-import com.papsco.GamePlayStateStuff.Mapping.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PointF;
+import android.graphics.RectF;
 
 public class MoveForewardBlock extends CommandBlock {
 
@@ -17,26 +11,15 @@ public class MoveForewardBlock extends CommandBlock {
 	Map m;
 	public static String imageString = "pics/MoveForeward.png";
 	
-	public MoveForewardBlock(Vector2f loc)
-			throws SlickException {
-		super(loc, imageString);
+	public MoveForewardBlock(PointF loc, Context c, Resources res, int id) {
+		super(loc, c, res, R.drawable.rotate_90_left, id);
 		commandBlockType = CommandBlock.MOVE_FOREWARD_BLOCK;
-	}
-
-	@Override
-	public void update(int delta, GameContainer c, RunState s) {
-		// TODO Auto-generated method stub
-		super.update(delta, c, s);
-		p = s.getPlayer();
-		m = s.getMap();
 	}
 	
 	@Override
 	public void command() {
 		// TODO Auto-generated method stub
-		Shape r = new Rectangle(0, 0, p.getImage().getWidth(), p.getImage().getHeight());
-		r.setCenterX(p.getForewardPosition(2).x);
-		r.setCenterY(p.getForewardPosition(2).y);
+		RectF r = p.getForewardRect(2);
 		if (!m.isColliding(r)) {
 			p.moveForeward(2);
 			System.out.println("Moved");
@@ -44,10 +27,9 @@ public class MoveForewardBlock extends CommandBlock {
 	}
 
 	@Override
-	public void init(GameContainer c, RunState s) {
-		p = s.getPlayer();
-		m = s.getMap();
-		
+	public void init(Context c) {
+		// TODO Auto-generated method stub
+		p = ((RunActivity)c).getPlayer();
+		m = ((RunActivity)c).getMap();
 	}
-
 }

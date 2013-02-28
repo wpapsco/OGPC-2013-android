@@ -1,46 +1,28 @@
 package com.example.ogpc2013android;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Vector2f;
-
-import com.papsco.FlowChartStateStuff.Block;
-import com.papsco.FlowChartStateStuff.CommandBlock;
-import com.papsco.GamePlayStateStuff.Player;
-import com.papsco.GamePlayStateStuff.RunState;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PointF;
 
 public class FireBlock extends CommandBlock {
 
-	public static String imageString = "pics/FireBlock.png";
+	Player p;
 	
-	private Player p;
-	
-	public FireBlock(Vector2f loc) throws SlickException {
-		super(loc, imageString);
+	public FireBlock(PointF loc, Context context, Resources res, int id) {
+		super(loc, context, res, R.drawable.shoot, id);
 		// TODO Auto-generated constructor stub
-		
-	}
-	
-	@Override
-	public void update(int delta, GameContainer c, RunState s) {
-		// TODO Auto-generated method stub
-		super.update(delta, c, s);
-	}
-	
-	@Override
-	public void command() {
-		// TODO Auto-generated method stub
-		try {
-			p.fire();
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	@Override
-	public void init(GameContainer c, RunState s) {
+	public void command() {
 		// TODO Auto-generated method stub
-		p = s.getPlayer();
+		p.fire();
 	}
+
+	@Override
+	public void init(Context context) {
+		// TODO Auto-generated method stub
+		p = ((RunActivity)context).getPlayer();
+	}
+	
 }

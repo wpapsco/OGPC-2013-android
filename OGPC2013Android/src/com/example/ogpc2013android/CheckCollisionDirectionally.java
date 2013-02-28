@@ -1,17 +1,9 @@
 package com.example.ogpc2013android;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
-import org.newdawn.slick.geom.Vector2f;
-
-import com.papsco.FlowChartStateStuff.CommandBlock;
-import com.papsco.FlowChartStateStuff.ConditionalBlock;
-import com.papsco.GamePlayStateStuff.Player;
-import com.papsco.GamePlayStateStuff.RunState;
-import com.papsco.GamePlayStateStuff.Mapping.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PointF;
+import android.graphics.RectF;
 
 public class CheckCollisionDirectionally extends ConditionalBlock {
 
@@ -24,55 +16,44 @@ public class CheckCollisionDirectionally extends ConditionalBlock {
 	Player p;
 	Map m;
 	
-	public CheckCollisionDirectionally(Vector2f loc, int conditionalBlockType)
-			throws SlickException {
-		super(loc, checkAllImageString);
+	public CheckCollisionDirectionally(PointF loc, Context context, Resources res, int id) {
+		super(loc, context, res, R.drawable.front_touching, id);
 		this.conditionalBlockType = conditionalBlockType;
 		if (conditionalBlockType == ConditionalBlock.CHECK_FOREWARD_BLOCK) {
-			this.image = new Image(checkForewardImageString); 
+			setImage(R.drawable.front_touching, res); 
 		}
 		if (conditionalBlockType == ConditionalBlock.CHECK_BACKWARD_BLOCK) {
-			this.image = new Image(checkBackwardImageString);
+			setImage(R.drawable.back_touching, res); 
 		}
 		if (conditionalBlockType == ConditionalBlock.CHECK_LEFT_BLOCK) {
-			this.image = new Image(checkLeftImageString);
+			setImage(R.drawable.left_touching, res); 
 		}
 		if (conditionalBlockType == ConditionalBlock.CHECK_RIGHT_BLOCK) {
-			this.image = new Image(checkRightImageString);
+			setImage(R.drawable.right_touching, res); 
 		}
-		this.setImage(image);
 	}
 
 	@Override
 	public boolean condition() {
 		// TODO Auto-generated method stub
 		if (conditionalBlockType == ConditionalBlock.CHECK_FOREWARD_BLOCK) {
-			Shape r = new Rectangle(0, 0, p.getImage().getWidth(), p.getImage().getHeight());
-			r.setCenterX(p.getForewardPosition(2).x);
-			r.setCenterY(p.getForewardPosition(2).y);
+			RectF r = new RectF(p.getCollisionRect());
+			r = Functions.getMovedRectangle(r, p.getForewardPosition(2));
 			return m.isColliding(r);
 		}
 		if (conditionalBlockType == ConditionalBlock.CHECK_RIGHT_BLOCK) {
-			Shape r = new Rectangle(0, 0, p.getImage().getWidth(), p.getImage().getHeight());
-			r.setCenterX(p.getMovedPosition(2, 90).x);
-			r.setCenterY(p.getMovedPosition(2, 90).y);
+			RectF r = new RectF(p.getCollisionRect());
+			r = Functions.getMovedRectangle(r, p.getMovedPosition(2, 90));
 			return m.isColliding(r);
 		}
 		return false;
 	}
-	
-	@Override
-	public void update(int delta, GameContainer c, RunState s) {
-		// TODO Auto-generated method stub
-		super.update(delta, c, s);
-		p = s.getPlayer();
-		m = s.getMap();
-	}
 
 	@Override
-	public void init(GameContainer c, RunState s) {
+	public void init(Context c) {
 		// TODO Auto-generated method stub
-		
+		p = ((RunActivity)c).getPlayer();
+		m = ((RunActivity)c).getMap();
 	}
 
 }

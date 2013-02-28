@@ -1,63 +1,48 @@
 package com.example.ogpc2013android;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
-import org.newdawn.slick.geom.Vector2f;
-
-import com.papsco.FlowChartStateStuff.CommandBlock;
-import com.papsco.GamePlayStateStuff.Player;
-import com.papsco.GamePlayStateStuff.RunState;
-import com.papsco.GamePlayStateStuff.Mapping.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PointF;
+import android.graphics.RectF;
 
 public class MoveBlock extends CommandBlock {
 	
 	private Player p;
-	public static String imageString = "pics/MoveBlock.png";
-	
-	public static String moveUpImageString = "pics/UpBlock.png";
-	public static String moveDownImageString = "pics/DownBlock.png";
-	public static String moveLeftImageString = "pics/LeftBlock.png";
-	public static String moveRightImageString = "pics/RightBlock.png";
 	
 	private Map m;
 	private int dx;
 	private int dy;
 
-	public MoveBlock(Vector2f loc, GameContainer c, RunState s, int dx, int dy, int moveBlockType) throws SlickException {
-		super(loc, imageString);
+	public MoveBlock(PointF loc, Context c, Resources res, int id, int dx, int dy, int moveBlockType) {
+		super(loc, c, res, R.drawable.move_up, id);
 		// TODO Auto-generated constructor stub	
-		p = s.getPlayer();
-		m = s.getMap();
 		this.dx = dx;
 		this.dy = dy;
 		commandBlockType = moveBlockType;
 		if (moveBlockType == CommandBlock.MOVE_UP_BLOCK) {
-			this.setImage(moveUpImageString);
+			this.setImage(R.drawable.move_up, res);
 		}
 		if (moveBlockType == CommandBlock.MOVE_DOWN_BLOCK) {
-			this.setImage(moveDownImageString);
+			this.setImage(R.drawable.move_down, res);
 		}
 		if (moveBlockType == CommandBlock.MOVE_LEFT_BLOCK) {
-			this.setImage(moveLeftImageString);
+			this.setImage(R.drawable.move_left, res);
 		}
 		if (moveBlockType == CommandBlock.MOVE_RIGHT_BLOCK) {
-			this.setImage(moveRightImageString);
+			this.setImage(R.drawable.move_right, res);
 		}
-	}
-
-	public void update(int delta, RunState s, GameContainer c) {
-		super.update(delta, c, s);
-		m = s.getMap();
 	}
 	
 	@Override
 	public void command() {
 		// TODO Auto-generated method stub
-		Shape r = new Rectangle(0, 0, p.getImage().getWidth(), p.getImage().getHeight());
-		r.setCenterX(p.getLoc().x + dx);
-		r.setCenterY(p.getLoc().y + dy);
+		RectF r = new RectF(p.getCollisionRect());
+		float width = r.width();
+		float height = r.height();
+		r.left = p.getLoc().x + dx;
+		r.top = p.getLoc().y + dy;
+		r.right = r.left + width;
+		r.bottom = r.top + height;
 		System.out.println(commandBlockType);
 		if (!m.isColliding(r)) {
 			p.setColliding(false);
@@ -69,9 +54,10 @@ public class MoveBlock extends CommandBlock {
 	}
 
 	@Override
-	public void init(GameContainer c, RunState s) {
+	public void init(Context c) {
 		// TODO Auto-generated method stub
-		
+		p = ((RunActivity)c).getPlayer();
+		m = ((RunActivity)c).getMap();
 	}
 
 }

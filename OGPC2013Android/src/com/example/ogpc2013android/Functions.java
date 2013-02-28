@@ -1,6 +1,11 @@
 package com.example.ogpc2013android;
 
 import android.graphics.PointF;
+import android.graphics.RectF;
+
+/**
+ * @author William P.
+ */
 
 public abstract class Functions {
 	/**
@@ -13,6 +18,7 @@ public abstract class Functions {
 	public static float distance(float x1, float y1, float x2, float y2) {
 		return (float) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 	}
+	
 	/**
 	 * 
 	 * @param p1 the first point
@@ -22,6 +28,7 @@ public abstract class Functions {
 	public static float distance(PointF p1, PointF p2) {
 		return (float) Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
 	}
+	
 	/**
 	 * @param s_x The x of the object that is pointing
 	 * @param s_y The y of the object that is pointing
@@ -44,5 +51,20 @@ public abstract class Functions {
 			return (float) ((float) 270 - (Math.asin(distance(x, y, t_imgFloatPoint.x, t_imgFloatPoint.y) / distance(s_x, s_y, x, y)) * (180 / Math.PI)));
 		}
 		return 0;
+	}
+	
+	/**
+	 * @param rectancle the rectangle to be moved
+	 * @param destination the point to move the rectangle to
+	 * @return the moved rectangle
+	 */
+	public static RectF getMovedRectangle(RectF rectangle, PointF destination) {
+		float width = rectangle.width();
+		float height = rectangle.height();
+		rectangle.left = destination.x;
+		rectangle.top = destination.y;
+		rectangle.right = rectangle.left + width;
+		rectangle.bottom = rectangle.top + height;
+		return rectangle;
 	}
 }

@@ -1,23 +1,18 @@
 package com.example.ogpc2013android;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Vector2f;
-
-import com.papsco.FlowChartStateStuff.ConditionalBlock;
-import com.papsco.GamePlayStateStuff.RunState;
-import com.papsco.GamePlayStateStuff.Mapping.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PointF;
 
 public class AllEnemiesDeadBlock extends ConditionalBlock {
 
-	Map m;
-	
-	public AllEnemiesDeadBlock(Vector2f loc)
-			throws SlickException {
-		super(loc, "pics/DeadEnemies.png");
+	public AllEnemiesDeadBlock(PointF loc, Context context, Resources res, int id) {
+		super(loc, context, res, R.drawable.enemies_dead, id);
 		// TODO Auto-generated constructor stub
 	}
 
+	Map m;
+	
 	@Override
 	public boolean condition() {
 		boolean b = true;
@@ -30,9 +25,8 @@ public class AllEnemiesDeadBlock extends ConditionalBlock {
 	}
 
 	@Override
-	public void init(GameContainer c, RunState s) {
+	public void init(Context context) {
 		// TODO Auto-generated method stub
-		m = s.getMap();
+		m = ((RunActivity)context).getMap();
 	}
-
 }
