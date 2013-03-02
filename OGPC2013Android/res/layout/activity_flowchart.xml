@@ -45,6 +45,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/run"
-        android:src="@drawable/println_block" />
+        android:src="@drawable/rotate_90_right" />
+
+    <ImageView
+        android:id="@+id/front_touching"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rotate_right"
+        android:src="@drawable/front_touching" />
+
+    <ImageView
+        android:id="@+id/shoot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/front_touching"
+        android:src="@drawable/shoot" />
 
 </RelativeLayout>

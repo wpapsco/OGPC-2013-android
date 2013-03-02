@@ -16,7 +16,7 @@ public class CheckCollisionDirectionally extends ConditionalBlock {
 	Player p;
 	Map m;
 	
-	public CheckCollisionDirectionally(PointF loc, Context context, Resources res, int id) {
+	public CheckCollisionDirectionally(PointF loc, Context context, Resources res, int id, int conditionalBlockType) {
 		super(loc, context, res, R.drawable.front_touching, id);
 		this.conditionalBlockType = conditionalBlockType;
 		if (conditionalBlockType == ConditionalBlock.CHECK_FOREWARD_BLOCK) {

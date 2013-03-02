@@ -167,7 +167,7 @@ public class RunActivity extends Activity {
 //		map.addObstacle(new Obstacle(new RectF(110, 20, 270, 20)));
 //		maps.add(map);
 		
-		player = new Player(maps.get(level).getPlayerStartLoc(), playerImage);
+		player = new Player(maps.get(level).getPlayerStartLoc(), playerImage, getResources());
 		
 //		ut = new Thread(new Runnable() {
 //			@Override
@@ -267,6 +267,10 @@ public class RunActivity extends Activity {
 		player.draw(c, p);
 	}
 
+	public static boolean isNull(ArrayList<Block> blocks) {
+		return blocks != null;
+	}
+	
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		// TODO Auto-generated method stub

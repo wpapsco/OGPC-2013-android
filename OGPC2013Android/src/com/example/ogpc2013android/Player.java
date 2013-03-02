@@ -29,11 +29,11 @@ public class Player {
 		collisionRect.left = loc.x;
 		collisionRect.top = loc.y;
 		rotation = 0;
-//		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
+		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
 		bullets = new ArrayList<Bullet>();
 	}
 
-	public Player(PointF loc, Bitmap playerImage) {
+	public Player(PointF loc, Bitmap playerImage, Resources res) {
 		// TODO Auto-generated constructor stub
 		this.loc = loc;
 		this.Bitmap = playerImage;
@@ -41,6 +41,7 @@ public class Player {
 //		collisionRect.left = loc.x;
 //		collisionRect.top = loc.y;
 		rotation = 0;
+		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
 //		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
 		bullets = new ArrayList<Bullet>();
 	}
@@ -77,7 +78,7 @@ public class Player {
 				TList.add(bullets.get(i));
 			}
 		}
-		collisionRect = new RectF(loc.x, loc.y, loc.x + Bitmap.getHeight() - 2, loc.y + Bitmap.getWidth() - 2);
+//		collisionRect = new RectF(loc.x, loc.y, loc.x + Bitmap.getHeight() - 2, loc.y + Bitmap.getWidth() - 2);
 		bullets = TList;
 	}
 	
@@ -108,6 +109,7 @@ public class Player {
 		if (tfloat < 0) {
 			tfloat+=360;
 		}
+		collisionRect = getForewardRect(distance);
 		loc.x = (float) (loc.x + distance * Math.cos(Math.toRadians(tfloat)));
 		loc.y = (float) (loc.y + distance * Math.sin(Math.toRadians(tfloat)));
 	}
@@ -152,9 +154,8 @@ public class Player {
 		return isColliding;
 	}
 	public void fire() {
-		if (fireRecharge >= 1000) {
-			bullets.add(new Bullet(loc, this.getForewardPosition(200), bulletBitmap, 100.f));
-			fireRecharge = 0;
+		if (fireRecharge <= 1000) {
+			bullets.add(new Bullet(new PointF(loc.x + (25 / 2), loc.y + (25 / 2)), this.getForewardPosition(200), bulletBitmap, 100.f));
 		}
 	}
 	public void dropBomb() {

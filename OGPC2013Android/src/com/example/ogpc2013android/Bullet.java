@@ -32,7 +32,7 @@ public class Bullet {
 		path = new LimitedPath(startPoint, endPoint);
 		currentPoint = path.currentPoint;
 		this.image = b;
-		collisionRect = new RectF(currentPoint.x ,currentPoint.y, image.getWidth(), image.getHeight());
+		collisionRect = new RectF(currentPoint.x, currentPoint.y, image.getWidth() + currentPoint.x, image.getHeight() + currentPoint.y);
 		collisionRect.left = currentPoint.x;
 		collisionRect.top = currentPoint.y;
 		this.explosionRadius = explosionRadius;
@@ -82,10 +82,12 @@ public class Bullet {
 		if (!isMarkedForDeletion) {
 			p.setColor(Color.GREEN);
 			Matrix matrix = new Matrix();
-			matrix.postTranslate(currentPoint.x, currentPoint.y);
-			matrix.setRotate(path.angle, image.getWidth()/2, image.getHeight()/2);
+			matrix.setTranslate(currentPoint.x, currentPoint.y);
+//			matrix.postRotate(path.angle, image.getWidth()/2, image.getHeight()/2);
 			c.drawBitmap(image, matrix, new Paint());
 //			g.draw(collisionRect);
+			p.setColor(Color.GREEN);
+			c.drawRect(collisionRect, p);
 		}
 		if (isMarkedForDeletion && !isFinishedExploding) {
 			p.setColor(Color.RED);

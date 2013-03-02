@@ -59,16 +59,16 @@ public abstract class Block {
 					Log.e(((FlowChartActivity) arg0.getContext()).getSelectedBlockID() + "", ID + "");
 					previousBlocks.add(((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()));
 					if (previousBlocks.size() > 0) {
-						if (getThis() instanceof CommandBlock) {
+						if (((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()).blockType == Block.COMMAND_BLOCK) {
 							((CommandBlock) previousBlocks.get(previousBlocks.size() - 1)).setNextBlock(getThis());
 						}
-						if (getThis() instanceof ConditionalBlock) {
+						if (((FlowChartActivity) arg0.getContext()).getBlocks().get(((FlowChartActivity) arg0.getContext()).getSelectedBlockID()).blockType == Block.CONDITIONAL_BLOCK) {
 							boolean b = false;
 							if (!((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).trueBlockSet) {
 								((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).setTrueBlock(getThis());
 								b = true;
 							}
-							if (((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).falseBlockSet && !b) {
+							if (((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).trueBlockSet && !b && !((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).falseBlockSet) {
 								((ConditionalBlock) previousBlocks.get(previousBlocks.size() - 1)).setFalseBlock(getThis());
 							}
 						}

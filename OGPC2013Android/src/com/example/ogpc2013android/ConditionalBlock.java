@@ -22,6 +22,7 @@ public abstract class ConditionalBlock extends Block {
 	
 	public ConditionalBlock(PointF loc, Context context, Resources res, int resId, int id) {
 		super(loc, context, res, resId, id);
+		blockType = Block.CONDITIONAL_BLOCK;
 		// TODO Auto-generated constructor stub
 	}
 	

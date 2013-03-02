@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,12 +48,30 @@ public class FlowChartActivity extends Activity {
 		BgView.setInvisibitmap(R.drawable.println_block, this.getResources());
 		BgView.setDrawTransparentBitmap(true);
 		
+		ImageView shoot = (ImageView) findViewById(R.id.shoot);
+		ImageView frontTouching = (ImageView) findViewById(R.id.front_touching);
 		ImageView printlnButton = (ImageView) findViewById(R.id.println);
 		ImageView rotateRightButton = (ImageView) findViewById(R.id.rotate_right);
 		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
 		ImageView runButton = (ImageView) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
 		selectedBlockView = (ImageView) findViewById(R.id.selected_image);
+		
+		shoot.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.FIRE_BLOCK);
+			}
+		});
+		
+		frontTouching.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.CONDITIONAL_BLOCK, ConditionalBlock.CHECK_FOREWARD_BLOCK);
+			}
+		});
 		
 		printlnButton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -107,10 +126,31 @@ public class FlowChartActivity extends Activity {
 			selectedBlockView.setVisibility(View.INVISIBLE);
 		}
 		if (blockType == Block.COMMAND_BLOCK) {
-			switch(blockType) {
+			switch(secondaryBlockType) {
 			case CommandBlock.PRINTLN_BLOCK:
 				selectedBlockView.setVisibility(View.VISIBLE);
-				selectedBlockView.setBackgroundResource(R.drawable.println_block);
+//				selectedBlockView.setBackgroundResource(R.drawable.println_block);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.println_block));
+				break;
+			case CommandBlock.ROTATE_90_RIGHT_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.rotate_90_right));
+				break;
+			case CommandBlock.ROTATE_90_LEFT_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.rotate_90_left));
+				break;
+			case CommandBlock.FIRE_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.shoot));
+				break;
+			}
+		}
+		if (blockType == Block.CONDITIONAL_BLOCK) {
+			switch(secondaryBlockType) {
+			case ConditionalBlock.CHECK_FOREWARD_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.front_touching));
 			}
 		}
 	}
@@ -143,16 +183,33 @@ public class FlowChartActivity extends Activity {
 			case CommandBlock.PRINTLN_BLOCK:
 				blocks.add(new PrintlnBlock(loc, this, getResources(), blocks.size()));
 				BgView.invalidate();
+				break;
 			case CommandBlock.ROTATE_90_RIGHT_BLOCK:
 				blocks.add(new Rotate90RightBlock(loc, this, getResources(), blocks.size()));
 				BgView.invalidate();
+				break;
+			case CommandBlock.ROTATE_90_LEFT_BLOCK:
+				blocks.add(new Rotate90LeftBlock(loc, this, getResources(), blocks.size()));
+				BgView.invalidate();
+				break;
+			case CommandBlock.FIRE_BLOCK:
+				blocks.add(new FireBlock(loc, this, getResources(), blocks.size()));
+				BgView.invalidate();
+				break;
 			}
+			break;
 		case Block.CONDITIONAL_BLOCK:
 			switch(selectedBlockSubType) {
-			
+			case ConditionalBlock.CHECK_FOREWARD_BLOCK:
+				blocks.add(new CheckCollisionDirectionally(loc, this, getResources(), blocks.size(), ConditionalBlock.CHECK_FOREWARD_BLOCK));
+				BgView.invalidate();
+				break;
 			}
+			break;
 		}
-		layout.addView(blocks.get(blocks.size() - 1).selectButton);
+		if (selectedBlockType != -1 && selectedBlockSubType != -1) {
+			layout.addView(blocks.get(blocks.size() - 1).selectButton);
+		}
 	}
 	
 	protected ArrayList<Block> getBlocks() {

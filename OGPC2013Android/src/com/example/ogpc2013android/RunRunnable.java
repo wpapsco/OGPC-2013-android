@@ -45,7 +45,7 @@ public class RunRunnable implements Runnable {
 				} else {
 					currentBlock = ((CommandBlock) currentBlock).getNextBlock();
 				}
-				Thread.sleep(500);
+				Thread.sleep(10);
 				((RunActivity) context).getPlayer().update(5, ((RunActivity) context).getMap());
 			}
 			if (!currentBlock.hasNextBlock()) {
