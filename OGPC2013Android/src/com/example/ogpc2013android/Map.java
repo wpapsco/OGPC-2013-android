@@ -31,6 +31,8 @@ public class Map {
 		events = new ArrayList<Event>();
 		enemies = new ArrayList<Enemy>();
 		currentEnemies = new ArrayList<Enemy>();
+		playerStartLoc.x = playerStartLoc.x - 25;
+		playerStartLoc.y = playerStartLoc.y - 25;
 		this.playerStartLoc = playerStartLoc;
 		isCompleted = false;
 		objectiveText = "";
@@ -149,7 +151,8 @@ public class Map {
 		p.setColor(Color.GRAY);
 		c.drawRGB(0, 0, 0);
 		if (hasImage) {
-			c.drawBitmap(image, new Rect(0, 0, image.getWidth(), image.getHeight()), new Rect(0, 0, c.getWidth(), c.getHeight()), null);
+//			c.drawBitmap(image, new Rect(0, 0, image.getWidth(), image.getHeight()), new Rect(0, 0, c.getWidth(), c.getHeight()), null);
+			c.drawBitmap(image, 0, 0, null);
 		}else {
 			drawObstacles(c, p);
 		}
@@ -161,8 +164,7 @@ public class Map {
 		}
 		p.setColor(Color.GREEN);
 		p.setTextSize(20);
-		p.setTypeface();
-		c.drawText(objectiveText, 0, 13, p);
+		c.drawText(objectiveText, 0, 20, p);
 	}
 	
 	public void drawObstacles(Canvas c, Paint p) {

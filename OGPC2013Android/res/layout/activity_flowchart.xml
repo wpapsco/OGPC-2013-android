@@ -13,14 +13,14 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/println_block"
-        android:id="@+id/println"/>
+        android:src="@drawable/move_foreward"
+        android:id="@+id/move_foreward"/>
     
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/rotate_90_right"
-        android:layout_below="@id/println"
+        android:layout_below="@id/move_foreward"
         android:id="@+id/rotate_right"/>
 
     <ImageView
@@ -48,11 +48,19 @@
         android:src="@drawable/rotate_90_right" />
 
     <ImageView
-        android:id="@+id/front_touching"
+        android:id="@+id/rotate_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/rotate_right"
+        android:src="@drawable/rotate_90_left" />
+
+    <ImageView
+        android:id="@+id/front_touching"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rotate_left"
         android:src="@drawable/front_touching" />
 
     <ImageView

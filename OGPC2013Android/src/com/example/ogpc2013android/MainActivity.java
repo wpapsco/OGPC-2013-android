@@ -23,33 +23,33 @@ public class MainActivity extends Activity {
 		ArrayList<Map> maps = new ArrayList<Map>();
 		
 		//tutorial levels
-		Map map = new Map(new PointF(400, 350));
-		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(400, 200)));
-		map.addEvent(new EnemiesKilledEvent(false));
-//		map.addObstacle(new Obstacle(new RectF(0, 0, 600, 300)));
-		map.setObjectiveText("Medicate the enemy!");
-		maps.add(map);
-		
-		map = new Map(new PointF(300, 350));
-		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(450, 200)));
-		map.addEvent(new EnemiesKilledEvent(false));
-		map.setObjectiveText("Can you get this one?");
-		maps.add(map);
-		
-		map = new Map(new PointF(400, 575));
-		map.addEvent(new LocationalEvent(new PointF(25, 25), false));
-		map.setObjectiveText("How about getting around this corner?");
-		map.addObstacle(new Obstacle(new RectF(0, 100, 350, 500)));
-		map.addObstacle(new Obstacle(new RectF(450, 0, 350, 600)));
-		maps.add(map);
-		
-		map = new Map(new PointF(400, 575));
-		map.addEvent(new EnemiesKilledEvent(false));
-		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(25, 25)));
-		map.setObjectiveText("Now put it all together!");
-		map.addObstacle(new Obstacle(new RectF(0, 100, 350, 500)));
-		map.addObstacle(new Obstacle(new RectF(450, 0, 350, 600)));
-		maps.add(map);
+		Map map = new Map(new PointF(375, 350));
+//		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(375, 200)));
+//		map.addEvent(new EnemiesKilledEvent(false));
+////		map.addObstacle(new Obstacle(new RectF(0, 0, 600, 300)));
+//		map.setObjectiveText("Medicate the enemy!");
+//		maps.add(map);
+//		
+//		map = new Map(new PointF(300, 350));
+//		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(450, 200)));
+//		map.addEvent(new EnemiesKilledEvent(false));
+//		map.setObjectiveText("Can you get this one?");
+//		maps.add(map);
+//		
+//		map = new Map(new PointF(400, 500));
+//		map.addEvent(new LocationalEvent(new PointF(25, 25), false));
+//		map.setObjectiveText("How about getting around this corner?");
+//		map.addObstacle(new Obstacle(new RectF(0, 100, 350, 500 + 100)));
+//		map.addObstacle(new Obstacle(new RectF(450, 0, 350 + 450, 600)));
+//		maps.add(map);
+//		
+//		map = new Map(new PointF(400, 575));
+//		map.addEvent(new EnemiesKilledEvent(false));
+//		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(25, 25)));
+//		map.setObjectiveText("Now put it all together!");
+//		map.addObstacle(new Obstacle(new RectF(0, 100, 350, 500)));
+//		map.addObstacle(new Obstacle(new RectF(450, 0, 350, 600)));
+//		maps.add(map);
 		
 		//spine levels
 		map = new Map(new PointF(45, 45), R.drawable.level_spine1, getResources());

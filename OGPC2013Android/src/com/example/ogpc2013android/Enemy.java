@@ -47,8 +47,8 @@ public class Enemy {
 	
 	public void draw(Canvas c, Paint p) {
 		c.drawBitmap(image, loc.x, loc.y, null);
-		p.setColor(Color.GREEN);
-		c.drawRect(collisionRect, p);
+//		p.setColor(Color.GREEN);
+//		c.drawRect(collisionRect, p);
 	}
 
 	public boolean isMarkedForDeletion() {

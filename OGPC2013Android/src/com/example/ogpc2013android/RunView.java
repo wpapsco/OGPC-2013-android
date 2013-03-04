@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 
 public class RunView extends View {
 
@@ -29,7 +31,16 @@ public class RunView extends View {
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
+		WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+		int width = display.getWidth();
+		int height = display.getHeight();
+//		canvas.scale(800f / width, 600f / height);
+		canvas.scale(width / 800f, height / 600f);
 		((RunActivity)getContext()).drawItems(canvas, new Paint());
+//		Paint p = new Paint();
+//		p.setColor(Color.GREEN);
+//		canvas.drawRect(new Rect(0, 0, 800, 600), p);
 	}
 	
 }

@@ -50,8 +50,9 @@ public class FlowChartActivity extends Activity {
 		
 		ImageView shoot = (ImageView) findViewById(R.id.shoot);
 		ImageView frontTouching = (ImageView) findViewById(R.id.front_touching);
-		ImageView printlnButton = (ImageView) findViewById(R.id.println);
+		ImageView moveForeward = (ImageView) findViewById(R.id.move_foreward);
 		ImageView rotateRightButton = (ImageView) findViewById(R.id.rotate_right);
+		ImageView rotateLeftButton = (ImageView) findViewById(R.id.rotate_left);
 		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
 		ImageView runButton = (ImageView) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
@@ -73,11 +74,11 @@ public class FlowChartActivity extends Activity {
 			}
 		});
 		
-		printlnButton.setOnClickListener(new OnClickListener() {
+		moveForeward.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.PRINTLN_BLOCK);
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.MOVE_FOREWARD_BLOCK);
 			}
 		});
 		
@@ -86,6 +87,14 @@ public class FlowChartActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.ROTATE_90_RIGHT_BLOCK);
+			}
+		});
+		
+		rotateLeftButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.ROTATE_90_LEFT_BLOCK);
 			}
 		});
 		
@@ -127,10 +136,10 @@ public class FlowChartActivity extends Activity {
 		}
 		if (blockType == Block.COMMAND_BLOCK) {
 			switch(secondaryBlockType) {
-			case CommandBlock.PRINTLN_BLOCK:
+			case CommandBlock.MOVE_FOREWARD_BLOCK:
 				selectedBlockView.setVisibility(View.VISIBLE);
 //				selectedBlockView.setBackgroundResource(R.drawable.println_block);
-				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.println_block));
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.move_foreward));
 				break;
 			case CommandBlock.ROTATE_90_RIGHT_BLOCK:
 				selectedBlockView.setVisibility(View.VISIBLE);
@@ -180,8 +189,8 @@ public class FlowChartActivity extends Activity {
 		switch(selectedBlockType) {
 		case Block.COMMAND_BLOCK:
 			switch(selectedBlockSubType) {
-			case CommandBlock.PRINTLN_BLOCK:
-				blocks.add(new PrintlnBlock(loc, this, getResources(), blocks.size()));
+			case CommandBlock.MOVE_FOREWARD_BLOCK:
+				blocks.add(new MoveForewardBlock(loc, this, getResources(), blocks.size()));
 				BgView.invalidate();
 				break;
 			case CommandBlock.ROTATE_90_RIGHT_BLOCK:

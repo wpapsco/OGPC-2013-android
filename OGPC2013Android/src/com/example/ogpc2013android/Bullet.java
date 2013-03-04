@@ -82,8 +82,8 @@ public class Bullet {
 //			matrix.postRotate(path.angle, image.getWidth()/2, image.getHeight()/2);
 			c.drawBitmap(image, matrix, new Paint());
 //			g.draw(collisionRect);
-			p.setColor(Color.GREEN);
-			c.drawRect(collisionRect, p);
+//			p.setColor(Color.GREEN);
+//			c.drawRect(collisionRect, p);
 		}
 		if (isMarkedForDeletion && !isFinishedExploding) {
 			p.setColor(Color.RED);

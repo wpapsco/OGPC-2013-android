@@ -12,7 +12,7 @@ public class MoveForewardBlock extends CommandBlock {
 	public static String imageString = "pics/MoveForeward.png";
 	
 	public MoveForewardBlock(PointF loc, Context c, Resources res, int id) {
-		super(loc, c, res, R.drawable.rotate_90_left, id);
+		super(loc, c, res, R.drawable.move_foreward, id);
 		commandBlockType = CommandBlock.MOVE_FOREWARD_BLOCK;
 	}
 	

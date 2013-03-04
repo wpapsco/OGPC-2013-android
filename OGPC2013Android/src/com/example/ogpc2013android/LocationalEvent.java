@@ -21,6 +21,8 @@ public class LocationalEvent extends Event {
 
 	public LocationalEvent(RectF area, boolean constant) {
 		super(constant);
+		area.right = area.right + area.left;
+		area.bottom = area.top + area.bottom;
 		this.area = area;
 		isPoint = false;
 	}
@@ -38,7 +40,7 @@ public class LocationalEvent extends Event {
 	public boolean condition(Context c) {
 		// TODO Auto-generated method stub
 		if (isPoint) {
-			return RectF.intersects(((RunActivity)c).getPlayer().getCollisionRect(), new RectF(loc.x, loc.y, 2, 2));
+			return RectF.intersects(((RunActivity)c).getPlayer().getCollisionRect(), new RectF(loc.x, loc.y, loc.x + 2, loc.y + 2));
 		}else {
 			return RectF.intersects(((RunActivity)c).getPlayer().getCollisionRect(), area);
 		}
