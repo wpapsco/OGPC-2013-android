@@ -20,7 +20,7 @@ public class Player {
 	private boolean isColliding = false;
 	private ArrayList<Bullet> bullets;
 	float rotation;
-	float fireRecharge;
+	float fireRecharge = 1000;
 	
 	public Player(PointF loc, int resID, Resources res) {
 		this.loc = loc;
@@ -42,12 +42,15 @@ public class Player {
 //		collisionRect.top = loc.y;
 		rotation = 0;
 		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
-//		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
 		bullets = new ArrayList<Bullet>();
 	}
 
 	public PointF getLoc() {
 		return loc;
+	}
+	
+	public boolean hasBullets() {
+		return bullets.size() != 0;
 	}
 	
 	public void draw(Canvas c, Paint p) {
@@ -154,8 +157,9 @@ public class Player {
 		return isColliding;
 	}
 	public void fire() {
-		if (fireRecharge <= 1000) {
-			bullets.add(new Bullet(new PointF(loc.x + (25 / 2), loc.y + (25 / 2)), this.getForewardPosition(200), bulletBitmap, 100.f));
+		if (fireRecharge >= 1000) {
+			bullets.add(new Bullet(new PointF(loc.x + (25 / 2), loc.y + (25 / 2)), new PointF(getForewardPosition(200).x + (25 / 2), getForewardPosition(200).y + (25 / 2)), bulletBitmap, 100.f));
+			fireRecharge = 0;
 		}
 	}
 	public void dropBomb() {

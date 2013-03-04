@@ -33,8 +33,6 @@ public class Bullet {
 		currentPoint = path.currentPoint;
 		this.image = b;
 		collisionRect = new RectF(currentPoint.x, currentPoint.y, image.getWidth() + currentPoint.x, image.getHeight() + currentPoint.y);
-		collisionRect.left = currentPoint.x;
-		collisionRect.top = currentPoint.y;
 		this.explosionRadius = explosionRadius;
 		explosionCircle = new Circle(endPoint.x, endPoint.y, explosionRadius);
 	}
@@ -44,9 +42,7 @@ public class Bullet {
 			path.update(delta);
 			currentPoint = path.currentPoint;
 		}
-		collisionRect = new RectF(currentPoint.x ,currentPoint.y, image.getWidth(), image.getHeight());
-		collisionRect.left = currentPoint.x;
-		collisionRect.top = currentPoint.y;
+		collisionRect = new RectF(currentPoint.x, currentPoint.y, image.getWidth() + currentPoint.x, image.getHeight() + currentPoint.y);
 		if (path.isDone()) {
 			this.markDeleted();
 		}
@@ -91,7 +87,9 @@ public class Bullet {
 		}
 		if (isMarkedForDeletion && !isFinishedExploding) {
 			p.setColor(Color.RED);
+			p.setStyle(Paint.Style.STROKE);
 			c.drawCircle(explosionCircle.x, explosionCircle.y, explosionCircle.getExplosionRadius(), p);
+			p.setStyle(Paint.Style.FILL);
 		}
 	}
 

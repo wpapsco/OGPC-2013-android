@@ -20,12 +20,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-ArrayList<Map> maps = new ArrayList<Map>();
+		ArrayList<Map> maps = new ArrayList<Map>();
 		
 		//tutorial levels
 		Map map = new Map(new PointF(400, 350));
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(400, 200)));
 		map.addEvent(new EnemiesKilledEvent(false));
+//		map.addObstacle(new Obstacle(new RectF(0, 0, 600, 300)));
 		map.setObjectiveText("Medicate the enemy!");
 		maps.add(map);
 		

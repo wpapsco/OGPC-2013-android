@@ -35,7 +35,7 @@ public class RunRunnable implements Runnable {
 		// TODO Auto-generated method stub
 		try {
 			Thread.sleep(1000); //initial delay
-			while (currentBlock.hasNextBlock() && running) {
+			while (currentBlock.hasNextBlock() && running ) {
 				boolean runCurBlock = true;
 				if (runCurBlock) {
 					currentBlock.init(context);
@@ -47,6 +47,7 @@ public class RunRunnable implements Runnable {
 				}
 				Thread.sleep(10);
 				((RunActivity) context).getPlayer().update(5, ((RunActivity) context).getMap());
+				((RunActivity) context).getMap().update(context);
 			}
 			if (!currentBlock.hasNextBlock()) {
 				currentBlock.init(context);
@@ -56,6 +57,12 @@ public class RunRunnable implements Runnable {
 			}
 			if (!running) {
 				currentBlock = startBlock;
+			}
+			while(((RunActivity) context).getPlayer().hasBullets()) {
+				Thread.sleep(10);
+				((RunActivity) context).getPlayer().update(5, ((RunActivity) context).getMap());
+				((RunActivity) context).getMap().update(context);
+				v.postInvalidate();
 			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

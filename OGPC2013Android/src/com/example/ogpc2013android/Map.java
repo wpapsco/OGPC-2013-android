@@ -12,6 +12,8 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.util.Log;
 
 public class Map {
 	private Bitmap image;
@@ -108,7 +110,7 @@ public class Map {
 		for (int i = 0; i < currentEnemies.size(); i++) {
 			currentEnemies.get(i).update(c);
 		}
-//		checkEnemyCollisions(((RunActivity) c).getPlayer().getBullets());
+		checkEnemyCollisions(((RunActivity) c).getPlayer().getBullets());
 	}
 	
 	public void addObstacle(Obstacle obstacle) {
@@ -158,7 +160,9 @@ public class Map {
 			events.get(i).draw(c, p);
 		}
 		p.setColor(Color.GREEN);
-		c.drawText(objectiveText, 0, 0, p);
+		p.setTextSize(20);
+		p.setTypeface();
+		c.drawText(objectiveText, 0, 13, p);
 	}
 	
 	public void drawObstacles(Canvas c, Paint p) {
@@ -170,6 +174,7 @@ public class Map {
 	public void Complete() {
 		if (!isCompleted) {objectiveText = objectiveText + " - Done!";}
 		isCompleted = true;
+		Log.e("map", "done");
 	}
 
 	public boolean isCompleted() {

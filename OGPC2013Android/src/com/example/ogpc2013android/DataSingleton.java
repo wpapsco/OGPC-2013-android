@@ -7,6 +7,7 @@ public class DataSingleton {
 	public static int currentLevel = 0;
 	public static ArrayList<Block> blocks;
 	public static ArrayList<Map> maps;
+	public static boolean hasBlocks = false;
 	public static boolean[] completedLevels = {
 		false,
 		false,
@@ -38,5 +39,10 @@ public class DataSingleton {
 
 	public static void setBlocks(ArrayList<Block> mblocks) {
 		blocks = mblocks;
+		if (blocks.size() == 0) {
+			hasBlocks = false;
+		} else {
+			hasBlocks = true;
+		}
 	}
 }

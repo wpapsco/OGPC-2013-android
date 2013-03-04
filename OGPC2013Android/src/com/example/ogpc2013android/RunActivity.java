@@ -250,7 +250,9 @@ public class RunActivity extends Activity {
 	public void reset() {
 		player.reset(new PointF(maps.get(level).getPlayerStartLoc().x, maps.get(level).getPlayerStartLoc().y));
 		maps.get(level).reset();
-		runnable.stop();
+		if (DataSingleton.hasBlocks) {
+			runnable.stop();
+		}
 		for (int i = 0; i < maps.size(); i++) {
 			if (maps.get(i).isCompleted()) {
 				DataSingleton.completedLevels[i] = true;
@@ -275,7 +277,7 @@ public class RunActivity extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
-		if (hasFocus) {
+		if (hasFocus && DataSingleton.hasBlocks) {
 			ArrayList<Block> blocks = DataSingleton.getBlocks();
 			if (blocks.size() > 0) {
 				runnable = new RunRunnable(blocks, this, v);
