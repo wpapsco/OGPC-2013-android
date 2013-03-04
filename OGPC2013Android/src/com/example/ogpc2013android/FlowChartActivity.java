@@ -49,6 +49,7 @@ public class FlowChartActivity extends Activity {
 		BgView.setDrawTransparentBitmap(true);
 		
 		ImageView shoot = (ImageView) findViewById(R.id.shoot);
+		ImageView deadEnemies = (ImageView) findViewById(R.id.enemies_dead);
 		ImageView frontTouching = (ImageView) findViewById(R.id.front_touching);
 		ImageView moveForeward = (ImageView) findViewById(R.id.move_foreward);
 		ImageView rotateRightButton = (ImageView) findViewById(R.id.rotate_right);
@@ -63,6 +64,14 @@ public class FlowChartActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.FIRE_BLOCK);
+			}
+		});
+		
+		deadEnemies.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.CONDITIONAL_BLOCK, ConditionalBlock.ALL_ENEMIES_DEAD);
 			}
 		});
 		
@@ -160,6 +169,9 @@ public class FlowChartActivity extends Activity {
 			case ConditionalBlock.CHECK_FOREWARD_BLOCK:
 				selectedBlockView.setVisibility(View.VISIBLE);
 				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.front_touching));
+			case ConditionalBlock.ALL_ENEMIES_DEAD:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.enemies_dead));
 			}
 		}
 	}
@@ -211,6 +223,10 @@ public class FlowChartActivity extends Activity {
 			switch(selectedBlockSubType) {
 			case ConditionalBlock.CHECK_FOREWARD_BLOCK:
 				blocks.add(new CheckCollisionDirectionally(loc, this, getResources(), blocks.size(), ConditionalBlock.CHECK_FOREWARD_BLOCK));
+				BgView.invalidate();
+				break;
+			case ConditionalBlock.ALL_ENEMIES_DEAD:
+				blocks.add(new AllEnemiesDeadBlock(loc, this, getResources(), blocks.size()));
 				BgView.invalidate();
 				break;
 			}

@@ -21,12 +21,16 @@ public class LevelSelectActivity extends Activity {
 	
 	private ArrayList<AnimationDrawable> frameAnimations;
 	private ArrayList<ImageView> images;
+	private int world;
+	private final int WORLD_TUTORIAL = 0;
+	private final int WORLD_SPINE = 4;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+		world = WORLD_TUTORIAL;
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		int height = displaymetrics.heightPixels;
@@ -35,20 +39,11 @@ public class LevelSelectActivity extends Activity {
 		images = new ArrayList<ImageView>();
 		
 		setContentView(R.layout.activity_level_select);
-//		ImageView img = (ImageView)findViewById(R.id.imageView2);
-//		img.setBackgroundResource(R.drawable.level_animation);
-//		frameAnimation = (AnimationDrawable) img.getBackground();
-//		
-//		ImageView img2 = (ImageView)findViewById(R.id.imageView3);
-//		img2.setBackgroundResource(R.drawable.level_animation);
-//		frameAnimation2 = (AnimationDrawable) img2.getBackground();
 		
 		images.add((ImageView)findViewById(R.id.imageView2));
 		images.add((ImageView)findViewById(R.id.imageView3));
 		images.add((ImageView)findViewById(R.id.imageView4));
 		images.add((ImageView)findViewById(R.id.imageView5));
-		
-		//images.get(3).setVisibility(View.INVISIBLE);
 		
 		for (int i = 0; i < images.size(); i++) {
 			frameAnimations.add((AnimationDrawable) getResources().getDrawable(R.drawable.level_animation));
@@ -58,48 +53,35 @@ public class LevelSelectActivity extends Activity {
 			images.get(i).setBackgroundDrawable(frameAnimations.get(i));
 		}
 		
-//		for (int i = 0; i < images.size(); i++) {
-//			images.get(i).setX((width / 10.f) * i);
-//			images.get(i).setY((height / 10.f) * i);
-//		}
 		images.get(0).setX((108f/800f) * width);
 		images.get(0).setY((368f/600f) * height);
+		images.get(1).setX(((668f - 25f)/800f) * width);
+		images.get(1).setY(((247f - 25f)/600f) * height);
+		images.get(2).setX(((527f - 25f)/800f) * width);
+		images.get(2).setY(((453f - 40f)/600f) * height);
+		images.get(3).setX(((400f - 15f)/800f) * width);
+		images.get(3).setY(((140f - 30f)/600f) * height);
 		
 		images.get(0).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				setLevel(getLevelNum(0));
-				enterLevel(DataSingleton.currentLevel);
+				enterLevel(world + 0);
 			}
 		});
 		images.get(1).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				setLevel(getLevelNum(1));
+				enterLevel(world + 1);
 			}
 		});
 		images.get(2).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				setLevel(getLevelNum(2));
+				enterLevel(world + 2);
 			}
 		});
 		images.get(3).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				setLevel(getLevelNum(3));
-//				if (v.getContext() instanceof LevelSelectActivity) {
-//					((LevelSelectActivity) v.getContext()).frameAnimations;
-//				}
+				enterLevel(world + 3);
 			}
 		});
-		
-//		img2.setX(width / 10.f);
-//		img2.setY(height / 10.f);
-	}
-	
-	public int getLevelNum(int buttonPressed) {
-		return DataSingleton.currentLevel + buttonPressed;
-	}
-	
-	public void setLevel(int level) {
-		
 	}
 	
 	public void enterLevel(int level) {
@@ -115,10 +97,15 @@ public class LevelSelectActivity extends Activity {
 	      for (int i = 0; i < frameAnimations.size(); i++) {
 	    	  frameAnimations.get(i).start();
 	      }
-	      for (int i = DataSingleton.currentLevel + 1; i <= 3; i++) {
+	      if (DataSingleton.currentLevel > 3) {
+	    	  //change world
+	      }
+	      for (int i = 0; i < images.size(); i++) {
 	    	  images.get(i).setVisibility(View.INVISIBLE);
 	      }
-//	      frameAnimation2.start();
+	      for (int i = 0; i < DataSingleton.currentLevel + 1; i++) {
+	    	  images.get(i + world).setVisibility(View.VISIBLE);
+	      }
 	   }
 	}
 	

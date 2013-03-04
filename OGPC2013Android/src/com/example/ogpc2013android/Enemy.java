@@ -24,6 +24,7 @@ public class Enemy {
 	public Enemy(Resources res, int Resid, PointF location) {
 		image = BitmapFactory.decodeResource(res, Resid);
 		loc = location;
+		loc = new PointF(loc.x - 25, loc.y - 25);
 		collisionRect = new RectF(loc.x, loc.y, image.getWidth() + loc.x, image.getHeight() + loc.y);
 		this.isDead = false;
 	}

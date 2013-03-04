@@ -25,6 +25,7 @@ public class Map {
 	private String objectiveText;
 	private boolean isCompleted;
 	private boolean hasImage;
+	private boolean completeRan = false;
 	
 	Map(PointF playerStartLoc) {
 		obstacles = new ArrayList<Obstacle>();
@@ -106,8 +107,9 @@ public class Map {
 				doComplete = false;
 			}
 		}
-		if (doComplete) {
+		if (doComplete && !completeRan) {
 			Complete();
+			completeRan  = true;
 		}
 		for (int i = 0; i < currentEnemies.size(); i++) {
 			currentEnemies.get(i).update(c);
@@ -177,6 +179,10 @@ public class Map {
 		if (!isCompleted) {objectiveText = objectiveText + " - Done!";}
 		isCompleted = true;
 		Log.e("map", "done");
+		DataSingleton.currentLevel++;
+		for (int i = 0; i < DataSingleton.currentLevel; i++) {
+			DataSingleton.completedLevels[i] = true;
+		}
 	}
 
 	public boolean isCompleted() {
