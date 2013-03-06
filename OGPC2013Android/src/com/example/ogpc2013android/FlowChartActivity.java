@@ -54,6 +54,7 @@ public class FlowChartActivity extends Activity {
 		ImageView moveForeward = (ImageView) findViewById(R.id.move_foreward);
 		ImageView rotateRightButton = (ImageView) findViewById(R.id.rotate_right);
 		ImageView rotateLeftButton = (ImageView) findViewById(R.id.rotate_left);
+		ImageView moveRight = (ImageView) findViewById(R.id.move_right);
 		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
 		ImageView runButton = (ImageView) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
@@ -80,6 +81,14 @@ public class FlowChartActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.CONDITIONAL_BLOCK, ConditionalBlock.CHECK_FOREWARD_BLOCK);
+			}
+		});
+		
+		moveRight.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.MOVE_RIGHT_BLOCK);
 			}
 		});
 		
@@ -162,6 +171,10 @@ public class FlowChartActivity extends Activity {
 				selectedBlockView.setVisibility(View.VISIBLE);
 				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.shoot));
 				break;
+			case CommandBlock.MOVE_RIGHT_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.move_right));
+				break;
 			}
 		}
 		if (blockType == Block.CONDITIONAL_BLOCK) {
@@ -215,6 +228,10 @@ public class FlowChartActivity extends Activity {
 				break;
 			case CommandBlock.FIRE_BLOCK:
 				blocks.add(new FireBlock(loc, this, getResources(), blocks.size()));
+				BgView.invalidate();
+				break;
+			case CommandBlock.MOVE_RIGHT_BLOCK:
+				blocks.add(new MoveBlock(loc, this, getResources(), blocks.size(), 2, 0, CommandBlock.MOVE_RIGHT_BLOCK));
 				BgView.invalidate();
 				break;
 			}
