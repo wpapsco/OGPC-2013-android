@@ -6,12 +6,6 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 
 public class CheckCollisionDirectionally extends ConditionalBlock {
-
-	public static String checkForewardImageString = "pics/FrontTouchingWall.png";
-	public static String checkBackwardImageString = "pics/BackTouchingWall.png";
-	public static String checkLeftImageString = "pics/LeftTouchingWall.png";
-	public static String checkRightImageString = "pics/RightTouchingWall.png";
-	public static String checkAllImageString = "pics/AtWallBlock.png";
 	
 	Player p;
 	Map m;

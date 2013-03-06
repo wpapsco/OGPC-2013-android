@@ -82,7 +82,7 @@ public class Map {
 					bullets.get(i).setExplosionLocation(bullets.get(i).getPath().currentPoint);
 					bullets.get(j).markDeleted();
 				}
-				if (bullets.get(j).getExplosionCircle().collide(currentEnemies.get(i).getCollisionRect()) && bullets.get(i).isMarkedForDeletion() && !bullets.get(i).isFinishedExploding()) {
+				if (bullets.get(j).getExplosionCircle().collide(currentEnemies.get(i).getCollisionRect()) && bullets.get(j).isMarkedForDeletion() && !bullets.get(j).isFinishedExploding()) {
 					currentEnemies.get(i).takeDamage(100);
 				}
 			}

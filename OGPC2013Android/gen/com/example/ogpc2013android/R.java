@@ -50,26 +50,33 @@ public final class R {
         public static final int virus=0x7f02001f;
     }
     public static final class id {
+        public static final int back_touching=0x7f08000d;
         public static final int bg_view=0x7f080000;
-        public static final int delete_all=0x7f08000a;
-        public static final int enemies_dead=0x7f080007;
-        public static final int front_touching=0x7f080005;
-        public static final int imageButton1=0x7f080011;
-        public static final int imageView1=0x7f08000c;
-        public static final int imageView2=0x7f08000d;
-        public static final int imageView3=0x7f08000e;
-        public static final int imageView4=0x7f08000f;
-        public static final int imageView5=0x7f080010;
-        public static final int menu_settings=0x7f080013;
-        public static final int move_foreward=0x7f080002;
-        public static final int move_right=0x7f080008;
-        public static final int rotate_left=0x7f080004;
-        public static final int rotate_right=0x7f080003;
-        public static final int run=0x7f080009;
-        public static final int runView1=0x7f080012;
+        public static final int delete_all=0x7f080011;
+        public static final int enemies_dead=0x7f08000b;
+        public static final int front_touching=0x7f08000c;
+        public static final int imageButton1=0x7f080018;
+        public static final int imageView1=0x7f080013;
+        public static final int imageView2=0x7f080014;
+        public static final int imageView3=0x7f080015;
+        public static final int imageView4=0x7f080016;
+        public static final int imageView5=0x7f080017;
+        public static final int left_touching=0x7f08000f;
+        public static final int menu_settings=0x7f08001a;
+        public static final int move_down=0x7f080007;
+        public static final int move_foreward=0x7f080003;
+        public static final int move_left=0x7f080005;
+        public static final int move_right=0x7f080004;
+        public static final int move_up=0x7f080006;
+        public static final int right_touching=0x7f08000e;
+        public static final int rotate_left=0x7f080009;
+        public static final int rotate_right=0x7f080008;
+        public static final int run=0x7f080010;
+        public static final int runView1=0x7f080019;
         public static final int scrollView1=0x7f080001;
-        public static final int selected_image=0x7f08000b;
-        public static final int shoot=0x7f080006;
+        public static final int selected_image=0x7f080012;
+        public static final int shoot=0x7f08000a;
+        public static final int textView1=0x7f080002;
     }
     public static final class layout {
         public static final int activity_flowchart=0x7f030000;

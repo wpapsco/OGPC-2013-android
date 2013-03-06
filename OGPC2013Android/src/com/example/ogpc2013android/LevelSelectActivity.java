@@ -35,8 +35,8 @@ public class LevelSelectActivity extends Activity {
 		world = WORLD_TUTORIAL;
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-		int height = displaymetrics.heightPixels;
-		int width = displaymetrics.widthPixels;
+		float height = displaymetrics.heightPixels;
+		float width = displaymetrics.widthPixels;
 		frameAnimations = new ArrayList<AnimationDrawable>();
 		images = new ArrayList<ImageView>();
 		
@@ -55,27 +55,33 @@ public class LevelSelectActivity extends Activity {
 			images.get(i).setBackgroundDrawable(frameAnimations.get(i));
 		}
 		
-		images.get(0).setX((108f/800f) * width);
-		images.get(0).setY((368f/600f) * height);
-		images.get(1).setX(((668f - 25f)/800f) * width);
-		images.get(1).setY(((247f - 25f)/600f) * height);
-		images.get(2).setX(((527f - 25f)/800f) * width);
-		images.get(2).setY(((453f - 40f)/600f) * height);
-		images.get(3).setX(((400f - 15f)/800f) * width);
-		images.get(3).setY(((140f - 30f)/600f) * height);
+//		images.get(0).setX((108f/800f) * width);
+//		images.get(0).setY((368f/600f) * height);
+//		images.get(1).setX(((668f - 25f)/800f) * width);
+//		images.get(1).setY(((247f - 25f)/600f) * height);
+//		images.get(2).setX(((527f - 25f)/800f) * width);
+//		images.get(2).setY(((453f - 40f)/600f) * height);
+//		images.get(3).setX(((400f - 15f)/800f) * width);
+//		images.get(3).setY(((140f - 30f)/600f) * height);
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
 		params.leftMargin = Math.round((108f/800f) * width); //Your X coordinate
 		params.topMargin = Math.round((368f/600f) * height); //Your Y coordinate
 		images.get(0).setLayoutParams(params);
-		params.leftMargin = Math.round(((668f - 25f)/800f)); //Your X coordinate
-		params.topMargin = Math.round(((247f - 25f)/600f)); //Your Y coordinate
+		
+		params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
+		params.leftMargin = Math.round(((668f - 25f)/800f) * width); //Your X coordinate
+		params.topMargin = Math.round(((247f - 25f)/600f) * height); //Your Y coordinate
 		images.get(1).setLayoutParams(params);
-		params.leftMargin = Math.round(((668f - 25f)/800f)); //Your X coordinate
-		params.topMargin = Math.round(((247f - 25f)/600f)); //Your Y coordinate
+		
+		params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
+		params.leftMargin = Math.round(((527f - 25f)/800f) * width); //Your X coordinate
+		params.topMargin = Math.round(((453f - 40f)/600f) * height); //Your Y coordinate
 		images.get(2).setLayoutParams(params);
-		params.leftMargin = Math.round(((668f - 25f)/800f)); //Your X coordinate
-		params.topMargin = Math.round(((247f - 25f)/600f)); //Your Y coordinate
-		images.get(1).setLayoutParams(params);
+		
+		params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
+		params.leftMargin = Math.round(((400f - 15f)/800f) * width); //Your X coordinate
+		params.topMargin = Math.round(((140f - 30f)/600f) * height); //Your Y coordinate
+		images.get(3).setLayoutParams(params);
 		
 		images.get(0).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {

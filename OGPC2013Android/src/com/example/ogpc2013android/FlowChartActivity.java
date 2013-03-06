@@ -182,9 +182,11 @@ public class FlowChartActivity extends Activity {
 			case ConditionalBlock.CHECK_FOREWARD_BLOCK:
 				selectedBlockView.setVisibility(View.VISIBLE);
 				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.front_touching));
+				break;
 			case ConditionalBlock.ALL_ENEMIES_DEAD:
 				selectedBlockView.setVisibility(View.VISIBLE);
 				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.enemies_dead));
+				break;
 			}
 		}
 	}
