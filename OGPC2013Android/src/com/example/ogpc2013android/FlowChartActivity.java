@@ -55,6 +55,9 @@ public class FlowChartActivity extends Activity {
 		ImageView rotateRightButton = (ImageView) findViewById(R.id.rotate_right);
 		ImageView rotateLeftButton = (ImageView) findViewById(R.id.rotate_left);
 		ImageView moveRight = (ImageView) findViewById(R.id.move_right);
+		ImageView moveLeft = (ImageView) findViewById(R.id.move_left);
+		ImageView moveUp = (ImageView) findViewById(R.id.move_up);
+		ImageView moveDown = (ImageView) findViewById(R.id.move_down);
 		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
 		ImageView runButton = (ImageView) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
@@ -89,6 +92,30 @@ public class FlowChartActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.MOVE_RIGHT_BLOCK);
+			}
+		});
+		
+		moveLeft.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.MOVE_LEFT_BLOCK);
+			}
+		});
+		
+		moveUp.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.MOVE_UP_BLOCK);
+			}
+		});
+		
+		moveDown.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.COMMAND_BLOCK, CommandBlock.MOVE_DOWN_BLOCK);
 			}
 		});
 		
@@ -175,6 +202,18 @@ public class FlowChartActivity extends Activity {
 				selectedBlockView.setVisibility(View.VISIBLE);
 				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.move_right));
 				break;
+			case CommandBlock.MOVE_LEFT_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.move_left));
+				break;
+			case CommandBlock.MOVE_UP_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.move_up));
+				break;
+			case CommandBlock.MOVE_DOWN_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.move_down));
+				break;
 			}
 		}
 		if (blockType == Block.CONDITIONAL_BLOCK) {
@@ -182,6 +221,18 @@ public class FlowChartActivity extends Activity {
 			case ConditionalBlock.CHECK_FOREWARD_BLOCK:
 				selectedBlockView.setVisibility(View.VISIBLE);
 				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.front_touching));
+				break;
+			case ConditionalBlock.CHECK_BACKWARD_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.back_touching));
+				break;
+			case ConditionalBlock.CHECK_LEFT_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.left_touching));
+				break;
+			case ConditionalBlock.CHECK_RIGHT_BLOCK:
+				selectedBlockView.setVisibility(View.VISIBLE);
+				selectedBlockView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.right_touching));
 				break;
 			case ConditionalBlock.ALL_ENEMIES_DEAD:
 				selectedBlockView.setVisibility(View.VISIBLE);
@@ -236,12 +287,36 @@ public class FlowChartActivity extends Activity {
 				blocks.add(new MoveBlock(loc, this, getResources(), blocks.size(), 2, 0, CommandBlock.MOVE_RIGHT_BLOCK));
 				BgView.invalidate();
 				break;
+			case CommandBlock.MOVE_LEFT_BLOCK:
+				blocks.add(new MoveBlock(loc, this, getResources(), blocks.size(), -2, 0, CommandBlock.MOVE_LEFT_BLOCK));
+				BgView.invalidate();
+				break;
+			case CommandBlock.MOVE_UP_BLOCK:
+				blocks.add(new MoveBlock(loc, this, getResources(), blocks.size(), 0, -2, CommandBlock.MOVE_UP_BLOCK));
+				BgView.invalidate();
+				break;
+			case CommandBlock.MOVE_DOWN_BLOCK:
+				blocks.add(new MoveBlock(loc, this, getResources(), blocks.size(), 0, 2, CommandBlock.MOVE_DOWN_BLOCK));
+				BgView.invalidate();
+				break;
 			}
 			break;
 		case Block.CONDITIONAL_BLOCK:
 			switch(selectedBlockSubType) {
 			case ConditionalBlock.CHECK_FOREWARD_BLOCK:
 				blocks.add(new CheckCollisionDirectionally(loc, this, getResources(), blocks.size(), ConditionalBlock.CHECK_FOREWARD_BLOCK));
+				BgView.invalidate();
+				break;
+			case ConditionalBlock.CHECK_BACKWARD_BLOCK:
+				blocks.add(new CheckCollisionDirectionally(loc, this, getResources(), blocks.size(), ConditionalBlock.CHECK_BACKWARD_BLOCK));
+				BgView.invalidate();
+				break;
+			case ConditionalBlock.CHECK_LEFT_BLOCK:
+				blocks.add(new CheckCollisionDirectionally(loc, this, getResources(), blocks.size(), ConditionalBlock.CHECK_LEFT_BLOCK));
+				BgView.invalidate();
+				break;
+			case ConditionalBlock.CHECK_RIGHT_BLOCK:
+				blocks.add(new CheckCollisionDirectionally(loc, this, getResources(), blocks.size(), ConditionalBlock.CHECK_RIGHT_BLOCK));
 				BgView.invalidate();
 				break;
 			case ConditionalBlock.ALL_ENEMIES_DEAD:

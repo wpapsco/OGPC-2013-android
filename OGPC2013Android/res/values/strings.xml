@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">OGPC 2013 Android</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Dr. Code!</string>
+    <string name="command_label">Command\nBlocks</string>
     <string name="menu_settings">Settings</string>
+    <string name="conditional_label">Conditional\nBlocks</string>
+    <string name="welcome_string">Welcome to the School of Technological Medicine!</string>
 
 </resources>
