@@ -3,6 +3,7 @@ package com.example.ogpc2013android;
 import java.net.URI;
 import java.util.ArrayList;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Point;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class LevelSelectActivity extends Activity {
 	
@@ -61,6 +63,19 @@ public class LevelSelectActivity extends Activity {
 		images.get(2).setY(((453f - 40f)/600f) * height);
 		images.get(3).setX(((400f - 15f)/800f) * width);
 		images.get(3).setY(((140f - 30f)/600f) * height);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
+		params.leftMargin = Math.round((108f/800f) * width); //Your X coordinate
+		params.topMargin = Math.round((368f/600f) * height); //Your Y coordinate
+		images.get(0).setLayoutParams(params);
+		params.leftMargin = Math.round(((668f - 25f)/800f)); //Your X coordinate
+		params.topMargin = Math.round(((247f - 25f)/600f)); //Your Y coordinate
+		images.get(1).setLayoutParams(params);
+		params.leftMargin = Math.round(((668f - 25f)/800f)); //Your X coordinate
+		params.topMargin = Math.round(((247f - 25f)/600f)); //Your Y coordinate
+		images.get(2).setLayoutParams(params);
+		params.leftMargin = Math.round(((668f - 25f)/800f)); //Your X coordinate
+		params.topMargin = Math.round(((247f - 25f)/600f)); //Your Y coordinate
+		images.get(1).setLayoutParams(params);
 		
 		images.get(0).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {

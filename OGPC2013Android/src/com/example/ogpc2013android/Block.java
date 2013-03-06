@@ -3,6 +3,7 @@ package com.example.ogpc2013android;
 import java.util.ArrayList;
 
 
+import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public abstract class Block {
 
@@ -42,8 +44,10 @@ public abstract class Block {
 		this.loc = new PointF(loc.x - 50, loc.y - 25);
 		selectButton = new ImageView(context);
 		setImage(resId, res);
-		selectButton.setX(this.loc.x);
-		selectButton.setY(this.loc.y);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
+		params.leftMargin = Math.round(this.loc.x); //Your X coordinate
+		params.topMargin = Math.round(this.loc.y); //Your Y coordinate
+		selectButton.setLayoutParams(params);
 		deltaSum = 0;
 		hasNextBlock = false;
 		connectingLines = new ArrayList<Shape>();
