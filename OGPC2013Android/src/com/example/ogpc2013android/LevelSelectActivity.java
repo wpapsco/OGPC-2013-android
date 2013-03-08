@@ -120,12 +120,15 @@ public class LevelSelectActivity extends Activity {
 	      }
 	      if (DataSingleton.currentLevel > 3) {
 	    	  //change world
+	    	  world = WORLD_SPINE;
+	    	  //change locations for level icons
+	    	  ((ImageView) findViewById(R.id.imageView1)).setBackgroundResource(R.drawable.spine);
 	      }
 	      for (int i = 0; i < images.size(); i++) {
 	    	  images.get(i).setVisibility(View.INVISIBLE);
 	      }
-	      for (int i = 0; i < DataSingleton.currentLevel + 1; i++) {
-	    	  images.get(i + world).setVisibility(View.VISIBLE);
+	      for (int i = 0; i < DataSingleton.currentLevel + 1 - world; i++) {
+	    	  images.get(i).setVisibility(View.VISIBLE);
 	      }
 	   }
 	}

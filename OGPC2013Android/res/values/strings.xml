@@ -7,10 +7,10 @@
     <string name="conditional_label">Conditional\nBlocks</string>
     <string name="welcome_string">Welcome to the School of Technological Medicine!</string>
     <string name="move_foreward">Move Foreward</string>
-    <string name="move_right">Move Right</string>
-    <string name="move_up">Move Up</string>
-    <string name="move_down">Move Down</string>
-    <string name="move_left">Move Left</string>
+    <string name="move_right">Move East</string>
+    <string name="move_up">Move North</string>
+    <string name="move_down">Move South</string>
+    <string name="move_left">Move West</string>
     <string name="front_touching">Front Touching</string>
     <string name="back_touching">Back Touching</string>
     <string name="left_touching">Left Touching</string>

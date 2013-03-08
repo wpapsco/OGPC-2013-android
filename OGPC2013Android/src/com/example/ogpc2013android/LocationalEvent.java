@@ -39,10 +39,11 @@ public class LocationalEvent extends Event {
 	@Override
 	public boolean condition(Context c) {
 		// TODO Auto-generated method stub
+		RectF r = ((RunActivity)c).getPlayer().getCollisionRect();
 		if (isPoint) {
 			return RectF.intersects(((RunActivity)c).getPlayer().getCollisionRect(), new RectF(loc.x, loc.y, loc.x + 2, loc.y + 2));
 		}else {
-			return RectF.intersects(((RunActivity)c).getPlayer().getCollisionRect(), area);
+			return RectF.intersects(r, area);
 		}
 	}
 

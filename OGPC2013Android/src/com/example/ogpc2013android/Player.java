@@ -66,6 +66,10 @@ public class Player {
 		}
 	}
 	
+	public void setRect(RectF r) {
+		collisionRect = r;
+	}
+	
 	public void update(int delta, Map m) {
 		if (fireRecharge <= 1000) {
 			fireRecharge+=delta;

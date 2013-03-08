@@ -47,10 +47,11 @@ public final class R {
         public static final int rotate_90_right=0x7f02001a;
         public static final int run_button=0x7f02001b;
         public static final int shoot=0x7f02001c;
-        public static final int start=0x7f02001d;
-        public static final int title_background=0x7f02001e;
-        public static final int tutorial_level_select=0x7f02001f;
-        public static final int virus=0x7f020020;
+        public static final int spine=0x7f02001d;
+        public static final int start=0x7f02001e;
+        public static final int title_background=0x7f02001f;
+        public static final int tutorial_level_select=0x7f020020;
+        public static final int virus=0x7f020021;
     }
     public static final class id {
         public static final int back_touching=0x7f08000d;

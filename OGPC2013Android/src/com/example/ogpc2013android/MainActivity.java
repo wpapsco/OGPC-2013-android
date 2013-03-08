@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 		maps.add(map);
 		
 		map = new Map(new PointF(400, 500));
-		map.addEvent(new LocationalEvent(new PointF(25, 25), false));
+		map.addEvent(new LocationalEvent(new RectF(0, 0, 100, 100), false));
 		map.setObjectiveText("How about getting around this corner?");
 		map.addObstacle(new Obstacle(new RectF(0, -10, 800, 10)));
 		map.addObstacle(new Obstacle(new RectF(-10, 0, 10, 600)));
