@@ -3,25 +3,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical" >
 
     <ImageView
-    android:id="@+id/imageView1"
-    android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    android:layout_gravity="center"
-    android:layout_weight="1"
-    android:src="@drawable/title_background" />
-
+	    android:id="@+id/imageView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="0dp"
+	    android:layout_gravity="center"
+	    android:layout_weight="1"
+	    android:src="@drawable/title_background" />
 
     <ImageButton
-    android:id="@+id/imageButton1"
-    android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    android:layout_gravity="center"
-    android:layout_weight="1"
-    android:src="@drawable/start"
-    android:background="@color/transparent"
-    android:onClick="onImageButtonClicked" />
+	    android:id="@+id/imageButton1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="0dp"
+	    android:layout_gravity="center"
+	    android:layout_weight="1"
+	    android:src="@drawable/start"
+	    android:background="@color/transparent"
+	    android:onClick="onImageButtonClicked" />
 
 </LinearLayout>

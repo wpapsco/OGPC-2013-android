@@ -11,6 +11,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int blue=0x7f040004;
         public static final int light_grey=0x7f040002;
         public static final int line_color=0x7f040003;
         public static final int transparent=0x7f040001;
@@ -22,33 +23,34 @@ public final class R {
         public static final int bullet=0x7f020002;
         public static final int delete_all=0x7f020003;
         public static final int enemies_dead=0x7f020004;
-        public static final int front_touching=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int left_touching=0x7f020007;
-        public static final int level_animation=0x7f020008;
-        public static final int level_brain1=0x7f020009;
-        public static final int level_spine1=0x7f02000a;
-        public static final int level_spine2=0x7f02000b;
-        public static final int level_spine3=0x7f02000c;
-        public static final int location0=0x7f02000d;
-        public static final int location1=0x7f02000e;
-        public static final int location2=0x7f02000f;
-        public static final int move_down=0x7f020010;
-        public static final int move_foreward=0x7f020011;
-        public static final int move_left=0x7f020012;
-        public static final int move_right=0x7f020013;
-        public static final int move_up=0x7f020014;
-        public static final int player=0x7f020015;
-        public static final int println_block=0x7f020016;
-        public static final int right_touching=0x7f020017;
-        public static final int rotate_90_left=0x7f020018;
-        public static final int rotate_90_right=0x7f020019;
-        public static final int run_button=0x7f02001a;
-        public static final int shoot=0x7f02001b;
-        public static final int start=0x7f02001c;
-        public static final int title_background=0x7f02001d;
-        public static final int tutorial_level_select=0x7f02001e;
-        public static final int virus=0x7f02001f;
+        public static final int example=0x7f020005;
+        public static final int front_touching=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int left_touching=0x7f020008;
+        public static final int level_animation=0x7f020009;
+        public static final int level_brain1=0x7f02000a;
+        public static final int level_spine1=0x7f02000b;
+        public static final int level_spine2=0x7f02000c;
+        public static final int level_spine3=0x7f02000d;
+        public static final int location0=0x7f02000e;
+        public static final int location1=0x7f02000f;
+        public static final int location2=0x7f020010;
+        public static final int move_down=0x7f020011;
+        public static final int move_foreward=0x7f020012;
+        public static final int move_left=0x7f020013;
+        public static final int move_right=0x7f020014;
+        public static final int move_up=0x7f020015;
+        public static final int player=0x7f020016;
+        public static final int println_block=0x7f020017;
+        public static final int right_touching=0x7f020018;
+        public static final int rotate_90_left=0x7f020019;
+        public static final int rotate_90_right=0x7f02001a;
+        public static final int run_button=0x7f02001b;
+        public static final int shoot=0x7f02001c;
+        public static final int start=0x7f02001d;
+        public static final int title_background=0x7f02001e;
+        public static final int tutorial_level_select=0x7f02001f;
+        public static final int virus=0x7f020020;
     }
     public static final class id {
         public static final int back_touching=0x7f08000d;
@@ -90,9 +92,22 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int back_touching=0x7f05000b;
         public static final int command_label=0x7f050001;
         public static final int conditional_label=0x7f050003;
+        public static final int enemies_dead=0x7f050011;
+        public static final int front_touching=0x7f05000a;
+        public static final int left_touching=0x7f05000c;
         public static final int menu_settings=0x7f050002;
+        public static final int move_down=0x7f050008;
+        public static final int move_foreward=0x7f050005;
+        public static final int move_left=0x7f050009;
+        public static final int move_right=0x7f050006;
+        public static final int move_up=0x7f050007;
+        public static final int right_touching=0x7f05000d;
+        public static final int rotate_left=0x7f05000f;
+        public static final int rotate_right=0x7f05000e;
+        public static final int shoot=0x7f050010;
         public static final int welcome_string=0x7f050004;
     }
     public static final class style {

@@ -94,7 +94,6 @@ public class FlowChartBackgroundView extends View {
 			blocks.get(i).draw(canvas);
 			blocks.get(i).drawLines(canvas);
 		}
-		canvas.drawLine(100, 0, 100, height, p);
 		p.setColor(Color.GREEN);
 		canvas.drawRect(rectangle, p);
 	}

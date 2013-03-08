@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -48,16 +49,16 @@ public class FlowChartActivity extends Activity {
 		BgView.setInvisibitmap(R.drawable.println_block, this.getResources());
 		BgView.setDrawTransparentBitmap(true);
 		
-		ImageView shoot = (ImageView) findViewById(R.id.shoot);
-		ImageView deadEnemies = (ImageView) findViewById(R.id.enemies_dead);
-		ImageView frontTouching = (ImageView) findViewById(R.id.front_touching);
-		ImageView moveForeward = (ImageView) findViewById(R.id.move_foreward);
-		ImageView rotateRightButton = (ImageView) findViewById(R.id.rotate_right);
-		ImageView rotateLeftButton = (ImageView) findViewById(R.id.rotate_left);
-		ImageView moveRight = (ImageView) findViewById(R.id.move_right);
-		ImageView moveLeft = (ImageView) findViewById(R.id.move_left);
-		ImageView moveUp = (ImageView) findViewById(R.id.move_up);
-		ImageView moveDown = (ImageView) findViewById(R.id.move_down);
+		Button shoot = (Button) findViewById(R.id.shoot);
+		Button deadEnemies = (Button) findViewById(R.id.enemies_dead);
+		Button frontTouching = (Button) findViewById(R.id.front_touching);
+		Button moveForeward = (Button) findViewById(R.id.move_foreward);
+		Button rotateRightButton = (Button) findViewById(R.id.rotate_right);
+		Button rotateLeftButton = (Button) findViewById(R.id.rotate_left);
+		Button moveRight = (Button) findViewById(R.id.move_right);
+		Button moveLeft = (Button) findViewById(R.id.move_left);
+		Button moveUp = (Button) findViewById(R.id.move_up);
+		Button moveDown = (Button) findViewById(R.id.move_down);
 		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
 		ImageView runButton = (ImageView) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);

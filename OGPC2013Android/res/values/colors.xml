@@ -4,5 +4,6 @@
     <color name="transparent">#00000000</color>
     <color name="light_grey">#7F7F7F</color>
     <color name="line_color">#000000</color>
+    <color name="blue">#0000FF</color>
     
 </resources>

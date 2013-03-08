@@ -6,5 +6,18 @@
     <string name="menu_settings">Settings</string>
     <string name="conditional_label">Conditional\nBlocks</string>
     <string name="welcome_string">Welcome to the School of Technological Medicine!</string>
-
+    <string name="move_foreward">Move Foreward</string>
+    <string name="move_right">Move Right</string>
+    <string name="move_up">Move Up</string>
+    <string name="move_down">Move Down</string>
+    <string name="move_left">Move Left</string>
+    <string name="front_touching">Front Touching</string>
+    <string name="back_touching">Back Touching</string>
+    <string name="left_touching">Left Touching</string>
+    <string name="right_touching">Right Touching</string>
+    <string name="rotate_right">Rotate Right</string>
+    <string name="rotate_left">Rotate Left</string>
+    <string name="shoot">Shoot</string>
+	<string name="enemies_dead">Enemies Dead</string>
+    
 </resources>
