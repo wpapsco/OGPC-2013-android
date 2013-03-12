@@ -50,7 +50,6 @@
                 android:id="@+id/move_right"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
                 android:text="@string/move_right" />
             
             <View
@@ -62,7 +61,7 @@
                 android:id="@+id/move_left"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/move_left" />
             
             <View
@@ -74,7 +73,7 @@
                 android:id="@+id/move_up"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/move_up" />
             
             <View
@@ -86,7 +85,7 @@
                 android:id="@+id/move_down"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/move_down" />
             
             <View
@@ -98,7 +97,7 @@
                 android:id="@+id/rotate_right"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/rotate_right" />
             
            <View
@@ -110,7 +109,7 @@
                 android:id="@+id/rotate_left"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/rotate_left" />
             
             <View
@@ -122,7 +121,7 @@
                 android:id="@+id/shoot"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/shoot" />
             
             <View
@@ -147,7 +146,7 @@
                 android:id="@+id/enemies_dead"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/enemies_dead" />
             
             <View
@@ -159,7 +158,7 @@
                 android:id="@+id/front_touching"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/front_touching" />
             
             <View
@@ -171,7 +170,7 @@
                 android:id="@+id/back_touching"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/back_touching" />
             
             <View
@@ -183,7 +182,7 @@
                 android:id="@+id/right_touching"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/right_touching" />
             
             <View
@@ -195,7 +194,7 @@
                 android:id="@+id/left_touching"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/example"
+                
                 android:text="@string/left_touching" />
             
         </LinearLayout>
