@@ -1,5 +1,6 @@
 package com.twentyEuros.ogpc2013android;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.drawable.shapes.Shape;
+import android.media.MediaPlayer;
 
 public class Bullet {
 	
@@ -23,9 +25,11 @@ public class Bullet {
 	private boolean isFinishedExploding = false;
 	private float explosionRadius;
 	private Circle explosionCircle;
+	private MediaPlayer m;
 	private int totalDelta = 0;
 	
-	public Bullet(PointF startPoint, PointF endPoint, Bitmap b, float explosionRadius) {
+	public Bullet(PointF startPoint, PointF endPoint, Bitmap b, float explosionRadius, Context c) {
+		m = MediaPlayer.create(c, R.raw.explosion);
 		this.startPoint = startPoint;
 		this.explosionRadius = explosionRadius;
 		this.endPoint = endPoint;
@@ -56,6 +60,7 @@ public class Bullet {
 	
 	public void markDeleted() {
 		isMarkedForDeletion = true;
+		m.start();
 	}
 	
 	public boolean isMarkedForDeletion() {

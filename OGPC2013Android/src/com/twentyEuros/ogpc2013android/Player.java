@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.twentyEuros.ogpc2013android.R;
 import com.twentyEuros.ogpc2013android.R.drawable;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -163,9 +164,9 @@ public class Player {
 	public boolean isColliding() {
 		return isColliding;
 	}
-	public void fire() {
+	public void fire(Context c) {
 		if (fireRecharge >= 1000) {
-			bullets.add(new Bullet(new PointF(loc.x + (25 / 2), loc.y + (25 / 2)), new PointF(getForewardPosition(200).x + (25 / 2), getForewardPosition(200).y + (25 / 2)), bulletBitmap, 100.f));
+			bullets.add(new Bullet(new PointF(loc.x + (25 / 2), loc.y + (25 / 2)), new PointF(getForewardPosition(200).x + (25 / 2), getForewardPosition(200).y + (25 / 2)), bulletBitmap, 100.f, c));
 			fireRecharge = 0;
 		}
 	}

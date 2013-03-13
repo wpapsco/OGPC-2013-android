@@ -65,6 +65,7 @@ public class RunActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		m = MediaPlayer.create(this, R.raw.gameplay);
+		m.setLooping(true);
 		v = new RunView(this);
 		setContentView(v);
 		playerImage = BitmapFactory.decodeResource(getResources(), R.drawable.player);
@@ -136,10 +137,12 @@ public class RunActivity extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
-		if (hasFocus && DataSingleton.hasBlocks) {
+		if (hasFocus) {
 			if(!m.isPlaying()) {
 				  m.start();
 			}
+		}
+		if (hasFocus && DataSingleton.hasBlocks) {
 			ArrayList<Block> blocks = DataSingleton.getBlocks();
 			if (blocks.size() > 0) {
 				runnable = new RunRunnable(blocks, this, v);
@@ -152,7 +155,9 @@ public class RunActivity extends Activity {
 			player.setLoc(new PointF(maps.get(level).getPlayerStartLoc().x, maps.get(level).getPlayerStartLoc().y));
 		}
 		if (!hasFocus) {
-			m.pause();
+			if (m.isPlaying()) {
+				m.pause();
+			}
 			Log.e("leaving", "leaving");
 			reset();
 		}

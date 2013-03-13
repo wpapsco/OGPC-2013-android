@@ -119,7 +119,6 @@ public class LevelSelectActivity extends Activity {
 		});
 		
 		m = MediaPlayer.create(this, R.raw.gameplay);
-		m.start();
 	}
 	
 	public void enterLevel(int level) {
@@ -152,7 +151,7 @@ public class LevelSelectActivity extends Activity {
 		    	  images.get(i).setVisibility(View.VISIBLE);
 		      }
 	   } else {
-		   m.pause();
+//		   m.pause();
 	   }
 	}
 	

@@ -46,6 +46,7 @@ public class FlowChartActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		m = MediaPlayer.create(this, R.raw.menu);
+		m.setLooping(true);
 		blocks = new ArrayList<Block>();
 		Intent i = getIntent();
 		level = i.getIntExtra("level", -1);
@@ -354,7 +355,9 @@ public class FlowChartActivity extends Activity {
 				  m.start();
 			  }
 		} else {
-			m.pause();
+			if (m.isPlaying()) {
+				m.pause();
+			}
 		}
 	}
 	

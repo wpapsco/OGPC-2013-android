@@ -10,6 +10,7 @@ import android.graphics.PointF;
 public class FireBlock extends CommandBlock {
 
 	Player p;
+	Context runCo;
 	
 	public FireBlock(PointF loc, Context context, Resources res, int id) {
 		super(loc, context, res, R.drawable.shoot, id);
@@ -19,13 +20,14 @@ public class FireBlock extends CommandBlock {
 	@Override
 	public void command() {
 		// TODO Auto-generated method stub
-		p.fire();
+		p.fire(runCo);
 	}
 
 	@Override
 	public void init(Context context) {
 		// TODO Auto-generated method stub
 		p = ((RunActivity)context).getPlayer();
+		runCo = context;
 	}
 	
 }
