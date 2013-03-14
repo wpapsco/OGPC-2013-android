@@ -11,6 +11,7 @@ import com.twentyEuros.ogpc2013android.R.raw;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
@@ -45,6 +46,11 @@ public class LevelSelectActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+		int level = prefs.getInt("level", 0);
+		Log.e("loading", "level " + level);
+		DataSingleton.setLevel(level);
 		
 		world = WORLD_TUTORIAL;
 		DisplayMetrics displaymetrics = new DisplayMetrics();
@@ -96,7 +102,6 @@ public class LevelSelectActivity extends Activity {
 		params.leftMargin = Math.round(((400f - 15f)/800f) * width); //Your X coordinate
 		params.topMargin = Math.round(((140f - 30f)/600f) * height); //Your Y coordinate
 		images.get(3).setLayoutParams(params);
-		Audio a = new Audio();
 		
 		images.get(0).setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -122,6 +127,15 @@ public class LevelSelectActivity extends Activity {
 		m = MediaPlayer.create(this, R.raw.gameplay);
 	}
 	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		int level = prefs.getInt("level", 0);
+		DataSingleton.setLevel(level);
+	}
+	
 	public void enterLevel(int level) {
 		Intent intent = new Intent(this, FlowChartActivity.class);
 		intent.putExtra("level", level);
@@ -135,7 +149,7 @@ public class LevelSelectActivity extends Activity {
 			  for (int i = 0; i < frameAnimations.size(); i++) {
 		    	  frameAnimations.get(i).start();
 		      }
-		      if (DataSingleton.currentLevel > 3) {
+		      if (DataSingleton.getLevel() > 3) {
 		    	  //change world
 		    	  world = WORLD_SPINE;
 		    	  //change locations for level icons
@@ -148,7 +162,7 @@ public class LevelSelectActivity extends Activity {
 		      for (int i = 0; i < images.size(); i++) {
 		    	  images.get(i).setVisibility(View.INVISIBLE);
 		      }
-		      for (int i = 0; i < DataSingleton.currentLevel + 1 - world; i++) {
+		      for (int i = 0; i < DataSingleton.getLevel() + 1 - world; i++) {
 		    	  images.get(i).setVisibility(View.VISIBLE);
 		      }
 	   } else {
@@ -162,10 +176,12 @@ public class LevelSelectActivity extends Activity {
 		return super.onTouchEvent(event);
 	}
 	
+	
+	
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
 		SharedPreferences.Editor edit = prefs.edit();
 		edit.putInt("level", DataSingleton.getLevel());
 		edit.commit();

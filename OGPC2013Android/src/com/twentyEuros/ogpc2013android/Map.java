@@ -26,8 +26,9 @@ public class Map {
 	private boolean isCompleted;
 	private boolean hasImage;
 	private boolean completeRan = false;
+	private int level;
 	
-	Map(PointF playerStartLoc) {
+	Map(PointF playerStartLoc, int level) {
 		obstacles = new ArrayList<Obstacle>();
 		events = new ArrayList<Event>();
 		enemies = new ArrayList<Enemy>();
@@ -38,9 +39,11 @@ public class Map {
 		isCompleted = false;
 		objectiveText = "";
 		hasImage = false;
+		this.level = level;
 	}
 	
-	Map(PointF playerStartLoc, int resId, Resources r) {
+	Map(PointF playerStartLoc, int resId, Resources r, int level) {
+		this.level = level;
 		obstacles = new ArrayList<Obstacle>();
 		events = new ArrayList<Event>();
 		enemies = new ArrayList<Enemy>();
@@ -59,6 +62,8 @@ public class Map {
 	public void onDone() {
 		objectiveText = objectiveText + " Done!~";
 	}
+	
+	public int getLevel() {return level;}
 	
 	public boolean isColliding(RectF r) {
 		boolean retVal = false;
@@ -179,8 +184,7 @@ public class Map {
 		if (!isCompleted) {objectiveText = objectiveText + " - Done!";}
 		isCompleted = true;
 		Log.e("map", "done");
-		DataSingleton.currentLevel++;
-		for (int i = 0; i < DataSingleton.currentLevel; i++) {
+		for (int i = 0; i <= level + 1; i++) {
 			DataSingleton.completedLevels[i] = true;
 		}
 	}

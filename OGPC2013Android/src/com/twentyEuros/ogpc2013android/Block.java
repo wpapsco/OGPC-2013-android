@@ -41,9 +41,9 @@ public abstract class Block {
 	public static final int CONDITIONAL_BLOCK = 1;
 	
 	public Block(PointF loc, Context context, Resources res, int resId, int id) {
-		this.loc = new PointF(loc.x - 50, loc.y - 25);
 		selectButton = new ImageView(context);
 		setImage(resId, res);
+		this.loc = new PointF(loc.x - Math.round((image.getWidth() / 2f)), loc.y - Math.round((image.getHeight() / 2f)));
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
 		params.leftMargin = Math.round(this.loc.x); //Your X coordinate
 		params.topMargin = Math.round(this.loc.y); //Your Y coordinate

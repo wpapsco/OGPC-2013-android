@@ -32,19 +32,19 @@ public class MainActivity extends Activity {
 		ArrayList<Map> maps = new ArrayList<Map>();
 		
 		//tutorial levels
-		Map map = new Map(new PointF(375, 350));
+		Map map = new Map(new PointF(375, 350), 0);
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(375, 200)));
 		map.addEvent(new EnemiesKilledEvent(false));
 		map.setObjectiveText("Medicate the enemy!");
 		maps.add(map);
 		
-		map = new Map(new PointF(300, 350));
+		map = new Map(new PointF(300, 350), 1);
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(450, 200)));
 		map.addEvent(new EnemiesKilledEvent(false));
 		map.setObjectiveText("Can you get this one?");
 		maps.add(map);
 		
-		map = new Map(new PointF(400, 500));
+		map = new Map(new PointF(400, 500), 2);
 		map.addEvent(new LocationalEvent(new RectF(0, 0, 100, 100), false));
 		map.setObjectiveText("How about getting around this corner?");
 		map.addObstacle(new Obstacle(new RectF(0, -10, 800, 10)));
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
 		map.addObstacle(new Obstacle(new RectF(450, 0, 350 + 450, 600)));
 		maps.add(map);
 		
-		map = new Map(new PointF(400, 500));
+		map = new Map(new PointF(400, 500), 3);
 		map.addEvent(new EnemiesKilledEvent(false));
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(25, 25)));
 		map.setObjectiveText("Now put it all together!");
@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
 		maps.add(map);
 		
 		//spine levels
-		map = new Map(new PointF(45, 45), R.drawable.level_spine1, getResources());
+		map = new Map(new PointF(45, 45), R.drawable.level_spine1, getResources(), 4);
 		map.addEvent(new EnemiesKilledEvent(false));
 		map.addEvent(new LocationalEvent(new RectF(420, 500, 360, 80), false));
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(650, 45)));
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 		
 		//Alan, please add spine level 2
 		//sure thing, boss! Spine level 2:
-		map = new Map(new PointF(105, 530), R.drawable.level_spine2, getResources());
+		map = new Map(new PointF(105, 530), R.drawable.level_spine2, getResources(), 5);
 		map.addEvent(new LocationalEvent(new RectF(640, 160, 40, 140), false));
 		map.setObjectiveText("Spine - Level two");
 		map.addObstacle(new Obstacle(new RectF(0, 0, 800, 20)));
@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
 		map.addObstacle(new Obstacle(new RectF(180, 320, 20, 260)));
 		maps.add(map);
 		
-		map = new Map(new PointF(50, 145), R.drawable.level_spine3, getResources());
+		map = new Map(new PointF(50, 145), R.drawable.level_spine3, getResources(), 6);
 		map.addEvent(new EnemiesKilledEvent(false));
 		map.addEvent(new LocationalEvent(new RectF(620, 150, 160, 100), false));
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(400, 290)));
@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 		maps.add(map);
 		
 		//brain levels
-		map = new Map(new PointF(300, 145), R.drawable.level_brain1, getResources());
+		map = new Map(new PointF(300, 145), R.drawable.level_brain1, getResources(), 7);
 		map.addEvent(new EnemiesKilledEvent(false));
 		map.addEvent(new LocationalEvent(new RectF(310, 290, 293, 100), false));
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(475, 315)));
@@ -134,9 +134,6 @@ public class MainActivity extends Activity {
 		maps.add(map);
 		
 		DataSingleton.setMaps(maps);
-		SharedPreferences prefs = getSharedPreferences("prefs", 0);
-		int level = prefs.getInt("level", 0);
-		DataSingleton.setLevel(level);
 		setContentView(R.layout.activity_main);
 	}
 

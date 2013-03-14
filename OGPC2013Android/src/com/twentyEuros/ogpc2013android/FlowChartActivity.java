@@ -11,6 +11,7 @@ import com.twentyEuros.ogpc2013android.R.raw;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 import android.media.MediaPlayer;
@@ -59,6 +60,8 @@ public class FlowChartActivity extends Activity {
 		BgView = (FlowChartBackgroundView) findViewById(R.id.bg_view);
 		BgView.setInvisibitmap(R.drawable.println_block, this.getResources());
 		BgView.setDrawTransparentBitmap(true);
+		Bitmap testBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.button_backgroundfinal);
+		BgView.setSelectRectangleProperties(testBitmap.getWidth(), testBitmap.getHeight());
 		
 		Button shoot = (Button) findViewById(R.id.shoot);
 		Button deadEnemies = (Button) findViewById(R.id.enemies_dead);

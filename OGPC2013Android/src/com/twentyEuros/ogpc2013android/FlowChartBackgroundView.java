@@ -35,6 +35,8 @@ public class FlowChartBackgroundView extends View {
 	private int selectedBlockSubType;
 	private int selectedBlockId;
 	private RectF rectangle;
+	private int bWidth = 0;
+	private int bHeight = 0;
 	Paint p;
 	
 	public FlowChartBackgroundView(Context context) {
@@ -82,6 +84,11 @@ public class FlowChartBackgroundView extends View {
 		selectedBlockType = -1;
 		selectedBlockSubType = -1;
 		rectangle = new RectF(-100, -100, -50, -50);
+	}
+	
+	public void setSelectRectangleProperties(int bitmapWidth, int bitmapHeight) {
+		bWidth = bitmapWidth;
+		bHeight = bitmapHeight;
 	}
 	
 	@Override
@@ -139,7 +146,7 @@ public class FlowChartBackgroundView extends View {
 		}
 		rectangle.left = loc.x - borderWidth;
 		rectangle.top = loc.y - borderWidth;
-		rectangle.right = loc.x + 100 + borderWidth;
-		rectangle.bottom = loc.y + 50 + borderWidth;
+		rectangle.right = loc.x + bWidth + borderWidth;
+		rectangle.bottom = loc.y + bHeight + borderWidth;
 	}
 }

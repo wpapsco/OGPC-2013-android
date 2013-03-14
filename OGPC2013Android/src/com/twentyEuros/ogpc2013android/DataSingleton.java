@@ -21,7 +21,6 @@ public class DataSingleton {
 		false,
 		false
 	};
-	public File file;
 	
 	public DataSingleton() {
 		// TODO Auto-generated constructor stub
@@ -44,7 +43,9 @@ public class DataSingleton {
 	public static void setLevel(int level) {
 		for (int i = 0; i <= level; i++) {
 			completedLevels[i] = true;
+			maps.get(i).Complete();
 		}
+		currentLevel = level;
 	}
 	
 	public static ArrayList<Map> getMaps() {
