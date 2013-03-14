@@ -1,5 +1,6 @@
 package com.twentyEuros.ogpc2013android;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class DataSingleton {
@@ -20,6 +21,7 @@ public class DataSingleton {
 		false,
 		false
 	};
+	public File file;
 	
 	public DataSingleton() {
 		// TODO Auto-generated constructor stub
@@ -27,6 +29,22 @@ public class DataSingleton {
 	
 	public static ArrayList<Block> getBlocks() {
 		return blocks;
+	}
+	
+	public static int getLevel() {
+		int ret = 0;
+		for (int i = 0; i < completedLevels.length; i++) {
+			if (completedLevels[i]) {
+				ret = i;
+			}
+		}
+		return ret;
+	}
+	
+	public static void setLevel(int level) {
+		for (int i = 0; i <= level; i++) {
+			completedLevels[i] = true;
+		}
 	}
 	
 	public static ArrayList<Map> getMaps() {

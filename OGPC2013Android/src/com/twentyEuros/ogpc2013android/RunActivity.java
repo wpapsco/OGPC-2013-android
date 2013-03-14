@@ -33,6 +33,7 @@ import com.twentyEuros.ogpc2013android.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -161,6 +162,16 @@ public class RunActivity extends Activity {
 			Log.e("leaving", "leaving");
 			reset();
 		}
+	}
+	
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		SharedPreferences.Editor edit = prefs.edit();
+		edit.putInt("level", DataSingleton.getLevel());
+		edit.commit();
+		Log.e("onStop", "Stopping");
 	}
 }
 

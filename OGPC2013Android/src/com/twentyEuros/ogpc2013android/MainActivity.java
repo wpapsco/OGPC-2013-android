@@ -1,6 +1,8 @@
 package com.twentyEuros.ogpc2013android;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Set;
 
 import com.twentyEuros.ogpc2013android.R;
 import com.twentyEuros.ogpc2013android.R.drawable;
@@ -10,6 +12,8 @@ import com.twentyEuros.ogpc2013android.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.view.Menu;
@@ -130,6 +134,9 @@ public class MainActivity extends Activity {
 		maps.add(map);
 		
 		DataSingleton.setMaps(maps);
+		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		int level = prefs.getInt("level", 0);
+		DataSingleton.setLevel(level);
 		setContentView(R.layout.activity_main);
 	}
 
@@ -144,5 +151,14 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, LevelSelectActivity.class);
 		startActivity(intent);
 	}
-
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		SharedPreferences.Editor edit = prefs.edit();
+		edit.putInt("level", DataSingleton.getLevel());
+		edit.commit();
+	}
 }

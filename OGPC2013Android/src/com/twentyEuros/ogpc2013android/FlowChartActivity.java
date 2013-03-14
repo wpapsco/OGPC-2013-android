@@ -10,6 +10,7 @@ import com.twentyEuros.ogpc2013android.R.raw;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 import android.media.MediaPlayer;
@@ -371,5 +372,14 @@ public class FlowChartActivity extends Activity {
 	public int getSelectedBlockID() {
 		// TODO Auto-generated method stub
 		return selectedBlockId;
+	}
+	
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		SharedPreferences.Editor edit = prefs.edit();
+		edit.putInt("level", DataSingleton.getLevel());
+		edit.commit();
 	}
 }

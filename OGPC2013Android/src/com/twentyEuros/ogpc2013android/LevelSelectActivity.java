@@ -12,6 +12,7 @@ import com.twentyEuros.ogpc2013android.R.raw;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.drawable.AnimationDrawable;
@@ -159,6 +160,15 @@ public class LevelSelectActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		return super.onTouchEvent(event);
+	}
+	
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		SharedPreferences.Editor edit = prefs.edit();
+		edit.putInt("level", DataSingleton.getLevel());
+		edit.commit();
 	}
 
 }
