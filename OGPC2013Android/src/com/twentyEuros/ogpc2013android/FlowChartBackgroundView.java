@@ -84,6 +84,15 @@ public class FlowChartBackgroundView extends View {
 		selectedBlockType = -1;
 		selectedBlockSubType = -1;
 		rectangle = new RectF(-100, -100, -50, -50);
+		setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				addBlock(selectedBlockType, selectedBlockSubType, new PointF(event.getX(), event.getY()));
+				((FlowChartActivity) getContext()).setSelectedBlockID(-1);
+				((FlowChartActivity) getContext()).setSelectedBlockType(-1, -1);
+			}
+		});
 	}
 	
 	public void setSelectRectangleProperties(int bitmapWidth, int bitmapHeight) {

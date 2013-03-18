@@ -183,7 +183,7 @@ public class LevelSelectActivity extends Activity {
 		super.onStop();
 		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
 		SharedPreferences.Editor edit = prefs.edit();
-		edit.putInt("level", DataSingleton.getLevel());
+		edit.putInt("level", DataSingleton.getLevel() - 1);
 		edit.commit();
 	}
 

@@ -380,9 +380,9 @@ public class FlowChartActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		SharedPreferences prefs = getSharedPreferences("prefs", 0);
-		SharedPreferences.Editor edit = prefs.edit();
-		edit.putInt("level", DataSingleton.getLevel());
-		edit.commit();
+//		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+//		SharedPreferences.Editor edit = prefs.edit();
+//		edit.putInt("level", DataSingleton.getLevel());
+//		edit.commit();
 	}
 }

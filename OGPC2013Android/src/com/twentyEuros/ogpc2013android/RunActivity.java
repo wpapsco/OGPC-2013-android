@@ -167,11 +167,11 @@ public class RunActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
-		SharedPreferences.Editor edit = prefs.edit();
-		edit.putInt("level", DataSingleton.getLevel());
-		edit.commit();
-		Log.e("onStop", "" + prefs.getInt("level", 0));
+//		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+//		SharedPreferences.Editor edit = prefs.edit();
+//		edit.putInt("level", DataSingleton.getLevel());
+//		edit.commit();
+//		Log.e("onStop", "" + prefs.getInt("level", 0));
 	}
 }
 
