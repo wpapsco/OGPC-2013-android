@@ -84,15 +84,6 @@ public class FlowChartBackgroundView extends View {
 		selectedBlockType = -1;
 		selectedBlockSubType = -1;
 		rectangle = new RectF(-100, -100, -50, -50);
-		setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				addBlock(selectedBlockType, selectedBlockSubType, new PointF(event.getX(), event.getY()));
-				((FlowChartActivity) getContext()).setSelectedBlockID(-1);
-				((FlowChartActivity) getContext()).setSelectedBlockType(-1, -1);
-			}
-		});
 	}
 	
 	public void setSelectRectangleProperties(int bitmapWidth, int bitmapHeight) {
@@ -115,30 +106,18 @@ public class FlowChartBackgroundView extends View {
 	}
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		// TODO Auto-generated method stub
-//		switch(selectedBlockType) {
-//		case Block.COMMAND_BLOCK:
-//			switch(selectedBlockSubType) {
-//			case CommandBlock.PRINTLN_BLOCK:
-//				addBlock(R.drawable.println_block, event.getX(), event.getY());
-//				invalidate();
-//			case CommandBlock.ROTATE_90_RIGHT_BLOCK:
-//				addBlock(new);
-//				invalidate();
-//			}
-//		case Block.CONDITIONAL_BLOCK:
-//			switch(selectedBlockSubType) {
-//			
-//			}
-//		}
-		addBlock(selectedBlockType, selectedBlockSubType, new PointF(event.getX(), event.getY()));
-		((FlowChartActivity) getContext()).setSelectedBlockID(-1);
-		((FlowChartActivity) getContext()).setSelectedBlockType(-1, -1);
-		return super.onTouchEvent(event);
-			
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
 	}
 
+	public void doTouch(float x, float y) {
+		addBlock(selectedBlockType, selectedBlockSubType, new PointF(x, y));
+		((FlowChartActivity) getContext()).setSelectedBlockID(-1);
+		((FlowChartActivity) getContext()).setSelectedBlockType(-1, -1);
+	}
+	
 	private void addBlock(int selectedBlockType, int selectedBlockSubType, PointF loc) {
 		((FlowChartActivity) getContext()).addBlock(selectedBlockType, selectedBlockSubType, loc);
 	}

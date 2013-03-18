@@ -22,9 +22,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 public class FlowChartActivity extends Activity {
 
@@ -37,6 +39,7 @@ public class FlowChartActivity extends Activity {
 	private ImageView selectedBlockView;
 	private int selectedBlockId;
 	private RelativeLayout layout;
+	private RelativeLayout layout2;
 	private MediaPlayer m;
 	
 	public FlowChartActivity() {
@@ -55,14 +58,22 @@ public class FlowChartActivity extends Activity {
 		if (level < 0) {
 			Log.e("FlowChartActivity", "Level returning default value, or has been calculated wrong");
 		}
-		layout = (RelativeLayout) getLayoutInflater().inflate(R.layout.activity_flowchart, null);
-		this.setContentView(layout);
+		layout2 = (RelativeLayout) getLayoutInflater().inflate(R.layout.activity_flowchart, null);
+		this.setContentView(layout2);
+		layout = (RelativeLayout) findViewById(R.id.relativeLayout);
+		layout.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) v.getContext()).BgView.doTouch(event.getX(), event.getY());
+				return false;
+			}
+		});
 		BgView = (FlowChartBackgroundView) findViewById(R.id.bg_view);
 		BgView.setInvisibitmap(R.drawable.println_block, this.getResources());
 		BgView.setDrawTransparentBitmap(true);
 		Bitmap testBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.button_backgroundfinal);
 		BgView.setSelectRectangleProperties(testBitmap.getWidth(), testBitmap.getHeight());
-		
 		Button shoot = (Button) findViewById(R.id.shoot);
 		Button deadEnemies = (Button) findViewById(R.id.enemies_dead);
 		Button frontTouching = (Button) findViewById(R.id.front_touching);
@@ -190,6 +201,8 @@ public class FlowChartActivity extends Activity {
 	
 	protected void setSelectedBlockType(int blockType, int secondaryBlockType) {
 		// TODO Auto-generated method stub
+		selectedBlockType = blockType;
+		selectedBlockSubType = secondaryBlockType;
 		BgView.setSelectedBlockType(blockType, secondaryBlockType);
 		if (blockType == -1 || secondaryBlockType == -1) {
 			selectedBlockView.setVisibility(View.INVISIBLE);

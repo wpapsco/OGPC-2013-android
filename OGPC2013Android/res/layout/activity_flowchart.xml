@@ -5,21 +5,25 @@
     android:layout_height="match_parent"
     android:background="@color/light_grey" >
 
-    <com.twentyEuros.ogpc2013android.FlowChartBackgroundView
-    android:id="@+id/bg_view"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-    
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scrollView1"
-        android:layout_width="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
-        
-        <View
-            android:layout_width="1000dp"
-            android:layout_height="1000dp" />
-        
+       
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/relativeLayout"
+		    android:layout_width="fill_parent"
+		    android:layout_height="5000dp">
+		    
+            <com.twentyEuros.ogpc2013android.FlowChartBackgroundView
+			    android:id="@+id/bg_view"
+			    android:layout_width="fill_parent"
+			    android:layout_height="5000dp" />
+	        
+        </RelativeLayout>
+    
     </ScrollView>
         
 	    
