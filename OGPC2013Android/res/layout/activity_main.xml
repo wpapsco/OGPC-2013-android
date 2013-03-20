@@ -9,19 +9,35 @@
     <ImageView
 	    android:id="@+id/imageView1"
 	    android:layout_width="wrap_content"
-	    android:layout_height="0dp"
+	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
 	    android:layout_weight="1"
 	    android:src="@drawable/title_background" />
+    
+	<LinearLayout 
+	    android:gravity="center"
+   		android:orientation="horizontal"
+   		android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity="center"
+    	android:layout_weight="5" >
+    	
+	    <ImageButton
+	        android:id="@+id/imageButton1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:background="@color/transparent"
+	        android:onClick="onImageButtonClicked"
+	        android:src="@drawable/start" />
 
-    <ImageButton
-	    android:id="@+id/imageButton1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="0dp"
-	    android:layout_gravity="center"
-	    android:layout_weight="1"
-	    android:src="@drawable/start"
-	    android:background="@color/transparent"
-	    android:onClick="onImageButtonClicked" />
+	    <Button
+	        android:id="@+id/tutorial"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="Placeholder Tutorial Button" />
+	    
+	</LinearLayout>
 
 </LinearLayout>

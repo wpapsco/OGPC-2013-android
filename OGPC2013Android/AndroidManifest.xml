@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.twentyEuros.ogpc2013android"
-    android:versionCode="3"
-    android:versionName="2.0" >
+    android:versionCode="5"
+    android:versionName="3.5" >
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -36,6 +36,11 @@
         <activity
             android:screenOrientation="landscape"
             android:name="com.twentyEuros.ogpc2013android.RunActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:screenOrientation="landscape"
+            android:name="com.twentyEuros.ogpc2013android.VideoActivity"
             android:label="@string/app_name" >
         </activity>
     </application>

@@ -9,6 +9,8 @@ import com.twentyEuros.ogpc2013android.R.drawable;
 import com.twentyEuros.ogpc2013android.R.layout;
 import com.twentyEuros.ogpc2013android.R.menu;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -23,9 +25,11 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 public class MainActivity extends Activity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -134,9 +138,22 @@ public class MainActivity extends Activity {
 		maps.add(map);
 		
 		DataSingleton.setMaps(maps);
+		
 		setContentView(R.layout.activity_main);
+		
+		Button b = (Button) findViewById(R.id.tutorial);
+		b.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(arg0.getContext(), VideoActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
