@@ -56,6 +56,7 @@ public final class R {
     public static final class id {
         public static final int back_touching=0x7f09000f;
         public static final int bg_view=0x7f090002;
+        public static final int cheevo=0x7f09001c;
         public static final int delete_all=0x7f090013;
         public static final int enemies_dead=0x7f09000d;
         public static final int front_touching=0x7f09000e;
@@ -66,7 +67,7 @@ public final class R {
         public static final int imageView4=0x7f090018;
         public static final int imageView5=0x7f090019;
         public static final int left_touching=0x7f090011;
-        public static final int menu_settings=0x7f09001e;
+        public static final int menu_settings=0x7f090022;
         public static final int move_down=0x7f090009;
         public static final int move_foreward=0x7f090005;
         public static final int move_left=0x7f090007;
@@ -77,21 +78,25 @@ public final class R {
         public static final int rotate_left=0x7f09000b;
         public static final int rotate_right=0x7f09000a;
         public static final int run=0x7f090012;
-        public static final int runView1=0x7f09001c;
+        public static final int runView1=0x7f09001d;
         public static final int scrollView1=0x7f090003;
         public static final int scrollView2=0x7f090000;
         public static final int selected_image=0x7f090014;
         public static final int shoot=0x7f09000c;
+        public static final int tableRow1=0x7f09001e;
         public static final int textView1=0x7f090004;
+        public static final int textView2=0x7f090020;
         public static final int tutorial=0x7f09001b;
-        public static final int video=0x7f09001d;
+        public static final int twoLineListItem1=0x7f09001f;
+        public static final int video=0x7f090021;
     }
     public static final class layout {
         public static final int activity_flowchart=0x7f030000;
         public static final int activity_level_select=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_run=0x7f030003;
-        public static final int video_layout=0x7f030004;
+        public static final int layout_cheevos=0x7f030004;
+        public static final int video_layout=0x7f030005;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
@@ -105,6 +110,9 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f060000;
         public static final int back_touching=0x7f06000b;
+        public static final int cheevo1t=0x7f060012;
+        public static final int cheevo2t=0x7f060013;
+        public static final int cheevo3t=0x7f060014;
         public static final int command_label=0x7f060001;
         public static final int conditional_label=0x7f060003;
         public static final int enemies_dead=0x7f060011;

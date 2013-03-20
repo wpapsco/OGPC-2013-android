@@ -47,7 +47,7 @@ public class LevelSelectActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+		SharedPreferences prefs = getSharedPreferences("prefs", 0);
 		int level = prefs.getInt("level", 0);
 		DataSingleton.setLevel(level);
 		
@@ -166,7 +166,7 @@ public class LevelSelectActivity extends Activity {
 		      }
 	   } else {
 		   	Log.e("saving", "" + DataSingleton.getLevel());
-			SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+			SharedPreferences prefs = getSharedPreferences("prefs", 0);
 			SharedPreferences.Editor edit = prefs.edit();
 			edit.putInt("level", DataSingleton.getLevel() - 1);
 			edit.commit();

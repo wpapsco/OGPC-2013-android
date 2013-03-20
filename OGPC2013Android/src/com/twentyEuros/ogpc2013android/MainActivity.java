@@ -150,6 +150,16 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		Button b2 = (Button) findViewById(R.id.cheevo);
+		b.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(arg0.getContext(), CheevoActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	

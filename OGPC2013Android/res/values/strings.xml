@@ -19,5 +19,9 @@
     <string name="rotate_left">Rotate Left</string>
     <string name="shoot">Shoot</string>
 	<string name="enemies_dead">Enemies Dead</string>
+	
+	<string name="cheevo1t">From Humble Beginings</string>
+	<string name="cheevo2t">Studying Hard</string>
+	<string name="cheevo3t">Getting Bored</string>
     
 </resources>
