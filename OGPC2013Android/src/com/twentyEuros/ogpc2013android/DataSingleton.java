@@ -41,7 +41,7 @@ public class DataSingleton {
 	}
 	
 	public static void setLevel(int level) {
-		for (int i = 0; i <= level; i++) {
+		for (int i = 0; i <= level && i != 0; i++) {
 			completedLevels[i] = true;
 			maps.get(i).Complete();
 		}

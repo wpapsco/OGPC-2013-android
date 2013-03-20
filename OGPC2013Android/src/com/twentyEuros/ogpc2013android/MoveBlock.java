@@ -47,7 +47,6 @@ public class MoveBlock extends CommandBlock {
 		r.right = r.left + width;
 		r.bottom = r.top + height;
 		p.setRect(r);
-		System.out.println(commandBlockType);
 		if (!m.isColliding(r)) {
 			p.setColliding(false);
 			p.getLoc().x+=dx;

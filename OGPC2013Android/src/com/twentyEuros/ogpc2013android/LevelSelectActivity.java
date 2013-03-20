@@ -49,7 +49,6 @@ public class LevelSelectActivity extends Activity {
 		
 		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
 		int level = prefs.getInt("level", 0);
-		Log.e("loading", "level " + level);
 		DataSingleton.setLevel(level);
 		
 		world = WORLD_TUTORIAL;
@@ -131,7 +130,7 @@ public class LevelSelectActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		SharedPreferences prefs = getSharedPreferences("prefs", 0);
+		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
 		int level = prefs.getInt("level", 0);
 		DataSingleton.setLevel(level);
 	}
@@ -166,7 +165,11 @@ public class LevelSelectActivity extends Activity {
 		    	  images.get(i).setVisibility(View.VISIBLE);
 		      }
 	   } else {
-//		   m.pause();
+		   	Log.e("saving", "" + DataSingleton.getLevel());
+			SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+			SharedPreferences.Editor edit = prefs.edit();
+			edit.putInt("level", DataSingleton.getLevel() - 1);
+			edit.commit();
 	   }
 	}
 	
@@ -181,6 +184,7 @@ public class LevelSelectActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
+		Log.e("saving", "" + DataSingleton.getLevel());
 		SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
 		SharedPreferences.Editor edit = prefs.edit();
 		edit.putInt("level", DataSingleton.getLevel() - 1);

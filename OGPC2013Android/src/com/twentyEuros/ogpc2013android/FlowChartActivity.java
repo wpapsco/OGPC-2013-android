@@ -65,7 +65,9 @@ public class FlowChartActivity extends Activity {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				((FlowChartActivity) v.getContext()).BgView.doTouch(event.getX(), event.getY());
+				if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+					((FlowChartActivity) v.getContext()).BgView.doTouch(event.getX(), event.getY());
+				}
 				return false;
 			}
 		});

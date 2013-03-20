@@ -89,7 +89,7 @@ public abstract class Block {
 	}
 	
 	public PointF getCenterLoc() {
-		return new PointF(loc.x + 50, loc.y + 25);
+		return new PointF(loc.x + (image.getWidth() / 2), loc.y + (image.getHeight() / 2));
 	}
 	
 	public void setOnClickListener(OnClickListener onCLickListener) {

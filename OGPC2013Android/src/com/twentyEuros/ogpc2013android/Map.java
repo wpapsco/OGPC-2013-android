@@ -182,6 +182,10 @@ public class Map {
 
 	public void Complete() {
 		if (!isCompleted) {objectiveText = objectiveText + " - Done!";}
+		if (level == 0) {Achievement.firstLevel.achieve();}
+		if (level == 1) {Achievement.secondLevel.achieve();}
+		if (level == 2) {Achievement.thirdLevel.achieve();}
+		
 		isCompleted = true;
 		Log.e("map", "done");
 		for (int i = 0; i <= level + 1; i++) {

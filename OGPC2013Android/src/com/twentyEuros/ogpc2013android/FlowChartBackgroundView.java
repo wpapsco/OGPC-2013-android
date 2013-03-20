@@ -130,6 +130,7 @@ public class FlowChartBackgroundView extends View {
 			rectangle.top = -100;
 			rectangle.right = -50;
 			rectangle.bottom = -50;
+			invalidate();
 			return;
 		}
 		rectangle.left = loc.x - borderWidth;
