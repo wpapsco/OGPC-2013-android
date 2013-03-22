@@ -2,6 +2,7 @@ package com.twentyEuros.ogpc2013android;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -104,7 +105,7 @@ public class Map {
 		}
 	}
 	
-	public void update(Context c) {
+	public void update(Activity c) {
 		boolean doComplete = true;
 		for (int i = 0; i < events.size(); i++) {
 			events.get(i).update(c);

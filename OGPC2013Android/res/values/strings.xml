@@ -20,8 +20,15 @@
     <string name="shoot">Shoot</string>
 	<string name="enemies_dead">Enemies Dead</string>
 	
+	<string name="achievement_title">Achievements</string>
+	
+	<string name="locked_cheevo">"???"</string>
 	<string name="cheevo1t">From Humble Beginings</string>
 	<string name="cheevo2t">Studying Hard</string>
 	<string name="cheevo3t">Getting Bored</string>
+	<string name="cheevo1d">Complete the first level</string>
+	<string name="cheevo2d">Complete the second level</string>
+	<string name="cheevo3d">Complete the third level</string>
+	
     
 </resources>

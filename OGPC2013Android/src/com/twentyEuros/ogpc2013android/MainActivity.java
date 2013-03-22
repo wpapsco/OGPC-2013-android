@@ -35,6 +35,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		ArrayList<Map> maps = new ArrayList<Map>();
 		
+		Achievement.setResources(getResources());
+		
 		//tutorial levels
 		Map map = new Map(new PointF(375, 350), 0);
 		map.addEnemy(new Enemy(getResources(), R.drawable.virus, new PointF(375, 200)));
@@ -152,7 +154,7 @@ public class MainActivity extends Activity {
 		});
 		
 		Button b2 = (Button) findViewById(R.id.cheevo);
-		b.setOnClickListener(new OnClickListener() {
+		b2.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub

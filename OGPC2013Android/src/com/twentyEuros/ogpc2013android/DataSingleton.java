@@ -3,6 +3,8 @@ package com.twentyEuros.ogpc2013android;
 import java.io.File;
 import java.util.ArrayList;
 
+import android.app.Activity;
+
 public class DataSingleton {
 
 	public static int currentLevel = 0;

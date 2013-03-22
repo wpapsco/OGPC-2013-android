@@ -2,6 +2,7 @@ package com.twentyEuros.ogpc2013android;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
@@ -10,11 +11,11 @@ public class RunRunnable implements Runnable {
 	private Block currentBlock;
 	private Block startBlock;
 	ArrayList<Block> blocks;
-	Context context;
+	Activity context;
 	boolean running = true;
 	private View v;
 	
-	public RunRunnable(ArrayList<Block> blocks, Context context, View v) {
+	public RunRunnable(ArrayList<Block> blocks, Activity context, View v) {
 		this.v = v;
 		this.blocks = blocks;
 		currentBlock = blocks.get(0);
