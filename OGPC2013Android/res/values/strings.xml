@@ -19,6 +19,8 @@
     <string name="rotate_left">Rotate Left</string>
     <string name="shoot">Shoot</string>
 	<string name="enemies_dead">Enemies Dead</string>
+	<string name="delete">Delete Selected Block</string>
+	<string name="delete_all">Delete All Blocks</string>
 	
 	<string name="achievement_title">Achievements</string>
 	

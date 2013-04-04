@@ -50,6 +50,7 @@ public class FlowChartActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		selectedBlockId = -1;
 		m = MediaPlayer.create(this, R.raw.menu);
 		m.setLooping(true);
 		blocks = new ArrayList<Block>();
@@ -71,6 +72,24 @@ public class FlowChartActivity extends Activity {
 				return false;
 			}
 		});
+		findViewById(R.id.delete).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				if (selectedBlockId >= 0) {
+					blocks.get(selectedBlockId).prepareForDelete();
+						for (int i = 0; i < blocks.size(); i++) {
+							if (blocks.get(i).getID() > selectedBlockId) {
+								(blocks.get(i)).setID(blocks.get(i).getID() - 1);
+							}
+						}
+						layout.removeView(blocks.get(selectedBlockId).selectButton);
+						blocks.remove(selectedBlockId);
+						setSelectedBlockID(-1);
+						BgView.invalidate();
+					}
+				}
+		});
 		BgView = (FlowChartBackgroundView) findViewById(R.id.bg_view);
 		BgView.setInvisibitmap(R.drawable.println_block, this.getResources());
 		BgView.setDrawTransparentBitmap(true);
@@ -86,7 +105,7 @@ public class FlowChartActivity extends Activity {
 		Button moveLeft = (Button) findViewById(R.id.move_left);
 		Button moveUp = (Button) findViewById(R.id.move_up);
 		Button moveDown = (Button) findViewById(R.id.move_down);
-		ImageView deleteAllButton = (ImageView) findViewById(R.id.delete_all);
+		Button deleteAllButton = (Button) findViewById(R.id.delete_all);
 		ImageView runButton = (ImageView) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
 		selectedBlockView = (ImageView) findViewById(R.id.selected_image);

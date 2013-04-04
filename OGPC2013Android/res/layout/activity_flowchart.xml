@@ -233,13 +233,15 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/run_button" />
 
-    <ImageView
+    <Button
         android:id="@+id/delete_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/delete"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/delete_all" />
+        android:text="@string/delete_all" />
+/
 
     <ImageView
         android:id="@+id/selected_image"
@@ -248,5 +250,17 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/run"
         android:src="@drawable/rotate_90_right" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="false"
+        android:layout_below="@id/delete_all"
+        android:layout_centerInParent="false"
+        android:text="@string/delete" />
 
 </RelativeLayout>

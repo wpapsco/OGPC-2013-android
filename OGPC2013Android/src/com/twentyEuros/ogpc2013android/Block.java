@@ -87,7 +87,7 @@ public abstract class Block {
 	public int getID() {
 		return ID;
 	}
-	
+
 	public PointF getCenterLoc() {
 		return new PointF(loc.x + (image.getWidth() / 2), loc.y + (image.getHeight() / 2));
 	}
@@ -195,4 +195,46 @@ public abstract class Block {
 	public abstract Block incite();
 	
 	public abstract void init(Context context);
+	
+	public void prepareForDelete() {
+		//remove connecting lines
+		//set boolean variables for previous block and next block
+		connectingLines.clear();
+		for (int i = 0; i < previousBlocks.size(); i++) {
+			previousBlocks.get(i).hasNextBlock = false;
+			if (previousBlocks.get(i) instanceof ConditionalBlock) {
+				((ConditionalBlock) previousBlocks.get(i)).falseBlockSet = false;
+				((ConditionalBlock) previousBlocks.get(i)).falseBlock = null;
+				((ConditionalBlock) previousBlocks.get(i)).trueBlockSet = false;
+				((ConditionalBlock) previousBlocks.get(i)).trueBlock = null;
+			}
+			previousBlocks.get(i).arrowLines.clear();
+			previousBlocks.get(i).connectingLines.clear();
+		}
+		if (this instanceof CommandBlock) {
+			if (((CommandBlock) this).hasNextBlock) {
+				((CommandBlock) this).getNextBlock().getPreviousBlocks().remove(this);
+				if (((CommandBlock) this).getNextBlock().getPreviousBlocks().size() == 0) {
+					((CommandBlock) this).getNextBlock().hasPreviousBlock = false;
+				}
+			}
+		} else if (this instanceof ConditionalBlock) {
+			if (((ConditionalBlock) this).falseBlockSet) {
+				((ConditionalBlock) this).falseBlock.getPreviousBlocks().remove(this);
+				if (((ConditionalBlock) this).falseBlock.getPreviousBlocks().size() == 0) {
+					((ConditionalBlock) this).falseBlock.hasPreviousBlock = false;
+				}
+			}
+			if (((ConditionalBlock) this).falseBlockSet) {
+				((ConditionalBlock) this).trueBlock.getPreviousBlocks().remove(this);
+				if (((ConditionalBlock) this).trueBlock.getPreviousBlocks().size() == 0) {
+					((ConditionalBlock) this).trueBlock.hasPreviousBlock = false;
+				}
+			}
+		}
+	}
+
+	public void setID(int id) {
+		ID = id;
+	}
 }
