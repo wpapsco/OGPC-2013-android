@@ -9,22 +9,32 @@ import android.util.AttributeSet;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 
 public class RunView extends View {
 
 	public RunView(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
+		init();
 	}
 
 	public RunView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
+		init();
 	}
 
 	public RunView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		// TODO Auto-generated constructor stub
+		init();
+	}
+	
+	private void init() {
+//		TranslateAnimation animation = new TranslateAnimation((float) Functions.genRandomInt(0, 100), (float) Functions.genRandomInt(0, 100), (float) Functions.genRandomInt(0, 100), (float) Functions.genRandomInt(0, 100));
+//		animation.setDuration(durationMillis)
 	}
 
 	@Override

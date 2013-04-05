@@ -43,6 +43,9 @@ import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 
 public class RunActivity extends Activity {
 

@@ -23,6 +23,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,6 +43,9 @@ public class FlowChartActivity extends Activity {
 	private RelativeLayout layout;
 	private RelativeLayout layout2;
 	private MediaPlayer m;
+	private MovingCircutsView circut;
+	private MovingCircutsView circut2;
+	private MovingCircutsView circut3;
 	
 	public FlowChartActivity() {
 
@@ -61,6 +66,9 @@ public class FlowChartActivity extends Activity {
 		}
 		layout2 = (RelativeLayout) getLayoutInflater().inflate(R.layout.activity_flowchart, null);
 		this.setContentView(layout2);
+		circut = (MovingCircutsView) findViewById(R.id.circut);
+		circut2 = (MovingCircutsView) findViewById(R.id.circut2);
+		circut3 = (MovingCircutsView) findViewById(R.id.circut3);
 		layout = (RelativeLayout) findViewById(R.id.relativeLayout);
 		layout.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -392,6 +400,9 @@ public class FlowChartActivity extends Activity {
 			if(!m.isPlaying()) {
 				  m.start();
 			  }
+			circut.startAnimation(findViewById(R.id.circut_drawable));
+			circut2.startAnimation(findViewById(R.id.circut_drawable2));
+			circut3.startAnimation(findViewById(R.id.circut_drawable3));
 		} else {
 			if (m.isPlaying()) {
 				m.pause();

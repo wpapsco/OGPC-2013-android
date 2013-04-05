@@ -3,8 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_animation" >
-
+    android:background="@drawable/gradient1" >"
+    
+    <ImageView
+		android:id="@+id/circut_drawable"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:padding="3px"
+		android:src="@drawable/gradient2" />
+    
+    <ImageView
+		android:id="@+id/circut_drawable2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:padding="3px"
+		android:src="@drawable/gradient2" />
+    
+    <ImageView
+		android:id="@+id/circut_drawable3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:padding="3px"
+		android:src="@drawable/gradient2" />
+    
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView2"
@@ -25,6 +52,7 @@
                 android:id="@+id/bg_view"
                 android:layout_width="fill_parent"
                 android:layout_height="5000dp" />
+
         </RelativeLayout>
 
     </ScrollView>
@@ -241,7 +269,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="@string/delete_all" />
-/
 
     <ImageView
         android:id="@+id/selected_image"
@@ -262,5 +289,20 @@
         android:layout_below="@id/delete_all"
         android:layout_centerInParent="false"
         android:text="@string/delete" />
+    
+    <com.twentyEuros.ogpc2013android.MovingCircutsView
+		android:id="@+id/circut"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+    
+    <com.twentyEuros.ogpc2013android.MovingCircutsView
+		android:id="@+id/circut2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+    
+    <com.twentyEuros.ogpc2013android.MovingCircutsView
+		android:id="@+id/circut3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
 
 </RelativeLayout>

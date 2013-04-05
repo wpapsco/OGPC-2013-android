@@ -20,6 +20,15 @@ public abstract class Functions {
 	}
 	
 	/**
+	 * @param from minimum amount
+	 * @param to maximum amount
+	 * @return a random integer between from and to
+	 */
+	public static int genRandomInt(int from, int to) {
+		return (int) Math.round(Math.random() * (to - from) + from);
+	}
+	
+	/**
 	 * 
 	 * @param p1 the first point
 	 * @param p2 the second point
