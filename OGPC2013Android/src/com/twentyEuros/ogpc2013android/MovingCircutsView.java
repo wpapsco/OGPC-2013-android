@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
@@ -25,12 +26,17 @@ import android.widget.ImageView;
 
 public class MovingCircutsView extends View {
 
-	private final int MAX_NUM_POINTS = 5;
+	private final int MAX_NUM_POINTS = 7;
 	int width, height;
 	View radialGradient;
 	ArrayList<Animation> animations;
+	Animation fadeOut;
 	ArrayList<Point> points;
 	private boolean animating;
+//	private Point currentPoint;
+	private boolean init = false;
+//	Thread t;
+//	ThreadRunnable r;
 	
 	public MovingCircutsView(Context context) {
 		super(context);
@@ -55,15 +61,18 @@ public class MovingCircutsView extends View {
 		animations = new ArrayList<Animation>();
 		points = generatePoints();
 		invalidate();
+		fadeOut = new AlphaAnimation(1f, 0f);
+//		r = new ThreadRunnable(points.get(0), points.get(1));
+//		t = new Thread(r);
+//		t.start();
 		if (animating) {
 			animating = false;
 			startAnimation(radialGradient);
 		}
+		init = true;
 	}
 	public void startAnimation(View v) {
 		if (!animating) {
-//			v.setX(points.get(0).x);
-//			v.setY(points.get(0).y);
 			int[] loc = new int[2];
 			radialGradient = v;
 			for(int i = 0; i < points.size() - 1; i++) {
@@ -83,7 +92,7 @@ public class MovingCircutsView extends View {
 	private ArrayList<Point> generatePoints() {
 		int numPoints = Functions.genRandomInt(2, MAX_NUM_POINTS);
 		ArrayList<Point> points = new ArrayList<Point>();
-		boolean xSame = true;
+		boolean xSame = Functions.genRandomBool();
 		for (int i = 0; i < numPoints; i++) {
 			if (points.size() != 0) {
 				if (xSame) {
@@ -92,7 +101,11 @@ public class MovingCircutsView extends View {
 					points.add(new Point(Functions.genRandomInt(0, width), points.get(points.size() - 1).y));
 				}
 			} else {
-				points.add(new Point(Functions.genRandomInt(0, width), Functions.genRandomInt(0, height)));
+				if (xSame) {
+					points.add(new Point(Functions.boolToInt(Functions.genRandomBool()) * width, Functions.genRandomInt(0, height)));
+				} else {
+					points.add(new Point(Functions.genRandomInt(0, width), Functions.boolToInt(Functions.genRandomBool()) * height));
+				}
 			}
 			xSame = !xSame;
 		}
@@ -102,10 +115,6 @@ public class MovingCircutsView extends View {
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
-//		radialGradient.draw(canvas);
-//		for (int i = 0; i < points.size() - 1; i++) {
-//			canvas.drawLine(points.get(i).x, points.get(i).y, points.get(i + 1).x, points.get(i + 1).y, new Paint());
-//		}
 	}
 	private class AnimListener implements AnimationListener {
 		int pos;
@@ -117,11 +126,11 @@ public class MovingCircutsView extends View {
 		@Override
 		public void onAnimationEnd(Animation arg0) {
 			// TODO Auto-generated method stub
-			Log.e("endanim", "animdone" + pos);
 			if (pos == maxpos) {
 				init();
 			} else {
 				radialGradient.startAnimation(animations.get(pos + 1));
+//				r.changeDirection(points.get(pos + 2));
 			}
 		}
 
@@ -135,7 +144,51 @@ public class MovingCircutsView extends View {
 		public void onAnimationStart(Animation arg0) {
 			// TODO Auto-generated method stub
 			
-		}
-		
+		}	
 	}
+//	public class ThreadRunnable implements Runnable {
+//		private Point direction;
+//		private Point curPoint;
+//		//speed = .1 px/ms = 1 px/10ms
+//		public ThreadRunnable(Point startPoint, Point startDirection) {
+//			curPoint = startPoint;
+//			direction = startDirection;
+//		}
+//		@Override
+//		public void run() {
+//			// TODO Auto-generated method stub
+//			//move 2 px
+//			if (direction.x == curPoint.x) {
+//				if (direction.y - curPoint.y > 0) {
+//					curPoint.y+=2;
+//				}
+//				if (direction.y - curPoint.y <= 0) {
+//					curPoint.y-=2;
+//				}
+//			}
+//			if (direction.y == curPoint.y) {
+//				if (direction.x - curPoint.x > 0) {
+//					curPoint.x+=2;
+//				}
+//				if (direction.x - curPoint.x <= 0) {
+//					curPoint.x-=2;
+//				}
+//			}
+//			invalidate();
+//			//wait 20 ms
+//			try {
+//				Thread.sleep(20);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		public void changeDirection(Point p) {
+//			curPoint = direction;
+//			direction = p;
+//		}
+//		public Point getCurrentPoint() {
+//			return curPoint;
+//		}
+//	}
 }

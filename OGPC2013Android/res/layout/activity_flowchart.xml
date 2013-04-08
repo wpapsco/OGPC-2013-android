@@ -253,13 +253,14 @@
         android:background="@color/blue"
         android:layout_toRightOf="@id/scrollView1" />
     
-    <ImageView
+    <Button
         android:id="@+id/run"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/run_button" />
+        android:text="@string/run_noblocks"
+        android:layout_alignLeft="@+id/delete" />
 
     <Button
         android:id="@+id/delete_all"

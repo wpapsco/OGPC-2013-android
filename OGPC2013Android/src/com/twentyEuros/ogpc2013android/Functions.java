@@ -29,6 +29,26 @@ public abstract class Functions {
 	}
 	
 	/**
+	 * @param from minimum amount
+	 * @param to maximum amount
+	 * @return a random integer between from and to
+	 */
+	public static int boolToInt(boolean b) {
+		if (b) {return 1;} else {return 0;}
+	}
+	
+	/**
+	 * @return a random boolean
+	 */
+	public static boolean genRandomBool() {
+		if (Math.random() >= .5) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * 
 	 * @param p1 the first point
 	 * @param p2 the second point

@@ -71,8 +71,8 @@ public final class R {
         public static final int circut_drawable=0x7f0a0000;
         public static final int circut_drawable2=0x7f0a0001;
         public static final int circut_drawable3=0x7f0a0002;
-        public static final int delete=0x7f0a0017;
-        public static final int delete_all=0x7f0a0016;
+        public static final int delete=0x7f0a0016;
+        public static final int delete_all=0x7f0a0017;
         public static final int enemies_dead=0x7f0a0010;
         public static final int front_touching=0x7f0a0011;
         public static final int imageButton1=0x7f0a0021;
@@ -131,15 +131,15 @@ public final class R {
         public static final int tutorial=0x7f050003;
     }
     public static final class string {
-        public static final int achievement_title=0x7f070014;
+        public static final int achievement_title=0x7f070016;
         public static final int app_name=0x7f070000;
         public static final int back_touching=0x7f07000b;
-        public static final int cheevo1d=0x7f070019;
-        public static final int cheevo1t=0x7f070016;
-        public static final int cheevo2d=0x7f07001a;
-        public static final int cheevo2t=0x7f070017;
-        public static final int cheevo3d=0x7f07001b;
-        public static final int cheevo3t=0x7f070018;
+        public static final int cheevo1d=0x7f07001b;
+        public static final int cheevo1t=0x7f070018;
+        public static final int cheevo2d=0x7f07001c;
+        public static final int cheevo2t=0x7f070019;
+        public static final int cheevo3d=0x7f07001d;
+        public static final int cheevo3t=0x7f07001a;
         public static final int command_label=0x7f070001;
         public static final int conditional_label=0x7f070003;
         public static final int delete=0x7f070012;
@@ -147,7 +147,7 @@ public final class R {
         public static final int enemies_dead=0x7f070011;
         public static final int front_touching=0x7f07000a;
         public static final int left_touching=0x7f07000c;
-        public static final int locked_cheevo=0x7f070015;
+        public static final int locked_cheevo=0x7f070017;
         public static final int menu_settings=0x7f070002;
         public static final int move_down=0x7f070008;
         public static final int move_foreward=0x7f070005;
@@ -157,6 +157,8 @@ public final class R {
         public static final int right_touching=0x7f07000d;
         public static final int rotate_left=0x7f07000f;
         public static final int rotate_right=0x7f07000e;
+        public static final int run=0x7f070014;
+        public static final int run_noblocks=0x7f070015;
         public static final int shoot=0x7f070010;
         public static final int welcome_string=0x7f070004;
     }

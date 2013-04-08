@@ -96,7 +96,12 @@ public class FlowChartActivity extends Activity {
 						setSelectedBlockID(-1);
 						BgView.invalidate();
 					}
+				if (blocks.size() == 0) {
+					((Button) findViewById(R.id.run)).setText(getResources().getString(R.string.run_noblocks));
+				} else {
+					((Button) findViewById(R.id.run)).setText(getResources().getString(R.string.run));
 				}
+			}
 		});
 		BgView = (FlowChartBackgroundView) findViewById(R.id.bg_view);
 		BgView.setInvisibitmap(R.drawable.println_block, this.getResources());
@@ -114,7 +119,7 @@ public class FlowChartActivity extends Activity {
 		Button moveUp = (Button) findViewById(R.id.move_up);
 		Button moveDown = (Button) findViewById(R.id.move_down);
 		Button deleteAllButton = (Button) findViewById(R.id.delete_all);
-		ImageView runButton = (ImageView) findViewById(R.id.run);
+		Button runButton = (Button) findViewById(R.id.run);
 		((ImageView) findViewById(R.id.selected_image)).setVisibility(View.INVISIBLE);
 		selectedBlockView = (ImageView) findViewById(R.id.selected_image);
 		
@@ -315,6 +320,7 @@ public class FlowChartActivity extends Activity {
 		}
 		blocks = new ArrayList<Block>();
 		setSelectedBlockID(-1);
+		((Button) findViewById(R.id.run)).setText(getResources().getString(R.string.run_noblocks));
 		BgView.invalidate();
 	}
 	
@@ -385,6 +391,11 @@ public class FlowChartActivity extends Activity {
 		}
 		if (selectedBlockType != -1 && selectedBlockSubType != -1) {
 			layout.addView(blocks.get(blocks.size() - 1).selectButton);
+		}
+		if (blocks.size() == 0) {
+			((Button) findViewById(R.id.run)).setText(getResources().getString(R.string.run_noblocks));
+		} else {
+			((Button) findViewById(R.id.run)).setText(getResources().getString(R.string.run));
 		}
 	}
 	
