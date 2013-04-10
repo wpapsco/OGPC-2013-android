@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
@@ -27,10 +28,13 @@ import android.widget.ImageView;
 public class MovingCircutsView extends View {
 
 	private final int MAX_NUM_POINTS = 7;
+	private final int FADE_LENGTH = 1000;
 	int width, height;
 	View radialGradient;
 	ArrayList<Animation> animations;
 	Animation fadeOut;
+	Animation fadeIn;
+	AnimationSet aSet;
 	ArrayList<Point> points;
 	private boolean animating;
 //	private Point currentPoint;
@@ -62,6 +66,27 @@ public class MovingCircutsView extends View {
 		points = generatePoints();
 		invalidate();
 		fadeOut = new AlphaAnimation(1f, 0f);
+		fadeIn = new AlphaAnimation(0f, 1f);
+		fadeIn.setDuration(100);
+		fadeIn.setAnimationListener(new AnimationListener() {
+			@Override
+			public void onAnimationEnd(Animation arg0) {
+				// TODO Auto-generated method stub
+				init();
+			}
+			@Override
+			public void onAnimationRepeat(Animation arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void onAnimationStart(Animation arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		aSet = new AnimationSet(false);
+		fadeOut.setDuration(FADE_LENGTH);
 //		r = new ThreadRunnable(points.get(0), points.get(1));
 //		t = new Thread(r);
 //		t.start();
@@ -85,6 +110,10 @@ public class MovingCircutsView extends View {
 				animations.get(i).setAnimationListener(new AnimListener(i, animations.size() - 1));
 				animations.get(i).setInterpolator(new LinearInterpolator());
 			}
+			aSet.addAnimation(animations.get(animations.size() - 1));
+			fadeOut.setStartOffset(animations.get(animations.size() - 1).getDuration() - FADE_LENGTH);
+			fadeOut.setFillAfter(false);
+			aSet.addAnimation(fadeOut);
 			v.startAnimation(animations.get(0));
 			animating = true;
 		}
@@ -127,10 +156,11 @@ public class MovingCircutsView extends View {
 		public void onAnimationEnd(Animation arg0) {
 			// TODO Auto-generated method stub
 			if (pos == maxpos) {
-				init();
+				radialGradient.startAnimation(fadeIn);
+			} else if (pos == maxpos - 1) {
+				radialGradient.startAnimation(aSet);
 			} else {
 				radialGradient.startAnimation(animations.get(pos + 1));
-//				r.changeDirection(points.get(pos + 2));
 			}
 		}
 
