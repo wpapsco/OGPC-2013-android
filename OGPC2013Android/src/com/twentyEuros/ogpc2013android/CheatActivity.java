@@ -21,6 +21,8 @@ public class CheatActivity extends Activity {
 		}
 		if (!hasFocus) {
 			DataSingleton.setCheatMode(((CheckBox) findViewById(R.id.checkBox1)).isChecked());
+			if (((CheckBox) findViewById(R.id.checkBox2)).isChecked()) {Player.bulletID = R.drawable.nrg_bullet;}
+			if (!((CheckBox) findViewById(R.id.checkBox2)).isChecked()) {Player.bulletID = R.drawable.bullet;}
 			if (((CheckBox) findViewById(R.id.checkBox1)).isChecked() && !Achievement.cheat.achieved) {Achievement.cheat.achieve();}
 			if (((CheckBox) findViewById(R.id.checkBox2)).isChecked() && !Achievement.cheat.achieved) {Achievement.cheat.achieve();}
 		}

@@ -22,6 +22,7 @@ public class Player {
 	private Bitmap bulletBitmap;
 	private RectF collisionRect;
 	private boolean isColliding = false;
+	public static int bulletID = R.drawable.bullet;
 	private ArrayList<Bullet> bullets;
 	float rotation;
 	float fireRecharge = 1000;
@@ -33,7 +34,7 @@ public class Player {
 		collisionRect.left = loc.x;
 		collisionRect.top = loc.y;
 		rotation = 0;
-		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
+		bulletBitmap = BitmapFactory.decodeResource(res, bulletID);
 		bullets = new ArrayList<Bullet>();
 	}
 
