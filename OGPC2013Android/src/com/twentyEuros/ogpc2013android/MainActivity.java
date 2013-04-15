@@ -162,6 +162,16 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		View b3 = findViewById(R.id.title);
+		b3.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(arg0.getContext(), CheatActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	

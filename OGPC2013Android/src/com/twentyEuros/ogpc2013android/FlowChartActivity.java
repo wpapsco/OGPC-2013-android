@@ -111,6 +111,9 @@ public class FlowChartActivity extends Activity {
 		Button shoot = (Button) findViewById(R.id.shoot);
 		Button deadEnemies = (Button) findViewById(R.id.enemies_dead);
 		Button frontTouching = (Button) findViewById(R.id.front_touching);
+		Button backTouching = (Button) findViewById(R.id.back_touching);
+		Button leftTouching = (Button) findViewById(R.id.left_touching);
+		Button rightTouching = (Button) findViewById(R.id.right_touching);
 		Button moveForeward = (Button) findViewById(R.id.move_foreward);
 		Button rotateRightButton = (Button) findViewById(R.id.rotate_right);
 		Button rotateLeftButton = (Button) findViewById(R.id.rotate_left);
@@ -144,6 +147,30 @@ public class FlowChartActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.CONDITIONAL_BLOCK, ConditionalBlock.CHECK_FOREWARD_BLOCK);
+			}
+		});
+		
+		backTouching.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.CONDITIONAL_BLOCK, ConditionalBlock.CHECK_BACKWARD_BLOCK);
+			}
+		});
+		
+		leftTouching.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.CONDITIONAL_BLOCK, ConditionalBlock.CHECK_LEFT_BLOCK);
+			}
+		});
+		
+		rightTouching.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				((FlowChartActivity) arg0.getContext()).setSelectedBlockType(Block.CONDITIONAL_BLOCK, ConditionalBlock.CHECK_RIGHT_BLOCK);
 			}
 		});
 		

@@ -11,6 +11,7 @@ public class DataSingleton {
 	public static ArrayList<Block> blocks;
 	public static ArrayList<Map> maps;
 	public static boolean hasBlocks = false;
+	public static boolean cheatMode = false;
 	public static boolean[] completedLevels = {
 		false,
 		false,
@@ -52,6 +53,16 @@ public class DataSingleton {
 	
 	public static ArrayList<Map> getMaps() {
 		return maps;
+	}
+	
+	public static void setCheatMode(boolean enabled) {
+		cheatMode = enabled;
+		if (enabled) {
+			completedLevels[0] = true;
+			completedLevels[1] = true;
+			completedLevels[2] = true;
+			completedLevels[3] = true;
+		}
 	}
 
 	public static void setMaps(ArrayList<Map> maps) {

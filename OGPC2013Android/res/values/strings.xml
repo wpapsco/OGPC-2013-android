@@ -19,6 +19,8 @@
     <string name="rotate_left">Rotate Left</string>
     <string name="shoot">Shoot</string>
 	<string name="enemies_dead">Enemies Dead</string>
+	<string name="cheat1">Unlock all tutorial levels</string>
+	<string name="cheat2">Enable weird-ass bullet</string>
 	
 	<string name="delete">Delete Selected Block</string>
 	<string name="delete_all">Delete All Blocks</string>

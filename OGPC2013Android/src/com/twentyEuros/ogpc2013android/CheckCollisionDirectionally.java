@@ -40,6 +40,16 @@ public class CheckCollisionDirectionally extends ConditionalBlock {
 			r = Functions.getMovedRectangle(r, p.getMovedPosition(2, 90));
 			return m.isColliding(r);
 		}
+		if (conditionalBlockType == ConditionalBlock.CHECK_LEFT_BLOCK) {
+			RectF r = new RectF(p.getCollisionRect());
+			r = Functions.getMovedRectangle(r, p.getMovedPosition(2, -90));
+			return m.isColliding(r);
+		}
+		if (conditionalBlockType == ConditionalBlock.CHECK_BACKWARD_BLOCK) {
+			RectF r = new RectF(p.getCollisionRect());
+			r = Functions.getMovedRectangle(r, p.getMovedPosition(2, 180));
+			return m.isColliding(r);
+		}
 		return false;
 	}
 
