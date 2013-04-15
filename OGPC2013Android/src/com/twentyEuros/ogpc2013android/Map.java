@@ -28,8 +28,9 @@ public class Map {
 	private boolean hasImage;
 	private boolean completeRan = false;
 	private int level;
+	private int par;
 	
-	Map(PointF playerStartLoc, int level) {
+	Map(PointF playerStartLoc, int level, int par) {
 		obstacles = new ArrayList<Obstacle>();
 		events = new ArrayList<Event>();
 		enemies = new ArrayList<Enemy>();
@@ -41,9 +42,10 @@ public class Map {
 		objectiveText = "";
 		hasImage = false;
 		this.level = level;
+		this.par = par;
 	}
 	
-	Map(PointF playerStartLoc, int resId, Resources r, int level) {
+	Map(PointF playerStartLoc, int resId, Resources r, int level, int par) {
 		this.level = level;
 		obstacles = new ArrayList<Obstacle>();
 		events = new ArrayList<Event>();
@@ -54,6 +56,7 @@ public class Map {
 		objectiveText = "";
 		this.image = BitmapFactory.decodeResource(r, resId);
 		hasImage = true;
+		this.par = par;
 	}
 	
 	public void setObjectiveText(String objectiveText) {
@@ -65,6 +68,8 @@ public class Map {
 	}
 	
 	public int getLevel() {return level;}
+	public int getPar() {return par;}
+	public void setPar(int par) {this.par = par;}
 	
 	public boolean isColliding(RectF r) {
 		boolean retVal = false;
@@ -186,6 +191,13 @@ public class Map {
 		if (level == 0) {Achievement.firstLevel.achieve();}
 		if (level == 1) {Achievement.secondLevel.achieve();}
 		if (level == 2) {Achievement.thirdLevel.achieve();}
+		if (DataSingleton.getBlocks().size() >= 20) {Achievement.twentyBlock.achieve();}
+		if (DataSingleton.getBlocks().size() <= par) {
+			//do some under par stuff here
+			if (!Achievement.threeUnderPar.achieved) {
+				Achievement.threeUnderPar.achieve();
+			}
+		}
 		
 		isCompleted = true;
 		Log.e("map", "done");

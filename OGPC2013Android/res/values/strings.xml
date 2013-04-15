@@ -6,6 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="conditional_label">Conditional\nBlocks</string>
     <string name="welcome_string">Welcome to the School of Technological Medicine!</string>
+    
     <string name="move_foreward">Move Foreward</string>
     <string name="move_right">Move East</string>
     <string name="move_up">Move North</string>
@@ -19,6 +20,7 @@
     <string name="rotate_left">Rotate Left</string>
     <string name="shoot">Shoot</string>
 	<string name="enemies_dead">Enemies Dead</string>
+	
 	<string name="cheat1">Unlock all tutorial levels</string>
 	<string name="cheat2">Enable weird-ass bullet</string>
 	
@@ -32,9 +34,15 @@
 	<string name="cheevo1t">From Humble Beginings</string>
 	<string name="cheevo2t">Studying Hard</string>
 	<string name="cheevo3t">Getting Bored</string>
+	<string name="cheevo4t">That Took a While</string>
+	<string name="cheevo5t">"Hey! That's Not Fair!"</string>
+	<string name="cheevo6t">"Über Pro!"</string>
 	<string name="cheevo1d">Complete the first level</string>
 	<string name="cheevo2d">Complete the second level</string>
 	<string name="cheevo3d">Complete the third level</string>
+	<string name="cheevo4d">Complete a level using at least 20 blocks</string>
+	<string name="cheevo5d">Use a cheat</string>
+	<string name="cheevo6d">Complete any three levels under par</string>
 	
     
 </resources>

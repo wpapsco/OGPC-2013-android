@@ -32,6 +32,33 @@
 		android:padding="3px"
 		android:src="@drawable/gradient2" />
     
+    <ImageView
+		android:id="@+id/circut_drawable4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:padding="3px"
+		android:src="@drawable/gradient2" />
+    
+    <ImageView
+		android:id="@+id/circut_drawable5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:padding="3px"
+		android:src="@drawable/gradient2" />
+    
+    <ImageView
+		android:id="@+id/circut_drawable6"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:padding="3px"
+		android:src="@drawable/gradient2" />
+    
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView2"
@@ -303,6 +330,21 @@
     
     <com.twentyEuros.ogpc2013android.MovingCircutsView
 		android:id="@+id/circut3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+    
+    <com.twentyEuros.ogpc2013android.MovingCircutsView
+		android:id="@+id/circut4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+    
+    <com.twentyEuros.ogpc2013android.MovingCircutsView
+		android:id="@+id/circut5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+    
+    <com.twentyEuros.ogpc2013android.MovingCircutsView
+		android:id="@+id/circut6"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />
 

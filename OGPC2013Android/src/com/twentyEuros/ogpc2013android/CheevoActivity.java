@@ -29,6 +29,18 @@ public class CheevoActivity extends Activity {
 				((TextView) findViewById(R.id.textView5)).setText(R.string.cheevo3t);
 				((TextView) findViewById(R.id.textView6)).setText(R.string.cheevo3d);
 			}
+			if (Achievement.twentyBlock.achieved) {
+				((TextView) findViewById(R.id.textView7)).setText(R.string.cheevo4t);
+				((TextView) findViewById(R.id.textView8)).setText(R.string.cheevo4d);
+			}
+			if (Achievement.cheat.achieved) {
+				((TextView) findViewById(R.id.textView9)).setText(R.string.cheevo5t);
+				((TextView) findViewById(R.id.textView10)).setText(R.string.cheevo5d);
+			}
+			if (Achievement.threeUnderPar.achieved) {
+				((TextView) findViewById(R.id.textView11)).setText(R.string.cheevo6t);
+				((TextView) findViewById(R.id.textView12)).setText(R.string.cheevo6d);
+			}
 		}
 	}
 }

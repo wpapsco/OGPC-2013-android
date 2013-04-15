@@ -46,6 +46,9 @@ public class FlowChartActivity extends Activity {
 	private MovingCircutsView circut;
 	private MovingCircutsView circut2;
 	private MovingCircutsView circut3;
+	private MovingCircutsView circut4;
+	private MovingCircutsView circut5;
+	private MovingCircutsView circut6;
 	
 	public FlowChartActivity() {
 
@@ -69,6 +72,9 @@ public class FlowChartActivity extends Activity {
 		circut = (MovingCircutsView) findViewById(R.id.circut);
 		circut2 = (MovingCircutsView) findViewById(R.id.circut2);
 		circut3 = (MovingCircutsView) findViewById(R.id.circut3);
+		circut4 = (MovingCircutsView) findViewById(R.id.circut4);
+		circut5 = (MovingCircutsView) findViewById(R.id.circut5);
+		circut6 = (MovingCircutsView) findViewById(R.id.circut6);
 		layout = (RelativeLayout) findViewById(R.id.relativeLayout);
 		layout.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -441,6 +447,9 @@ public class FlowChartActivity extends Activity {
 			circut.startAnimation(findViewById(R.id.circut_drawable));
 			circut2.startAnimation(findViewById(R.id.circut_drawable2));
 			circut3.startAnimation(findViewById(R.id.circut_drawable3));
+			circut4.startAnimation(findViewById(R.id.circut_drawable4));
+			circut5.startAnimation(findViewById(R.id.circut_drawable5));
+			circut6.startAnimation(findViewById(R.id.circut_drawable6));
 		} else {
 			if (m.isPlaying()) {
 				m.pause();

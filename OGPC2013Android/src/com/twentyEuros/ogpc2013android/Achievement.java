@@ -16,12 +16,15 @@ public class Achievement {
 	public int textId;
 	public int titleId;
 	public int descriptionId;
+	private int times;
+	private int curTimes;
 	
-	public Achievement(int titleId, int descriptionId, int textId) {
+	public Achievement(int titleId, int descriptionId, int times) {
 		achieved = false;
-		this.textId = textId;
+		curTimes = 0;
 		this.titleId = titleId;
 		this.descriptionId = descriptionId;
+		this.times = times;
 	}
 	
 	public static void setResources(Resources r) {
@@ -29,19 +32,29 @@ public class Achievement {
 		firstLevel.loadResources();
 		secondLevel.loadResources();
 		thirdLevel.loadResources();
+		twentyBlock.loadResources();
+		cheat.loadResources();
+		threeUnderPar.loadResources();
+		
 	}
-	
 	public void loadResources() {
+	
 		this.description = res.getString(descriptionId);
 		this.title = res.getString(titleId);
 	}
 	
 	public void achieve() {
-		achieved = true;
-		Log.e("Achievement", title + ": " + description);
+		curTimes++;
+		if (curTimes >= times) {
+			achieved = true;
+			Log.e("Achievement", title + ": " + description);
+		}
 	}
 	
-	public static Achievement firstLevel = new Achievement(R.string.cheevo1t, R.string.cheevo1d, R.id.textView2);
-	public static Achievement secondLevel = new Achievement(R.string.cheevo2t, R.string.cheevo2d, R.id.textView4);
-	public static Achievement thirdLevel = new Achievement(R.string.cheevo3t, R.string.cheevo3d, R.id.textView6);
+	public static Achievement firstLevel = new Achievement(R.string.cheevo1t, R.string.cheevo1d, 1);
+	public static Achievement secondLevel = new Achievement(R.string.cheevo2t, R.string.cheevo2d, 1);
+	public static Achievement thirdLevel = new Achievement(R.string.cheevo3t, R.string.cheevo3d, 1);
+	public static Achievement twentyBlock = new Achievement(R.string.cheevo4t, R.string.cheevo4d, 1);
+	public static Achievement cheat = new Achievement(R.string.cheevo5t, R.string.cheevo5d, 1);
+	public static Achievement threeUnderPar = new Achievement(R.string.cheevo6t, R.string.cheevo6d, 3);
 }
