@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	<TwoLineListItem
+		android:id="@+id/twoLineListItem1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp" >
+	
+		<TextView
+			android:id="@+id/textView1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds1"
+			android:textSize="18sp"
+			android:textColor="@android:color/primary_text_dark" />
+		  
+		<TextView
+			android:id="@+id/textView2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds1s"
+			android:layout_below="@id/textView1"
+			android:textSize="15sp"
+			android:textColor="@android:color/secondary_text_dark" />
+	</TwoLineListItem>
+	
+	<TwoLineListItem
+		android:id="@+id/twoLineListItem2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp" >
+	
+		<TextView
+			android:id="@+id/textView3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds2"
+			android:textSize="18sp"
+			android:textColor="@android:color/primary_text_dark" />
+		  
+		<TextView
+			android:id="@+id/textView4"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds2s"
+			android:layout_below="@id/textView3"
+			android:textSize="15sp"
+			android:textColor="@android:color/secondary_text_dark" />
+	</TwoLineListItem>
+	
+	<TwoLineListItem
+		android:id="@+id/twoLineListItem3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp" >
+	
+		<TextView
+			android:id="@+id/textView5"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds3"
+			android:textSize="18sp"
+			android:textColor="@android:color/primary_text_dark" />
+		  
+		<TextView
+			android:id="@+id/textView6"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds3s"
+			android:layout_below="@id/textView5"
+			android:textSize="15sp"
+			android:textColor="@android:color/secondary_text_dark" />
+	</TwoLineListItem>
+	
+	<TwoLineListItem
+		android:id="@+id/twoLineListItem4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp" >
+	
+		<TextView
+			android:id="@+id/textView7"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds4"
+			android:textSize="18sp"
+			android:textColor="@android:color/primary_text_dark" />
+		  
+		<TextView
+			android:id="@+id/textView8"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds4s"
+			android:layout_below="@id/textView7"
+			android:textSize="15sp"
+			android:textColor="@android:color/secondary_text_dark" />
+	</TwoLineListItem>
+	
+	<TwoLineListItem
+		android:id="@+id/twoLineListItem5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp" >
+	
+		<TextView
+			android:id="@+id/textView9"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds5"
+			android:textSize="18sp"
+			android:textColor="@android:color/primary_text_dark" />
+		  
+		<TextView
+			android:id="@+id/textView10"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds5s"
+			android:layout_below="@id/textView9"
+			android:textSize="15sp"
+			android:textColor="@android:color/secondary_text_dark" />
+	</TwoLineListItem>
+	
+	<TwoLineListItem
+		android:id="@+id/twoLineListItem6"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp" >
+	
+		<TextView
+			android:id="@+id/textView11"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds6"
+			android:textSize="18sp"
+			android:textColor="@android:color/primary_text_dark" />
+		  
+		<TextView
+			android:id="@+id/textView12"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds6s"
+			android:layout_below="@id/textView11"
+			android:textSize="15sp"
+			android:textColor="@android:color/secondary_text_dark" />
+	</TwoLineListItem>
+	
+	<TwoLineListItem
+		android:id="@+id/twoLineListItem7"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="8dp" >
+	
+		<TextView
+			android:id="@+id/textView13"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds7"
+			android:textSize="18sp"
+			android:textColor="@android:color/primary_text_dark" />
+		  
+		<TextView
+			android:id="@+id/textView14"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/creds7s"
+			android:layout_below="@id/textView13"
+			android:textSize="15sp"
+			android:textColor="@android:color/secondary_text_dark" />
+	</TwoLineListItem>
+
+</LinearLayout>

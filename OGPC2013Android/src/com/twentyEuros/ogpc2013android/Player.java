@@ -46,7 +46,7 @@ public class Player {
 //		collisionRect.left = loc.x;
 //		collisionRect.top = loc.y;
 		rotation = 0;
-		bulletBitmap = BitmapFactory.decodeResource(res, R.drawable.bullet);
+		bulletBitmap = BitmapFactory.decodeResource(res, bulletID);
 		bullets = new ArrayList<Bullet>();
 	}
 

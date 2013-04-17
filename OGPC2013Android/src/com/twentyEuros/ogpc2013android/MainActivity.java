@@ -172,6 +172,16 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		View b4 = findViewById(R.id.creds);
+		b4.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(arg0.getContext(), CreditActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	
