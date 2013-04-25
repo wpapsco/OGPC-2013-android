@@ -30,17 +30,25 @@
 	<string name="run_noblocks">View Map</string>
 	
 	<string name="creds1">Devan Cakebread</string>
-	<string name="creds1s">Project Overseer</string>
+	<string name="creds1s">Project Overseer, Beta Tester, Level Designer</string>
 	<string name="creds2">William Papsco</string>
 	<string name="creds2s">Lead Programmer</string>
 	<string name="creds3">Cameron Ellis</string>
-	<string name="creds3s">Artist</string>
-	<string name="creds4">Killiam Heindrics</string>
-	<string name="creds4s">Audio Development, Artist</string>
-	<string name="creds5">Ashylenne Olsen</string>
+	<string name="creds3s">Artist, Beta Tester, House-Elf.</string>
+	<string name="creds4">Duncan Millard</string>
+	<string name="creds4s">Beta Tester, Consultant</string>
+	<string name="creds5">Ashlynne Olsen</string>
 	<string name="creds5s">Lead Artist</string>
 	<string name="creds6">Killiam Heindrics</string>
-	<string name="creds6s">Audio Development, Artist</string>
+	<string name="creds6s">Audio Development, Artist, Beta Tester, Junior Sub-Committee on Foreign Relations President’s Aide-de-Camp, Credits</string>
+	<string name="creds7">Stack Overflow</string>
+	<string name="creds7s">Lead Programming Consultant</string>
+	<string name="creds8">Chris Bartlo</string>
+	<string name="creds8s">Consultant, Teacher, Mentor, Senior Senior Overseer, Beta Tester, Wizard, Master, Unconfirmed Hobbit</string>
+	<string name="creds9">James Waugh</string>
+	<string name="creds9s">Senior Manager of Slacking, Goofing, and Messing Around Services, LLD</string>
+	<string name="creds10">Austin Grahm</string>
+	<string name="creds10s">Artist, Beta Tester, Tallest</string>
 	
 	<string name="achievement_title">Achievements</string>
 	<string name="locked_cheevo">"???"</string>

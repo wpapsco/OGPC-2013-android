@@ -34,7 +34,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ArrayList<Map> maps = new ArrayList<Map>();
-		
 		Achievement.setResources(getResources());
 		
 		//tutorial levels
@@ -197,7 +196,6 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, LevelSelectActivity.class);
 		startActivity(intent);
 	}
-	
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
