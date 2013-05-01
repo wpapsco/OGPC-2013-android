@@ -50,10 +50,6 @@ public class FlowChartActivity extends Activity {
 	private MovingCircutsView circut5;
 	private MovingCircutsView circut6;
 	
-	public FlowChartActivity() {
-
-	}
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -441,7 +437,7 @@ public class FlowChartActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
 		if (hasFocus) {
-			if(!m.isPlaying()) {
+			if(!m.isPlaying() && !DataSingleton.raveMode) {
 				  m.start();
 			  }
 			circut.startAnimation(findViewById(R.id.circut_drawable));

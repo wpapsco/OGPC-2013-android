@@ -12,6 +12,7 @@ public class DataSingleton {
 	public static ArrayList<Map> maps;
 	public static boolean hasBlocks = false;
 	public static boolean cheatMode = false;
+	public static boolean raveMode = false;
 	public static boolean[] completedLevels = {
 		false,
 		false,
@@ -30,7 +31,21 @@ public class DataSingleton {
 	}
 	
 	public static ArrayList<Block> getBlocks() {
-		return blocks;
+		if (blocks != null) {
+			return blocks;
+		} else {
+			return new ArrayList<Block>();
+		}
+	}
+	
+	public static void setRaveMode(boolean mode) {
+		if (mode) {
+			Player.bulletID = R.drawable.nrg_bullet;
+		}
+		if (!mode) {
+			Player.bulletID = R.drawable.bullet;
+		}
+		raveMode = mode;
 	}
 	
 	public static int getLevel() {
@@ -44,7 +59,7 @@ public class DataSingleton {
 	}
 	
 	public static void setLevel(int level) {
-		for (int i = 0; i <= level && i != 0; i++) {
+		for (int i = 0; i <= level && level != 0; i++) {
 			completedLevels[i] = true;
 			maps.get(i).Complete();
 		}
@@ -58,10 +73,21 @@ public class DataSingleton {
 	public static void setCheatMode(boolean enabled) {
 		cheatMode = enabled;
 		if (enabled) {
-			completedLevels[0] = true;
-			completedLevels[1] = true;
-			completedLevels[2] = true;
-			completedLevels[3] = true;
+//			completedLevels[0] = true;
+//			completedLevels[1] = true;
+//			completedLevels[2] = true;
+//			completedLevels[3] = true;
+			setLevel(2);
+		}
+	}
+	
+	public static void setCheatMode2(boolean enabled) {
+		cheatMode = enabled;
+		if (enabled) {
+//			completedLevels[4] = true;
+//			completedLevels[5] = true;
+//			completedLevels[6] = true;
+			setLevel(5);
 		}
 	}
 

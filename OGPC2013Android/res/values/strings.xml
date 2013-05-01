@@ -6,6 +6,8 @@
     <string name="menu_settings">Settings</string>
     <string name="conditional_label">Conditional\nBlocks</string>
     <string name="welcome_string">Welcome to the School of Technological Medicine!</string>
+    <string name="next_world">Next World</string>
+    <string name="previous_world">Previous World</string>
     
     <string name="move_foreward">Move Foreward</string>
     <string name="move_right">Move East</string>
@@ -22,7 +24,8 @@
 	<string name="enemies_dead">Enemies Dead</string>
 	
 	<string name="cheat1">Unlock all tutorial levels</string>
-	<string name="cheat2">Enable weird-ass bullet</string>
+	<string name="cheat2">Enable rave mode</string>
+	<string name="cheat3">Unlock all spine levels</string>
 	
 	<string name="delete">Delete Selected Block</string>
 	<string name="delete_all">Delete All Blocks</string>

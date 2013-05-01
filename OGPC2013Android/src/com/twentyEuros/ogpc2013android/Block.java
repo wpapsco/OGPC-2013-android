@@ -104,7 +104,7 @@ public abstract class Block {
 		return hasNextBlock;
 	}
 	
-	Block getThis() {
+	public Block getThis() {
 		return this;
 	}
 	
@@ -160,7 +160,7 @@ public abstract class Block {
 		arrowLines.add(new Line(startPoint, new PointF(xval, yval)));
 	}
 	
-	void drawLines(Canvas c) {
+	public void drawLines(Canvas c) {
 		Paint p = new Paint();
 		for (int i = 0; i < connectingLines.size(); i++) {
 			if (this.blockType == CONDITIONAL_BLOCK && i == 0) {

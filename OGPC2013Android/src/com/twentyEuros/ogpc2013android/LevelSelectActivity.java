@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,6 +40,7 @@ public class LevelSelectActivity extends Activity {
 	private int world;
 	private final int WORLD_TUTORIAL = 0;
 	private final int WORLD_SPINE = 4;
+	private final int WORLD_BRAIN = 7;
 	private float width;
 	private float height;
 	private MediaPlayer m;
@@ -47,10 +49,11 @@ public class LevelSelectActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		SharedPreferences prefs = getSharedPreferences("prefs", 0);
-		int level = prefs.getInt("level", 0);
-		DataSingleton.setLevel(level);
+		if (!DataSingleton.cheatMode) {
+			SharedPreferences prefs = getSharedPreferences("prefs", 0);
+			int level = prefs.getInt("level", 0);
+			DataSingleton.setLevel(level);
+		}
 		
 		world = WORLD_TUTORIAL;
 		DisplayMetrics displaymetrics = new DisplayMetrics();
@@ -66,6 +69,23 @@ public class LevelSelectActivity extends Activity {
 		images.add((ImageView)findViewById(R.id.imageView3));
 		images.add((ImageView)findViewById(R.id.imageView4));
 		images.add((ImageView)findViewById(R.id.imageView5));
+		
+		findViewById(R.id.next_button).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				//go to next level
+				goNextWorld();
+			}
+		});
+		findViewById(R.id.previous_button).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				//go to previous level
+				goPreviousWorld();
+			}
+		});
 		
 		for (int i = 0; i < images.size(); i++) {
 			frameAnimations.add((AnimationDrawable) getResources().getDrawable(R.drawable.level_animation));
@@ -127,6 +147,38 @@ public class LevelSelectActivity extends Activity {
 		m = MediaPlayer.create(this, R.raw.gameplay);
 	}
 	
+	protected void goPreviousWorld() {
+		// TODO Auto-generated method stub
+		switch(world) {
+		case WORLD_TUTORIAL:
+			//do nothing
+			break;
+		case WORLD_SPINE:
+			setWorld(WORLD_TUTORIAL);
+			break;
+		case WORLD_BRAIN:
+			setWorld(WORLD_SPINE);
+			break;
+		}
+		dod(false);
+	}
+
+	protected void goNextWorld() {
+		// TODO Auto-generated method stub
+		switch(world) {
+		case WORLD_TUTORIAL:
+			setWorld(WORLD_SPINE);
+			break;
+		case WORLD_SPINE:
+			setWorld(WORLD_BRAIN);
+			break;
+		case WORLD_BRAIN:
+			//do nothing
+			break;
+		}
+		dod(false);
+	}
+
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -142,6 +194,40 @@ public class LevelSelectActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void dod(boolean fromHasFocus) {
+		for (int i = 0; i < DataSingleton.getLevel() + 1 - world && i < images.size(); i++) {
+			images.get(i).setVisibility(View.VISIBLE);
+		}
+	}
+	
+	public void setWorld(int world) {
+		for (int i = 0; i < images.size(); i++) {
+			  images.get(i).setVisibility(View.INVISIBLE);
+		}
+		if (world == WORLD_BRAIN) {
+			//change world
+			this.world = WORLD_BRAIN;
+			//change locations for level icons
+			((ImageView) findViewById(R.id.imageView1)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.brain));
+		}
+		if (world == WORLD_SPINE) {
+			//change world
+			this.world = WORLD_SPINE;
+			//change locations for level icons
+			((ImageView) findViewById(R.id.imageView1)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.spine));
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
+			params.leftMargin = Math.round((100f/800f) * width); //Your X coordinate
+			params.topMargin = Math.round((200f/600f) * height); //Your Y coordinate
+			images.get(0).setLayoutParams(params);
+		}
+		if (world == WORLD_TUTORIAL) {
+			//change world
+			this.world = WORLD_TUTORIAL;
+			//change locations for level icons
+			((ImageView) findViewById(R.id.imageView1)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.tutorial_level_select));
+		}
+	}
+	
 	@Override
 	public void onWindowFocusChanged (boolean hasFocus) {
 	   super.onWindowFocusChanged(hasFocus);
@@ -149,22 +235,16 @@ public class LevelSelectActivity extends Activity {
 			  for (int i = 0; i < frameAnimations.size(); i++) {
 		    	  frameAnimations.get(i).start();
 		      }
-		      if (DataSingleton.getLevel() > 3) {
-		    	  //change world
-		    	  world = WORLD_SPINE;
-		    	  //change locations for level icons
-		    	  ((ImageView) findViewById(R.id.imageView1)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.spine));
-		    	  RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); //The WRAP_CONTENT parameters can be replaced by an absolute width and height or the FILL_PARENT option)
-				  params.leftMargin = Math.round((100f/800f) * width); //Your X coordinate
-				  params.topMargin = Math.round((200f/600f) * height); //Your Y coordinate
-				  images.get(0).setLayoutParams(params);
-		      }
-		      for (int i = 0; i < images.size(); i++) {
-		    	  images.get(i).setVisibility(View.INVISIBLE);
-		      }
-		      for (int i = 0; i < DataSingleton.getLevel() + 1 - world; i++) {
-		    	  images.get(i).setVisibility(View.VISIBLE);
-		      }
+			  if (DataSingleton.getLevel() > 3) {
+				  setWorld(WORLD_SPINE);
+			  }
+			  if (DataSingleton.getLevel() > 6) {
+				  setWorld(WORLD_BRAIN);
+			  }
+			  if (DataSingleton.getLevel() <= 3) {
+				  setWorld(WORLD_TUTORIAL);
+			  }
+		      dod(true);
 	   } else {
 		   	Log.e("saving", "" + DataSingleton.getLevel());
 			SharedPreferences prefs = getSharedPreferences("prefs", 0);

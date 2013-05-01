@@ -142,7 +142,7 @@ public class RunActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
 		if (hasFocus) {
-			if(!m.isPlaying()) {
+			if(!m.isPlaying() && !DataSingleton.raveMode) {
 				  m.start();
 			}
 		}
